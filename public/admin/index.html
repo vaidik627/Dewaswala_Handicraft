@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Catalog Admin — Dewaswala Handicrafts</title>
+<style>
+  :root{--maroon:#6b1f2e;--maroon-ink:#4a1420;--gold:#b8862b;--bg:#fbf6ee;--surface:#fff;--ink:#2a1a1d;--muted:#7a6a6d;--line:#e6dcd2;--danger:#a4262c}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink);font-size:15px}
+  header{background:var(--maroon-ink);color:#fff;padding:14px 22px;display:flex;align-items:center;justify-content:space-between}
+  header h1{font-size:1.05rem;margin:0;font-weight:700;letter-spacing:.02em}
+  header button{background:none;border:1px solid rgba(255,255,255,.4);color:#fff;padding:6px 12px;border-radius:8px;cursor:pointer}
+  main{display:grid;grid-template-columns:280px 1fr;gap:18px;padding:18px;max-width:1280px;margin:0 auto}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px}
+  h2{font-size:1rem;margin:0 0 12px;color:var(--maroon-ink)}
+  input,textarea,select{width:100%;padding:9px 11px;border:1px solid var(--line);border-radius:8px;font:inherit;background:#fff}
+  textarea{min-height:76px;resize:vertical}
+  label{display:block;font-size:.8rem;font-weight:600;color:var(--muted);margin:10px 0 4px}
+  button.btn{background:var(--maroon);color:#fff;border:0;padding:9px 14px;border-radius:8px;font:inherit;font-weight:600;cursor:pointer}
+  button.btn:hover{background:var(--maroon-ink)}
+  button.ghost{background:#fff;color:var(--maroon-ink);border:1px solid var(--line)}
+  button.danger{background:#fff;color:var(--danger);border:1px solid #e9c7c9}
+  button:disabled{opacity:.5;cursor:not-allowed}
+  .row{display:flex;gap:8px;align-items:center}
+  .cat{display:flex;justify-content:space-between;align-items:center;padding:9px 10px;border-radius:8px;cursor:pointer;border:1px solid transparent}
+  .cat:hover{background:#f6efe6}
+  .cat.on{background:var(--maroon);color:#fff}
+  .cat small{opacity:.75}
+  .cat .acts{display:flex;gap:4px}
+  .cat .acts button{background:none;border:0;color:inherit;cursor:pointer;font-size:.8rem;padding:2px 4px;text-decoration:underline}
+  .prod{display:grid;grid-template-columns:64px 1fr auto;gap:12px;align-items:center;padding:10px 0;border-top:1px solid var(--line)}
+  .thumb{width:64px;height:64px;border-radius:8px;background:#eee center/cover}
+  .prod .meta{font-size:.82rem;color:var(--muted)}
+  .prod .name{font-weight:700}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .full{grid-column:1/-1}
+  .photos{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .photo{position:relative;width:86px;height:86px;border-radius:8px;background:#eee center/cover;border:1px solid var(--line)}
+  .photo button{position:absolute;top:3px;right:3px;background:#fff;border:0;border-radius:6px;padding:2px 6px;cursor:pointer;color:var(--danger);font-weight:700}
+  .msg{padding:10px 12px;border-radius:8px;margin:10px 0;font-size:.88rem}
+  .msg.ok{background:#e8f4ea;color:#1d5a2a}
+  .msg.err{background:#fbe9ea;color:var(--danger)}
+  .muted{color:var(--muted);font-size:.9rem}
+  .hide{display:none!important}
+  #login{max-width:360px;margin:60px auto}
+  @media(max-width:860px){main{grid-template-columns:1fr}.grid2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+  <h1>Dewaswala Handicrafts · Catalog Admin</h1>
+  <button id="logout" class="hide">Log out</button>
+</header>
+
+<section id="login" class="card">
+  <h2>Admin log in</h2>
+  <label for="u">Username</label>
+  <input id="u" autocomplete="username">
+  <label for="p">Password</label>
+  <input id="p" type="password" autocomplete="current-password">
+  <div id="loginMsg"></div>
+  <p><button class="btn" id="loginBtn" style="width:100%">Log in</button></p>
+</section>
+
+<main id="app" class="hide">
+  <aside class="card">
+    <h2>Categories</h2>
+    <div class="row">
+      <input id="newCat" placeholder="New category name">
+      <button class="btn" id="addCat">Add</button>
+    </div>
+    <div id="cats" style="margin-top:12px"></div>
+  </aside>
+
+  <section class="card">
+    <div class="row" style="justify-content:space-between">
+      <h2 id="catTitle">Choose a category</h2>
+      <button class="btn" id="newProd">+ Add product</button>
+    </div>
+    <div id="globalMsg"></div>
+    <div id="prods"></div>
+
+    <form id="form" class="hide" style="margin-top:16px;border-top:1px solid var(--line);padding-top:14px">
+      <h2 id="formTitle">New product</h2>
+      <div class="grid2">
+        <div><label>Product code (SKU)</label><input name="sku" required></div>
+        <div><label>Name</label><input name="name" required></div>
+        <div><label>Category</label><select name="category_id" id="formCat"></select></div>
+        <div><label>Price (₹)</label><input name="price" type="number" min="1" step="1" required></div>
+        <div><label>Unit</label><input name="unit" value="per pc"></div>
+        <div><label>Size</label><input name="size"></div>
+        <div><label>Colour</label><input name="color"></div>
+        <div><label>Best seller</label><select name="best_seller"><option value="0">No</option><option value="1">Yes</option></select></div>
+        <div><label>In stock</label><select name="in_stock"><option value="1">Yes</option><option value="0">No</option></select></div>
+        <div class="full"><label>Description</label><textarea name="description"></textarea></div>
+        <div class="full">
+          <label>Photos (up to 8, JPG / PNG / WebP, 8 MB each)</label>
+          <input type="file" id="files" name="images" accept="image/jpeg,image/png,image/webp" multiple>
+          <div id="currentPhotos" class="photos"></div>
+        </div>
+      </div>
+      <div id="formMsg"></div>
+      <div class="row" style="margin-top:12px">
+        <button class="btn" type="submit" id="saveBtn">Save product</button>
+        <button class="btn ghost" type="button" id="cancelBtn">Cancel</button>
+      </div>
+    </form>
+  </section>
+</main>
+
+<script>
+(function(){
+  const API = '';
+  let token = sessionStorage.getItem('dwToken') || '';
+  let categories = [];
+  let currentCat = null;
+  let editing = null;
+
+  const $ = s => document.querySelector(s);
+  const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const money = n => '₹' + Number(n).toLocaleString('en-IN');
+
+  function msg(el, text, ok){ el.innerHTML = text ? '<div class="msg '+(ok?'ok':'err')+'">'+esc(text)+'</div>' : ''; }
+
+  async function api(path, opts = {}){
+    const headers = Object.assign({}, opts.headers || {});
+    if (token) headers.Authorization = 'Bearer ' + token;
+    const res = await fetch(API + path, Object.assign({}, opts, { headers }));
+    let data = {};
+    try { data = await res.json(); } catch(e){}
+    if (res.status === 401) { logout(); throw new Error(data.error || 'Please log in again'); }
+    if (!res.ok) throw new Error(data.error || 'Something went wrong');
+    return data;
+  }
+
+  function showApp(on){
+    $('#login').classList.toggle('hide', on);
+    $('#app').classList.toggle('hide', !on);
+    $('#logout').classList.toggle('hide', !on);
+  }
+
+  function logout(){
+    token = ''; sessionStorage.removeItem('dwToken'); showApp(false);
+  }
+
+  async function login(){
+    msg($('#loginMsg'), '');
+    try {
+      const data = await api('/api/admin/login', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ username: $('#u').value, password: $('#p').value }) });
+      token = data.token; sessionStorage.setItem('dwToken', token);
+      $('#p').value = '';
+      showApp(true); await loadCats();
+    } catch(e){ msg($('#loginMsg'), e.message, false); }
+  }
+
+  async function loadCats(){
+    categories = await api('/api/admin/categories');
+    renderCats();
+    if (currentCat && !categories.find(c => c.id === currentCat)) currentCat = null;
+    if (!currentCat && categories.length) currentCat = categories[0].id;
+    if (currentCat) await loadProducts();
+    else { $('#prods').innerHTML = '<p class="muted">Add a category on the left to start.</p>'; $('#catTitle').textContent = 'Choose a category'; }
+  }
+
+  function renderCats(){
+    $('#cats').innerHTML = categories.map(c =>
+      '<div class="cat '+(c.id===currentCat?'on':'')+'" data-id="'+c.id+'">' +
+        '<span>'+esc(c.name)+' <small>('+c.product_count+')</small></span>' +
+        '<span class="acts"><button data-act="rename" data-id="'+c.id+'">rename</button><button data-act="delcat" data-id="'+c.id+'">delete</button></span>' +
+      '</div>'
+    ).join('') || '<p class="muted">No categories yet.</p>';
+    const sel = $('#formCat');
+    sel.innerHTML = categories.map(c => '<option value="'+c.id+'">'+esc(c.name)+'</option>').join('');
+    if (currentCat) sel.value = currentCat;
+  }
+
+  async function loadProducts(){
+    const cat = categories.find(c => c.id === currentCat);
+    $('#catTitle').textContent = cat ? cat.name : '';
+    const list = await api('/api/admin/products?category_id=' + currentCat);
+    $('#prods').innerHTML = list.map(p => {
+      const first = p.images[0] ? p.images[0].url : '';
+      return '<div class="prod">' +
+        '<div class="thumb" style="background-image:url(\''+esc(first)+'\')"></div>' +
+        '<div><div class="name">'+esc(p.name)+'</div><div class="meta">Code '+esc(p.sku)+' · '+money(p.price)+' '+esc(p.unit)+' · '+p.images.length+' photo(s)'+(p.best_seller?' · Best seller':'')+'</div></div>' +
+        '<div class="row"><button class="btn ghost" data-act="edit" data-id="'+p.id+'">Edit</button><button class="btn danger" data-act="delprod" data-id="'+p.id+'">Delete</button></div>' +
+      '</div>';
+    }).join('') || '<p class="muted">No products in this category yet.</p>';
+    window._products = list;
+    renderCats();
+  }
+
+  function openForm(p){
+    editing = p || null;
+    const f = $('#form');
+    f.classList.remove('hide');
+    $('#formTitle').textContent = p ? 'Edit product' : 'New product';
+    f.reset();
+    msg($('#formMsg'), '');
+    if (p){
+      ['sku','name','price','unit','size','color','description'].forEach(k => f.elements[k].value = p[k] || '');
+      f.elements.category_id.value = p.category_id;
+      f.elements.best_seller.value = p.best_seller ? '1' : '0';
+      f.elements.in_stock.value = p.in_stock ? '1' : '0';
+    } else {
+      f.elements.category_id.value = currentCat;
+    }
+    renderPhotos();
+    f.scrollIntoView({behavior:'smooth', block:'start'});
+  }
+
+  function renderPhotos(){
+    const box = $('#currentPhotos');
+    if (!editing){ box.innerHTML = '<span class="muted">Photos you choose above will be uploaded when you save.</span>'; return; }
+    box.innerHTML = editing.images.map(i => '<div class="photo" style="background-image:url(\''+esc(i.url)+'\')"><button type="button" data-act="delphoto" data-id="'+i.id+'" title="Remove photo">×</button></div>').join('') || '<span class="muted">No photos yet. Choose files above and save.</span>';
+  }
+
+  async function saveProduct(e){
+    e.preventDefault();
+    const f = $('#form');
+    const fd = new FormData(f);
+    fd.delete('images');
+    const files = $('#files').files;
+    const btn = $('#saveBtn'); btn.disabled = true; msg($('#formMsg'), 'Saving… photos may take a moment.', true);
+    try {
+      if (editing){
+        const data = {}; fd.forEach((v,k) => data[k] = v);
+        await api('/api/admin/products/' + editing.id, { method:'PUT', headers:{'Content-Type':'application/json'}, body: JSON.stringify(data) });
+        if (files.length){
+          const up = new FormData(); for (const x of files) up.append('images', x);
+          await api('/api/admin/products/' + editing.id + '/images', { method:'POST', body: up });
+        }
+      } else {
+        const up = new FormData();
+        fd.forEach((v,k) => up.append(k, v));
+        for (const x of files) up.append('images', x);
+        await api('/api/admin/products', { method:'POST', body: up });
+      }
+      msg($('#globalMsg'), 'Product saved.', true);
+      f.classList.add('hide'); editing = null;
+      await loadCats();
+    } catch(err){ msg($('#formMsg'), err.message, false); }
+    finally { btn.disabled = false; }
+  }
+
+  document.addEventListener('click', async e => {
+    const el = e.target.closest('[data-act], .cat');
+    if (!el) return;
+    const act = el.dataset.act; const id = Number(el.dataset.id);
+    try {
+      if (!act){ currentCat = Number(el.dataset.id); editing = null; $('#form').classList.add('hide'); msg($('#globalMsg'),''); await loadProducts(); return; }
+      if (act === 'rename'){
+        const cat = categories.find(c => c.id === id);
+        const name = prompt('New name for this category', cat.name);
+        if (!name || !name.trim()) return;
+        await api('/api/admin/categories/' + id, { method:'PUT', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ name }) });
+        msg($('#globalMsg'), 'Category renamed.', true); await loadCats();
+      }
+      if (act === 'delcat'){
+        if (!confirm('Delete this category? This cannot be undone.')) return;
+        await api('/api/admin/categories/' + id, { method:'DELETE' });
+        if (currentCat === id) currentCat = null;
+        msg($('#globalMsg'), 'Category deleted.', true); await loadCats();
+      }
+      if (act === 'edit'){ openForm(window._products.find(p => p.id === id)); }
+      if (act === 'delprod'){
+        if (!confirm('Delete this product and its photos? This cannot be undone.')) return;
+        await api('/api/admin/products/' + id, { method:'DELETE' });
+        msg($('#globalMsg'), 'Product deleted.', true); await loadCats();
+      }
+      if (act === 'delphoto'){
+        if (!confirm('Remove this photo?')) return;
+        await api('/api/admin/images/' + id, { method:'DELETE' });
+        await loadCats();
+        editing = window._products.find(p => p.id === editing.id) || null;
+        renderPhotos();
+      }
+    } catch(err){ msg($('#globalMsg'), err.message, false); }
+  });
+
+  $('#loginBtn').addEventListener('click', login);
+  $('#p').addEventListener('keydown', e => { if (e.key === 'Enter') login(); });
+  $('#logout').addEventListener('click', logout);
+  $('#addCat').addEventListener('click', async () => {
+    const name = $('#newCat').value.trim(); if (!name) return;
+    try { await api('/api/admin/categories', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ name }) });
+      $('#newCat').value = ''; msg($('#globalMsg'), 'Category added.', true); currentCat = null; await loadCats();
+    } catch(err){ msg($('#globalMsg'), err.message, false); }
+  });
+  $('#newProd').addEventListener('click', () => { if (!currentCat) return msg($('#globalMsg'), 'Choose or add a category first.', false); openForm(null); });
+  $('#cancelBtn').addEventListener('click', () => { $('#form').classList.add('hide'); editing = null; });
+  $('#form').addEventListener('submit', saveProduct);
+
+  (async function start(){
+    if (!token) return showApp(false);
+    try { showApp(true); await loadCats(); } catch(e){ logout(); }
+  })();
+})();
+</script>
+</body>
+</html>
