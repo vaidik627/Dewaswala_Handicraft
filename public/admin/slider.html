@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Homepage slider — Dewaswala Handicrafts</title>
+<style>
+  :root{--maroon:#6b1f2e;--maroon-ink:#4a1420;--bg:#fbf6ee;--surface:#fff;--ink:#2a1a1d;--muted:#7a6a6d;--line:#e6dcd2;--danger:#a4262c}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink);font-size:15px}
+  header{background:var(--maroon-ink);color:#fff;padding:14px 22px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+  header h1{font-size:1.05rem;margin:0;font-weight:700}
+  header a{color:#fff;font-size:.9rem;border:1px solid rgba(255,255,255,.4);padding:6px 12px;border-radius:8px;text-decoration:none}
+  main{max-width:1100px;margin:18px auto;padding:0 18px;display:grid;grid-template-columns:1fr 360px;gap:18px;align-items:start}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px}
+  h2{font-size:1rem;margin:0 0 6px;color:var(--maroon-ink)}
+  .hint{font-size:.85rem;color:var(--muted);margin:0 0 12px}
+  label{display:block;font-size:.8rem;font-weight:600;color:var(--muted);margin:10px 0 4px}
+  input,textarea,select{width:100%;padding:9px 11px;border:1px solid var(--line);border-radius:8px;font:inherit;background:#fff}
+  textarea{min-height:64px;resize:vertical}
+  button.btn{background:var(--maroon);color:#fff;border:0;padding:9px 14px;border-radius:8px;font:inherit;font-weight:600;cursor:pointer}
+  button.btn:hover{background:var(--maroon-ink)}
+  button.ghost{background:#fff;color:var(--maroon-ink);border:1px solid var(--line)}
+  button.danger{background:#fff;color:var(--danger);border:1px solid #e9c7c9}
+  button:disabled{opacity:.45;cursor:not-allowed}
+  .slide{display:grid;grid-template-columns:150px 1fr;gap:14px;padding:12px 0;border-top:1px solid var(--line);align-items:center}
+  .slide:first-child{border-top:0}
+  .shot{width:150px;height:75px;border-radius:8px;background:#eee center/cover;border:1px solid var(--line)}
+  .slide .title{font-weight:700}
+  .slide .meta{font-size:.82rem;color:var(--muted);margin-top:2px}
+  .tag{display:inline-block;font-size:.72rem;font-weight:700;padding:2px 8px;border-radius:999px;margin-left:6px}
+  .on{background:#e8f4ea;color:#1d5a2a}.off{background:#f1ece6;color:var(--muted)}
+  .acts{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+  .acts button{font-size:.82rem;padding:6px 10px}
+  .msg{padding:10px 12px;border-radius:8px;margin:10px 0;font-size:.88rem}
+  .msg.ok{background:#e8f4ea;color:#1d5a2a}.msg.err{background:#fbe9ea;color:var(--danger)}
+  .check{display:flex;align-items:center;gap:8px;margin-top:10px;font-weight:600;color:var(--ink)}
+  .check input{width:auto}
+  .preview{margin-top:12px;border-radius:10px;overflow:hidden;position:relative;height:150px;background:#2a1a1d center/cover;color:#fff;padding:16px 18px;display:flex;flex-direction:column;justify-content:center}
+  .preview::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(40,20,22,.75),rgba(40,20,22,.1))}
+  .preview > *{position:relative}
+  .preview .ey{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:#f0c466;font-weight:700}
+  .preview .hl{font-size:1.2rem;font-weight:700;margin:4px 0}
+  .preview .tx{font-size:.8rem;opacity:.9}
+  .hide{display:none!important}
+  #login{max-width:420px;margin:60px auto;padding:0 18px}
+  @media(max-width:860px){main{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+  <h1>Homepage slider · Dewaswala Handicrafts</h1>
+  <div><a href="/admin/">Catalog admin</a></div>
+</header>
+
+<section id="login" class="card hide">
+  <h2>Please log in first</h2>
+  <p class="hint">Open the <a href="/admin/">catalog admin</a> and log in, then come back here.</p>
+</section>
+
+<main id="app" class="hide">
+  <section class="card">
+    <h2>Slides on the homepage</h2>
+    <p class="hint">Use the arrows to change the order. The first slide shows first. Hidden slides are kept but not shown.</p>
+    <div id="list"></div>
+  </section>
+
+  <aside class="card">
+    <h2 id="formTitle">Add a new slide</h2>
+    <p class="hint">Recommended photo size: <b>2000 × 1000 pixels</b>, JPG, PNG or WebP, under 8 MB. Keep the main subject to the right, since the text sits on the left.</p>
+    <form id="form">
+      <label>Photo <span id="photoReq">*</span></label>
+      <input type="file" name="image" id="image" accept="image/jpeg,image/png,image/webp">
+      <label>Small label above the headline (e.g. Gift Hampers)</label>
+      <input name="eyebrow" maxlength="120">
+      <label>Headline *</label>
+      <input name="headline" maxlength="200" required>
+      <label>Short description</label>
+      <textarea name="text" maxlength="400"></textarea>
+      <div class="grid" style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        <div><label>Button text</label><input name="button_label" maxlength="60"></div>
+        <div><label>Button link</label><input name="button_link" maxlength="300" placeholder="shop.html"></div>
+      </div>
+      <label class="check"><input type="checkbox" name="active" checked> Show this slide on the homepage</label>
+      <div class="preview" id="preview"></div>
+      <div id="formMsg"></div>
+      <div style="display:flex;gap:8px;margin-top:12px">
+        <button class="btn" type="submit" id="saveBtn">Add slide</button>
+        <button class="btn ghost" type="button" id="cancelBtn">Clear</button>
+      </div>
+    </form>
+  </aside>
+</main>
+
+<script>
+(function(){
+  let token = sessionStorage.getItem('dwToken') || '';
+  let slides = [];
+  let editing = null;
+  const $ = s => document.querySelector(s);
+  const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+  function msg(el, text, ok){ el.innerHTML = text ? '<div class="msg '+(ok?'ok':'err')+'">'+esc(text)+'</div>' : ''; }
+
+  async function api(path, opts = {}){
+    const headers = Object.assign({}, opts.headers || {});
+    if (token) headers.Authorization = 'Bearer ' + token;
+    const res = await fetch(path, Object.assign({}, opts, { headers }));
+    let data = {}; try { data = await res.json(); } catch(e){}
+    if (res.status === 401) { token = ''; sessionStorage.removeItem('dwToken'); throw new Error('Please log in again on the catalog admin.'); }
+    if (!res.ok) throw new Error(data.error || 'Something went wrong');
+    return data;
+  }
+
+  function renderList(){
+    $('#list').innerHTML = slides.map((s, i) =>
+      '<div class="slide">' +
+        '<div class="shot" style="background-image:url(\''+esc(s.image_url)+'\')"></div>' +
+        '<div>' +
+          '<div class="title">'+esc(s.headline)+'<span class="tag '+(s.active?'on':'off')+'">'+(s.active?'Shown':'Hidden')+'</span></div>' +
+          '<div class="meta">'+esc(s.eyebrow || '')+(s.button_label ? ' · Button: '+esc(s.button_label) : '')+'</div>' +
+          '<div class="acts">' +
+            '<button class="btn ghost" data-act="up" data-id="'+s.id+'" '+(i===0?'disabled':'')+'>↑ Up</button>' +
+            '<button class="btn ghost" data-act="down" data-id="'+s.id+'" '+(i===slides.length-1?'disabled':'')+'>↓ Down</button>' +
+            '<button class="btn ghost" data-act="edit" data-id="'+s.id+'">Edit</button>' +
+            '<button class="btn ghost" data-act="toggle" data-id="'+s.id+'">'+(s.active?'Hide':'Show')+'</button>' +
+            '<button class="btn danger" data-act="delete" data-id="'+s.id+'">Delete</button>' +
+          '</div>' +
+        '</div>' +
+      '</div>'
+    ).join('') || '<p class="hint">No slides yet. Add the first one on the right.</p>';
+  }
+
+  async function load(){
+    slides = await api('/api/admin/hero-slides');
+    renderList();
+  }
+
+  function fillForm(s){
+    const f = $('#form');
+    f.reset();
+    if (!s){
+      editing = null;
+      $('#formTitle').textContent = 'Add a new slide';
+      $('#saveBtn').textContent = 'Add slide';
+      $('#photoReq').textContent = '*';
+      $('#image').required = true;
+    } else {
+      editing = s;
+      $('#formTitle').textContent = 'Edit slide';
+      $('#saveBtn').textContent = 'Save changes';
+      $('#photoReq').textContent = '(optional, to replace the photo)';
+      $('#image').required = false;
+      ['eyebrow','headline','text','button_label','button_link'].forEach(k => f.elements[k].value = s[k] || '');
+      f.elements.active.checked = !!s.active;
+    }
+    updatePreview();
+    msg($('#formMsg'), '');
+  }
+
+  function updatePreview(){
+    const f = $('#form');
+    const file = $('#image').files[0];
+    let bg = editing ? editing.image_url : '';
+    if (file) bg = URL.createObjectURL(file);
+    $('#preview').style.backgroundImage = bg ? "url('"+bg+"')" : 'none';
+    $('#preview').innerHTML =
+      (f.elements.eyebrow.value ? '<div class="ey">'+esc(f.elements.eyebrow.value)+'</div>' : '') +
+      '<div class="hl">'+esc(f.elements.headline.value || 'Your headline')+'</div>' +
+      (f.elements.text.value ? '<div class="tx">'+esc(f.elements.text.value)+'</div>' : '');
+  }
+
+  async function save(e){
+    e.preventDefault();
+    const f = $('#form');
+    const fd = new FormData(f);
+    fd.set('active', f.elements.active.checked ? '1' : '0');
+    const file = $('#image').files[0];
+    if (!file) fd.delete('image');
+    const btn = $('#saveBtn'); btn.disabled = true;
+    msg($('#formMsg'), 'Saving… photos may take a moment.', true);
+    try {
+      if (editing){
+        await api('/api/admin/hero-slides/' + editing.id, { method:'PUT', body: fd });
+        msg($('#globalMsg'), 'Slide updated.', true);
+      } else {
+        await api('/api/admin/hero-slides', { method:'POST', body: fd });
+        msg($('#globalMsg'), 'Slide added.', true);
+      }
+      fillForm(null); await load();
+    } catch(err){ msg($('#formMsg'), err.message, false); }
+    finally { btn.disabled = false; }
+  }
+
+  async function reorder(id, dir){
+    const i = slides.findIndex(s => s.id === id);
+    const j = dir === 'up' ? i - 1 : i + 1;
+    if (j < 0 || j >= slides.length) return;
+    const a = slides[i], b = slides[j];
+    const fd1 = new FormData(); fd1.set('position', String(j + 1));
+    const fd2 = new FormData(); fd2.set('position', String(i + 1));
+    await api('/api/admin/hero-slides/' + a.id, { method:'PUT', body: fd1 });
+    await api('/api/admin/hero-slides/' + b.id, { method:'PUT', body: fd2 });
+    await load();
+  }
+
+  document.addEventListener('click', async e => {
+    const el = e.target.closest('[data-act]');
+    if (!el) return;
+    const id = Number(el.dataset.id); const act = el.dataset.act;
+    try {
+      if (act === 'up' || act === 'down') return reorder(id, act);
+      const s = slides.find(x => x.id === id);
+      if (act === 'edit'){ fillForm(s); $('#form').scrollIntoView({behavior:'smooth'}); return; }
+      if (act === 'toggle'){
+        const fd = new FormData(); fd.set('active', s.active ? '0' : '1');
+        fd.set('headline', s.headline); fd.set('eyebrow', s.eyebrow || ''); fd.set('text', s.text || '');
+        fd.set('button_label', s.button_label || ''); fd.set('button_link', s.button_link || '');
+        await api('/api/admin/hero-slides/' + id, { method:'PUT', body: fd });
+        await load(); return;
+      }
+      if (act === 'delete'){
+        if (!confirm('Delete this slide and its photo? This cannot be undone.')) return;
+        await api('/api/admin/hero-slides/' + id, { method:'DELETE' });
+        if (editing && editing.id === id) fillForm(null);
+        await load();
+      }
+    } catch(err){ msg($('#globalMsg') || $('#formMsg'), err.message, false); }
+  });
+
+  // global message line above the list
+  const gm = document.createElement('div'); gm.id = 'globalMsg'; $('#list').before(gm);
+
+  $('#form').addEventListener('submit', save);
+  $('#form').addEventListener('input', updatePreview);
+  $('#image').addEventListener('change', updatePreview);
+  $('#cancelBtn').addEventListener('click', () => fillForm(null));
+
+  (async function start(){
+    if (!token){ $('#login').classList.remove('hide'); return; }
+    try {
+      $('#app').classList.remove('hide');
+      fillForm(null);
+      await load();
+    } catch(e){
+      $('#app').classList.add('hide');
+      $('#login').classList.remove('hide');
+    }
+  })();
+})();
+</script>
+</body>
+</html>

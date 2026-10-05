@@ -237,6 +237,9 @@ app.delete('/api/admin/images/:id', requireAdmin, async (req, res, next) => {
   } catch (e) { next(e); }
 });
 
+// ---------- homepage slider (see slider.js) ----------
+require('./slider')(app, { pool, requireAdmin, upload, cloud });
+
 // ---------- admin page ----------
 
 const adminPage = path.join(__dirname, 'public', 'admin', 'index.html');
