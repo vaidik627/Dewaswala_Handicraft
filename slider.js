@@ -1,7 +1,20 @@
 // Homepage slider: public read, admin add / edit / reorder / hide / delete
+const sizeOf = require('image-size');
+
 module.exports = function registerSlider(app, { pool, requireAdmin, upload, cloud }) {
   const FOLDER = 'dewaswala/homepage-slider';
   const LIMITS = { eyebrow: 120, headline: 200, text: 400, button_label: 60, button_link: 300 };
+
+  // Photo rule for the homepage slider: at least 1600 px wide and close to 2:1 (2000 x 1000 is best)
+  function checkSlidePhoto(buffer) {
+    let size;
+    try { size = sizeOf(buffer); } catch (e) { size = null; }
+    if (!size || !size.width || !size.height) return 'The photo could not be read. Please use a JPG, PNG or WebP file.';
+    if (size.width < 1600) return 'The photo is ' + size.width + ' pixels wide. Please use at least 1600 pixels wide. 2000 x 1000 pixels is best.';
+    const ratio = size.width / size.height;
+    if (ratio < 1.9 || ratio > 2.1) return 'The photo is ' + size.width + ' x ' + size.height + ' pixels. Please crop it to 2:1, for example 2000 x 1000 pixels, so it fills the slider without being cut off.';
+    return null;
+  }
 
   function slideFields(body) {
     const out = {};
@@ -37,6 +50,8 @@ module.exports = function registerSlider(app, { pool, requireAdmin, upload, clou
       const f = slideFields(req.body || {});
       if (!f) return res.status(400).json({ error: 'The headline is required' });
       if (!req.file) return res.status(400).json({ error: 'Choose a photo for the slide' });
+      const photoProblem = checkSlidePhoto(req.file.buffer);
+      if (photoProblem) return res.status(400).json({ error: photoProblem });
       const result = await cloud.upload(req.file.buffer, FOLDER);
       const [[{ nextPos }]] = await pool.query('SELECT COALESCE(MAX(position), 0) + 1 AS nextPos FROM hero_slides');
       const [ins] = await pool.query(
@@ -62,6 +77,8 @@ module.exports = function registerSlider(app, { pool, requireAdmin, upload, clou
         await pool.query('UPDATE hero_slides SET position = ? WHERE id = ?', [parseInt(req.body.position, 10) || 0, req.params.id]);
       }
       if (req.file) {
+        const photoProblem = checkSlidePhoto(req.file.buffer);
+        if (photoProblem) return res.status(400).json({ error: photoProblem });
         const result = await cloud.upload(req.file.buffer, FOLDER);
         await cloud.destroy(rows[0].public_id).catch(() => {});
         await pool.query('UPDATE hero_slides SET image_url = ?, public_id = ? WHERE id = ?', [result.secure_url, result.public_id, req.params.id]);
