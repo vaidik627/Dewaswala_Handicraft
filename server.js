@@ -264,6 +264,15 @@ async function setup() {
   for (const stmt of sql.split(';').map(s => s.trim()).filter(Boolean)) {
     await pool.query(stmt);
   }
+  // One-time: with SEED_CATEGORIES=true, add the categories in categories.json that don't exist yet
+  if (process.env.SEED_CATEGORIES === 'true') {
+    const names = JSON.parse(fs.readFileSync(path.join(__dirname, 'categories.json'), 'utf8'));
+    for (const name of names) {
+      await pool.query('INSERT IGNORE INTO categories (slug, name) VALUES (?, ?)', [slugify(name), name]);
+    }
+    console.log('Categories added from categories.json:', names.length);
+  }
+
   const user = process.env.ADMIN_USER;
   const pass = process.env.ADMIN_PASSWORD;
   if (user && pass) {
