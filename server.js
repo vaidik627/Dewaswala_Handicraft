@@ -264,6 +264,25 @@ async function setup() {
   for (const stmt of sql.split(';').map(s => s.trim()).filter(Boolean)) {
     await pool.query(stmt);
   }
+  // One-time: with SEED_PRODUCTS=true, add the products in seed/products.json that don't exist yet (photo goes to Cloudinary)
+  if (process.env.SEED_PRODUCTS === 'true') {
+    const items = JSON.parse(fs.readFileSync(path.join(__dirname, 'seed', 'products.json'), 'utf8'));
+    for (const item of items) {
+      const [exists] = await pool.query('SELECT id FROM products WHERE sku = ?', [item.sku]);
+      if (exists.length) continue;
+      const [cat] = await pool.query('SELECT id, slug FROM categories WHERE name = ?', [item.category]);
+      if (!cat.length) { console.error('Seed: category not found:', item.category); continue; }
+      const [ins] = await pool.query(
+        'INSERT INTO products (sku, name, category_id, price, unit, size, color, description, best_seller, in_stock) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 1)',
+        [item.sku, item.name, cat[0].id, item.price, item.unit || 'per pc', item.size || null, item.color || null, item.description || null, item.best_seller ? 1 : 0]
+      );
+      const file = fs.readFileSync(path.join(__dirname, item.image));
+      const result = await cloud.upload(file, 'dewaswala/' + cat[0].slug + '/' + item.sku);
+      await pool.query('INSERT INTO product_images (product_id, url, public_id, position) VALUES (?, ?, ?, 0)', [ins.insertId, result.secure_url, result.public_id]);
+      console.log('Seeded product', item.sku);
+    }
+  }
+
   // One-time: with SEED_CATEGORIES=true, add the categories in categories.json that don't exist yet
   if (process.env.SEED_CATEGORIES === 'true') {
     const names = JSON.parse(fs.readFileSync(path.join(__dirname, 'categories.json'), 'utf8'));

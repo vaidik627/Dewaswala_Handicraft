@@ -1,0 +1,14 @@
+[
+  {
+    "sku": "FL-001",
+    "name": "Flower Ladi - Sample Product",
+    "category": "Flower Ladi",
+    "price": 450,
+    "unit": "per pc",
+    "size": "To be confirmed by client",
+    "color": "To be confirmed by client",
+    "description": "Sample entry. The client will replace these details in the admin.",
+    "image": "seed/flower-ladi-1.jpg",
+    "best_seller": false
+  }
+]
