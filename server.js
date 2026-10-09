@@ -183,7 +183,16 @@ app.post('/api/admin/products', requireAdmin, upload.array('images', 8), async (
        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       [f.sku, f.name, f.category_id, f.price, f.unit, f.size, f.color, f.description, f.best_seller, f.in_stock]
     );
-    await storePhotos(result.insertId, f.sku, cat[0].slug, req.files || []);
+    try {
+      await storePhotos(result.insertId, f.sku, cat[0].slug, req.files || []);
+    } catch (photoError) {
+      // do not leave a product behind without its photos: remove it so the form can be submitted again
+      const [saved] = await pool.query('SELECT public_id FROM product_images WHERE product_id = ?', [result.insertId]);
+      for (const i of saved) { await cloud.destroy(i.public_id).catch(() => {}); }
+      await pool.query('DELETE FROM products WHERE id = ?', [result.insertId]);
+      console.error('Photo upload failed, product removed:', photoError.message || photoError);
+      return res.status(502).json({ error: 'The photo could not be uploaded, so the product was not saved. Please try again.' });
+    }
     res.status(201).json({ id: result.insertId });
   } catch (e) {
     if (e.code === 'ER_DUP_ENTRY') return res.status(409).json({ error: 'This product code (SKU) is already used' });

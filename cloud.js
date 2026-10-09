@@ -8,7 +8,15 @@ cloudinary.config({
   secure: true
 });
 
-function upload(buffer, folder) {
+// Cloudinary paths cannot contain characters such as # ? & spaces. Keep letters, digits, - and _ only.
+function safeFolder(folder) {
+  return String(folder).split('/')
+    .map(part => part.replace(/[^A-Za-z0-9_-]+/g, '-').replace(/^-+|-+$/g, '') || 'item')
+    .join('/');
+}
+
+function upload(buffer, rawFolder) {
+  const folder = safeFolder(rawFolder);
   return new Promise((resolve, reject) => {
     const stream = cloudinary.uploader.upload_stream(
       { folder, resource_type: 'image' },
