@@ -6,10 +6,12 @@ const cors = require('cors');
 const multer = require('multer');
 const bcrypt = require('bcryptjs');
 const pool = require('./db');
-const { makeToken, requireAdmin, SECRET } = require('./auth');
+const { makeToken, requireAdmin, optionalCustomer, SECRET } = require('./auth');
 const cloud = require('./cloud');
 
 const MAX_PHOTOS = 6;
+// visitors who are not logged in see this many products in full; the rest are shown blurred
+const GUEST_LIMIT = parseInt(process.env.GUEST_LIMIT, 10) || 8;
 
 const app = express();
 app.use(cors());
@@ -74,24 +76,50 @@ app.get('/api/categories', async (req, res, next) => {
   } catch (e) { next(e); }
 });
 
-app.get('/api/products', async (req, res, next) => {
+// the products a guest may see in full: taken one category at a time so every category shows up
+async function guestSkus() {
+  const [rows] = await pool.query('SELECT p.sku, p.category_id FROM products p ORDER BY p.id');
+  const byCat = new Map();
+  rows.forEach(r => { if (!byCat.has(r.category_id)) byCat.set(r.category_id, []); byCat.get(r.category_id).push(r.sku); });
+  const lists = [...byCat.values()];
+  const picked = new Set();
+  for (let i = 0; picked.size < GUEST_LIMIT && lists.some(l => i < l.length); i++) {
+    for (const l of lists) { if (i < l.length && picked.size < GUEST_LIMIT) picked.add(l[i]); }
+  }
+  return picked;
+}
+
+app.get('/api/products', optionalCustomer, async (req, res, next) => {
   try {
     const where = [];
     const args = [];
     if (req.query.category && req.query.category !== 'all') { where.push('c.slug = ?'); args.push(req.query.category); }
     if (req.query.q) { where.push('(p.name LIKE ? OR p.sku LIKE ?)'); args.push(`%${req.query.q}%`, `%${req.query.q}%`); }
     const [rows] = await pool.query(`${PRODUCT_SELECT} ${where.length ? 'WHERE ' + where.join(' AND ') : ''} ORDER BY p.id`, args);
-    res.json(await attachImages(rows));
+    const products = await attachImages(rows);
+    if (req.customerId) return res.json(products);
+    // not logged in: a few products in full, the rest only as a blurred preview (no name, price or code)
+    const open = await guestSkus();
+    res.json(products.map(p => open.has(p.sku) ? p : {
+      locked: true, category: p.category, category_slug: p.category_slug,
+      images: p.images.length ? [{ url: p.images[0].url }] : []
+    }));
   } catch (e) { next(e); }
 });
 
-app.get('/api/products/:sku', async (req, res, next) => {
+app.get('/api/products/:sku', optionalCustomer, async (req, res, next) => {
   try {
     const [rows] = await pool.query(`${PRODUCT_SELECT} WHERE p.sku = ?`, [req.params.sku]);
     if (!rows.length) return res.status(404).json({ error: 'Product not found' });
+    if (!req.customerId && !(await guestSkus()).has(rows[0].sku)) {
+      return res.status(401).json({ locked: true, error: 'Please log in or register to see this product.' });
+    }
     res.json((await attachImages(rows))[0]);
   } catch (e) { next(e); }
 });
+
+// ---------- shop visitor accounts (see customers.js) ----------
+app.use(require('./customers'));
 
 // ---------- admin login ----------
 
