@@ -45,6 +45,8 @@
   .hide{display:none!important}
   #login{max-width:360px;margin:60px auto}
   @media(max-width:860px){main{grid-template-columns:1fr}.grid2{grid-template-columns:1fr}}
+  .photo .mainTag{position:absolute;left:4px;bottom:4px;background:var(--maroon);color:#fff;font-size:.68rem;font-weight:700;padding:2px 7px;border-radius:999px}
+  .photo .mk{position:absolute;left:4px;bottom:4px;top:auto;right:auto;background:#fff;color:var(--maroon-ink);font-size:.68rem;font-weight:700;padding:2px 7px;border-radius:999px}
 </style>
 </head>
 <body>
@@ -95,7 +97,7 @@
         <div><label>In stock</label><select name="in_stock"><option value="1">Yes</option><option value="0">No</option></select></div>
         <div class="full"><label>Description</label><textarea name="description"></textarea></div>
         <div class="full">
-          <label>Photos (up to 8, JPG / PNG / WebP, 8 MB each)</label>
+          <label>Photos (up to 10 per product, JPG / PNG / WebP, 8 MB each). 1200 × 1200 pixels is best. The first photo is the main one.</label>
           <input type="file" id="files" name="images" accept="image/jpeg,image/png,image/webp" multiple>
           <div id="currentPhotos" class="photos"></div>
         </div>
@@ -213,7 +215,13 @@
   function renderPhotos(){
     const box = $('#currentPhotos');
     if (!editing){ box.innerHTML = '<span class="muted">Photos you choose above will be uploaded when you save.</span>'; return; }
-    box.innerHTML = editing.images.map(i => '<div class="photo" style="background-image:url(\''+esc(i.url)+'\')"><button type="button" data-act="delphoto" data-id="'+i.id+'" title="Remove photo">×</button></div>').join('') || '<span class="muted">No photos yet. Choose files above and save.</span>';
+    if (!editing.images.length){ box.innerHTML = '<span class="muted">No photos yet. Choose files above and save.</span>'; return; }
+    box.innerHTML = editing.images.map((i, n) =>
+      '<div class="photo" style="background-image:url(\'' + esc(i.url) + '\')">' +
+        (n === 0 ? '<span class="mainTag">Main</span>' : '<button type="button" class="mk" data-act="mainphoto" data-id="' + i.id + '" title="Show this photo first">Make main</button>') +
+        '<button type="button" data-act="delphoto" data-id="' + i.id + '" title="Remove photo">×</button>' +
+      '</div>'
+    ).join('') + '<div class="muted" style="width:100%;font-size:.8rem">' + editing.images.length + ' of 10 photos. The main photo is shown first in the shop.</div>';
   }
 
   async function saveProduct(e){
@@ -268,6 +276,13 @@
         if (!confirm('Delete this product and its photos? This cannot be undone.')) return;
         await api('/api/admin/products/' + id, { method:'DELETE' });
         msg($('#globalMsg'), 'Product deleted.', true); await loadCats();
+      }
+      if (act === 'mainphoto'){
+        await api('/api/admin/images/' + id + '/main', { method:'PUT' });
+        await loadCats();
+        editing = window._products.find(p => p.id === editing.id) || null;
+        renderPhotos();
+        msg($('#formMsg'), 'Main photo changed.', true);
       }
       if (act === 'delphoto'){
         if (!confirm('Remove this photo?')) return;

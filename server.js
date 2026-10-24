@@ -9,6 +9,8 @@ const pool = require('./db');
 const { makeToken, requireAdmin, SECRET } = require('./auth');
 const cloud = require('./cloud');
 
+const MAX_PHOTOS = 10;
+
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -231,8 +233,27 @@ app.post('/api/admin/products/:id/images', requireAdmin, upload.array('images', 
       'SELECT p.sku, c.slug FROM products p JOIN categories c ON c.id = p.category_id WHERE p.id = ?', [req.params.id]
     );
     if (!rows.length) return res.status(404).json({ error: 'Product not found' });
+    const [[{ have }]] = await pool.query('SELECT COUNT(*) AS have FROM product_images WHERE product_id = ?', [req.params.id]);
+    if (have + (req.files || []).length > MAX_PHOTOS) {
+      return res.status(400).json({ error: 'A product can have up to ' + MAX_PHOTOS + ' photos. It has ' + have + ' now, so remove some first or add fewer.' });
+    }
     await storePhotos(req.params.id, rows[0].sku, rows[0].slug, req.files || []);
     res.status(201).json({ ok: true, added: (req.files || []).length });
+  } catch (e) { next(e); }
+});
+
+// make one photo the main photo (shown first on the shop and product page)
+app.put('/api/admin/images/:id/main', requireAdmin, async (req, res, next) => {
+  try {
+    const [rows] = await pool.query('SELECT product_id FROM product_images WHERE id = ?', [req.params.id]);
+    if (!rows.length) return res.status(404).json({ error: 'Photo not found' });
+    const productId = rows[0].product_id;
+    const [all] = await pool.query('SELECT id FROM product_images WHERE product_id = ? ORDER BY position, id', [productId]);
+    const order = [Number(req.params.id)].concat(all.map(r => r.id).filter(id => id !== Number(req.params.id)));
+    for (let i = 0; i < order.length; i++) {
+      await pool.query('UPDATE product_images SET position = ? WHERE id = ?', [i, order[i]]);
+    }
+    res.json({ ok: true });
   } catch (e) { next(e); }
 });
 
