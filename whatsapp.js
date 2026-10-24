@@ -3,7 +3,7 @@
 //          WA_TOKEN + WA_PHONE_NUMBER_ID (WhatsApp Cloud API), optional WA_TEMPLATE_NAME + WA_TEMPLATE_LANG.
 
 const rupees = n => '₹' + Number(n).toLocaleString('en-IN');
-const LINE = '━━━━━━━━━━━━━━━━━━';
+const LINE = '==============================';
 
 function istTime(d) {
   return new Intl.DateTimeFormat('en-IN', { timeZone: 'Asia/Kolkata', day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true }).format(d);
@@ -12,40 +12,39 @@ function istTime(d) {
 function prettyPhone(p) { return String(p).replace(/^(\d{5})(\d{5})$/, '$1 $2'); }
 
 // The message the client's team reads. WhatsApp shows *text* in bold.
+// Only plain characters (no emoji), so it looks the same on every phone and nothing turns into a "?" box.
 function buildMessage(o) {
   const pcs = o.items.reduce((s, i) => s + i.qty, 0);
-  const lines = [];
-  lines.push('🛍️ *NEW ORDER*');
-  lines.push('*Order No:* ' + o.orderNo);
-  lines.push('*Date:* ' + istTime(o.createdAt));
-  lines.push(LINE);
-  lines.push('');
-  lines.push('👤 *CUSTOMER*');
-  lines.push('Name: ' + o.name);
-  if (o.company) lines.push('Shop: ' + o.company);
-  lines.push('Mobile: ' + prettyPhone(o.phone));
-  lines.push('Email: ' + o.email);
-  if (o.gst) lines.push('GST: ' + o.gst);
-  lines.push('');
-  lines.push('📍 *DELIVERY ADDRESS*');
-  lines.push(o.address);
-  lines.push(o.city + ', ' + o.state + ' - ' + o.pin);
-  lines.push('');
-  lines.push('📦 *ITEMS* (' + o.items.length + ' product' + (o.items.length > 1 ? 's' : '') + ', ' + pcs + ' pcs)');
-  lines.push(LINE);
+  const L = [];
+  L.push('*NEW ORDER*  -  ' + o.orderNo);
+  L.push(istTime(o.createdAt));
+  L.push(LINE);
+  L.push('*CUSTOMER*');
+  L.push('Name: ' + o.name);
+  if (o.company) L.push('Shop: ' + o.company);
+  L.push('Mobile: +91 ' + prettyPhone(o.phone));
+  L.push('Email: ' + o.email);
+  if (o.gst) L.push('GST: ' + o.gst);
+  L.push('');
+  L.push('*DELIVERY ADDRESS*');
+  L.push(o.address);
+  L.push(o.city + ', ' + o.state + ' - ' + o.pin);
+  L.push(LINE);
+  L.push('*ITEMS*  (' + o.items.length + ' product' + (o.items.length > 1 ? 's' : '') + ', ' + pcs + ' pcs)');
+  L.push('');
   o.items.forEach((i, n) => {
-    lines.push((n + 1) + '. *' + i.name + '*');
-    lines.push('    Code: ' + i.sku);
-    lines.push('    ' + rupees(i.price) + ' × ' + i.qty + ' = *' + rupees(i.price * i.qty) + '*');
-    if (n < o.items.length - 1) lines.push('');
+    L.push((n + 1) + ') *' + i.name + '*');
+    L.push('     Code: ' + i.sku);
+    L.push('     ' + rupees(i.price) + ' x ' + i.qty + ' = *' + rupees(i.price * i.qty) + '*');
+    L.push('');
   });
-  lines.push(LINE);
-  lines.push('💰 *TOTAL: ' + rupees(o.total) + '*');
-  lines.push('_(before GST, delivery charges extra)_');
-  if (o.note) { lines.push(''); lines.push('📝 *Customer note:*'); lines.push(o.note); }
-  lines.push('');
-  lines.push('➡️ Please call or WhatsApp the customer to confirm this order.');
-  return lines.join('\n');
+  L.push(LINE);
+  L.push('*TOTAL: ' + rupees(o.total) + '*');
+  L.push('(Before GST. Delivery charges extra)');
+  if (o.note) { L.push(''); L.push('*Customer note:* ' + o.note); }
+  L.push(LINE);
+  L.push('Please call the customer to confirm this order.');
+  return L.join('\n');
 }
 
 function notifyNumber() { return String(process.env.WA_NOTIFY_TO || '917049902595').replace(/\D/g, ''); }
