@@ -508,5 +508,22 @@
       "seed/variants/ml-029-b.jpg",
       "seed/variants/ml-029-c.jpg"
     ]
+  },
+  {
+    "sku": "#675435",
+    "name": "MOTI MALA",
+    "category": "Moti Latkan",
+    "price": 50,
+    "unit": "per pc",
+    "size": "To be confirmed by client",
+    "color": "To be confirmed by client",
+    "description": "Sample photos. The client will replace these in the admin.",
+    "image": "seed/moti-latkan-1.jpg",
+    "best_seller": false,
+    "images": [
+      "seed/moti-latkan-1.jpg",
+      "seed/variants/ml-001-b.jpg",
+      "seed/variants/ml-001-c.jpg"
+    ]
   }
 ]
