@@ -104,6 +104,19 @@ router.put('/api/auth/me', requireCustomer, async (req, res, next) => {
   } catch (e) { next(e); }
 });
 
+// change password from the account page (needs the current password)
+router.post('/api/auth/password', requireCustomer, limited, async (req, res, next) => {
+  try {
+    const current = String((req.body || {}).current || '');
+    const next_ = String((req.body || {}).password || '');
+    if (next_.length < 6) return res.status(400).json({ error: 'New password must be at least 6 characters.' });
+    const [rows] = await pool.query('SELECT * FROM customers WHERE id = ?', [req.customerId]);
+    if (!rows.length || !(await bcrypt.compare(current, rows[0].password_hash))) return res.status(400).json({ error: 'Your current password is not correct.' });
+    await pool.query('UPDATE customers SET password_hash = ? WHERE id = ?', [await bcrypt.hash(next_, 10), req.customerId]);
+    res.json({ ok: true });
+  } catch (e) { next(e); }
+});
+
 // ---------- forgot / reset password (email link, valid for 1 hour) ----------
 
 const sha = t => crypto.createHash('sha256').update(t).digest('hex');
