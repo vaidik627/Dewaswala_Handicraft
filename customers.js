@@ -159,4 +159,5 @@ router.get('/api/admin/customers', requireAdmin, async (req, res, next) => {
   } catch (e) { next(e); }
 });
 
+router.readProfile = readProfile;
 module.exports = router;

@@ -120,6 +120,7 @@ app.get('/api/products/:sku', optionalCustomer, async (req, res, next) => {
 
 // ---------- shop visitor accounts (see customers.js) ----------
 app.use(require('./customers'));
+app.use(require('./orders'));
 
 // ---------- admin login ----------
 
