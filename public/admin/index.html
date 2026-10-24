@@ -97,7 +97,7 @@
         <div><label>In stock</label><select name="in_stock"><option value="1">Yes</option><option value="0">No</option></select></div>
         <div class="full"><label>Description</label><textarea name="description"></textarea></div>
         <div class="full">
-          <label>Photos (up to 10 per product, JPG / PNG / WebP, 8 MB each). 1200 × 1200 pixels is best. The first photo is the main one.</label>
+          <label>Photos (up to 6 per product, JPG / PNG / WebP, 8 MB each). 1200 × 1200 pixels is best. The first photo is the main one.</label>
           <input type="file" id="files" name="images" accept="image/jpeg,image/png,image/webp" multiple>
           <div id="currentPhotos" class="photos"></div>
         </div>
@@ -221,7 +221,7 @@
         (n === 0 ? '<span class="mainTag">Main</span>' : '<button type="button" class="mk" data-act="mainphoto" data-id="' + i.id + '" title="Show this photo first">Make main</button>') +
         '<button type="button" data-act="delphoto" data-id="' + i.id + '" title="Remove photo">×</button>' +
       '</div>'
-    ).join('') + '<div class="muted" style="width:100%;font-size:.8rem">' + editing.images.length + ' of 10 photos. The main photo is shown first in the shop.</div>';
+    ).join('') + '<div class="muted" style="width:100%;font-size:.8rem">' + editing.images.length + ' of 6 photos. The main photo is shown first in the shop.</div>';
   }
 
   async function saveProduct(e){

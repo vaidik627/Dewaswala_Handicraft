@@ -9,7 +9,7 @@ const pool = require('./db');
 const { makeToken, requireAdmin, SECRET } = require('./auth');
 const cloud = require('./cloud');
 
-const MAX_PHOTOS = 10;
+const MAX_PHOTOS = 6;
 
 const app = express();
 app.use(cors());
@@ -180,6 +180,7 @@ app.post('/api/admin/products', requireAdmin, upload.array('images', 8), async (
     if (!f) return res.status(400).json({ error: 'SKU, name, category, and a price above 0 are required' });
     const [cat] = await pool.query('SELECT slug FROM categories WHERE id = ?', [f.category_id]);
     if (!cat.length) return res.status(400).json({ error: 'Choose a valid category' });
+    if ((req.files || []).length > MAX_PHOTOS) return res.status(400).json({ error: 'A product can have up to ' + MAX_PHOTOS + ' photos. Please choose fewer.' });
     const [result] = await pool.query(
       `INSERT INTO products (sku, name, category_id, price, unit, size, color, description, best_seller, in_stock)
        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
@@ -298,18 +299,28 @@ async function setup() {
   if (process.env.SEED_PRODUCTS === 'true') {
     const items = JSON.parse(fs.readFileSync(path.join(__dirname, 'seed', 'products.json'), 'utf8'));
     for (const item of items) {
-      const [exists] = await pool.query('SELECT id FROM products WHERE sku = ?', [item.sku]);
-      if (exists.length) continue;
+      const files = item.images && item.images.length ? item.images : [item.image];
       const [cat] = await pool.query('SELECT id, slug FROM categories WHERE name = ?', [item.category]);
       if (!cat.length) { console.error('Seed: category not found:', item.category); continue; }
-      const [ins] = await pool.query(
-        'INSERT INTO products (sku, name, category_id, price, unit, size, color, description, best_seller, in_stock) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 1)',
-        [item.sku, item.name, cat[0].id, item.price, item.unit || 'per pc', item.size || null, item.color || null, item.description || null, item.best_seller ? 1 : 0]
-      );
-      const file = fs.readFileSync(path.join(__dirname, item.image));
-      const result = await cloud.upload(file, 'dewaswala/' + cat[0].slug + '/' + item.sku);
-      await pool.query('INSERT INTO product_images (product_id, url, public_id, position) VALUES (?, ?, ?, 0)', [ins.insertId, result.secure_url, result.public_id]);
-      console.log('Seeded product', item.sku);
+      let productId;
+      const [exists] = await pool.query('SELECT id FROM products WHERE sku = ?', [item.sku]);
+      if (exists.length) {
+        productId = exists[0].id;
+      } else {
+        const [ins] = await pool.query(
+          'INSERT INTO products (sku, name, category_id, price, unit, size, color, description, best_seller, in_stock) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 1)',
+          [item.sku, item.name, cat[0].id, item.price, item.unit || 'per pc', item.size || null, item.color || null, item.description || null, item.best_seller ? 1 : 0]
+        );
+        productId = ins.insertId;
+      }
+      // add only the photos the product does not have yet (so a restart never duplicates photos)
+      const [[{ have }]] = await pool.query('SELECT COUNT(*) AS have FROM product_images WHERE product_id = ?', [productId]);
+      for (let i = have; i < Math.min(files.length, MAX_PHOTOS); i++) {
+        const file = fs.readFileSync(path.join(__dirname, files[i]));
+        const result = await cloud.upload(file, 'dewaswala/' + cat[0].slug + '/' + item.sku);
+        await pool.query('INSERT INTO product_images (product_id, url, public_id, position) VALUES (?, ?, ?, ?)', [productId, result.secure_url, result.public_id, i]);
+      }
+      console.log('Seeded product', item.sku, '- photos:', Math.min(files.length, MAX_PHOTOS));
     }
   }
 

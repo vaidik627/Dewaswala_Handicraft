@@ -9,7 +9,12 @@
     "color": "To be confirmed by client",
     "description": "Sample entry. The client will replace these details in the admin.",
     "image": "seed/flower-ladi-1.jpg",
-    "best_seller": false
+    "best_seller": false,
+    "images": [
+      "seed/flower-ladi-1.jpg",
+      "seed/variants/fl-001-b.jpg",
+      "seed/variants/fl-001-c.jpg"
+    ]
   },
   {
     "sku": "ML-001",
@@ -21,7 +26,12 @@
     "color": "To be confirmed by client",
     "description": "Sample entry. The client will replace these details in the admin.",
     "image": "seed/moti-latkan-1.jpg",
-    "best_seller": false
+    "best_seller": false,
+    "images": [
+      "seed/moti-latkan-1.jpg",
+      "seed/variants/ml-001-b.jpg",
+      "seed/variants/ml-001-c.jpg"
+    ]
   },
   {
     "sku": "ML-002",
@@ -33,7 +43,12 @@
     "color": "To be confirmed by client",
     "description": "Sample entry. The client will replace these details in the admin.",
     "image": "seed/moti-latkan/moti-latkan-02.jpg",
-    "best_seller": false
+    "best_seller": false,
+    "images": [
+      "seed/moti-latkan/moti-latkan-02.jpg",
+      "seed/variants/ml-002-b.jpg",
+      "seed/variants/ml-002-c.jpg"
+    ]
   },
   {
     "sku": "ML-003",
@@ -45,7 +60,12 @@
     "color": "To be confirmed by client",
     "description": "Sample entry. The client will replace these details in the admin.",
     "image": "seed/moti-latkan/moti-latkan-03.jpg",
-    "best_seller": false
+    "best_seller": false,
+    "images": [
+      "seed/moti-latkan/moti-latkan-03.jpg",
+      "seed/variants/ml-003-b.jpg",
+      "seed/variants/ml-003-c.jpg"
+    ]
   },
   {
     "sku": "ML-004",
@@ -57,7 +77,12 @@
     "color": "To be confirmed by client",
     "description": "Sample entry. The client will replace these details in the admin.",
     "image": "seed/moti-latkan/moti-latkan-04.jpg",
-    "best_seller": false
+    "best_seller": false,
+    "images": [
+      "seed/moti-latkan/moti-latkan-04.jpg",
+      "seed/variants/ml-004-b.jpg",
+      "seed/variants/ml-004-c.jpg"
+    ]
   },
   {
     "sku": "ML-005",
@@ -69,7 +94,12 @@
     "color": "To be confirmed by client",
     "description": "Sample entry. The client will replace these details in the admin.",
     "image": "seed/moti-latkan/moti-latkan-05.jpg",
-    "best_seller": false
+    "best_seller": false,
+    "images": [
+      "seed/moti-latkan/moti-latkan-05.jpg",
+      "seed/variants/ml-005-b.jpg",
+      "seed/variants/ml-005-c.jpg"
+    ]
   },
   {
     "sku": "ML-006",
@@ -81,7 +111,12 @@
     "color": "To be confirmed by client",
     "description": "Sample entry. The client will replace these details in the admin.",
     "image": "seed/moti-latkan/moti-latkan-06.jpg",
-    "best_seller": false
+    "best_seller": false,
+    "images": [
+      "seed/moti-latkan/moti-latkan-06.jpg",
+      "seed/variants/ml-006-b.jpg",
+      "seed/variants/ml-006-c.jpg"
+    ]
   },
   {
     "sku": "ML-007",
@@ -93,7 +128,12 @@
     "color": "To be confirmed by client",
     "description": "Sample entry. The client will replace these details in the admin.",
     "image": "seed/moti-latkan/moti-latkan-07.jpg",
-    "best_seller": false
+    "best_seller": false,
+    "images": [
+      "seed/moti-latkan/moti-latkan-07.jpg",
+      "seed/variants/ml-007-b.jpg",
+      "seed/variants/ml-007-c.jpg"
+    ]
   },
   {
     "sku": "ML-008",
@@ -105,7 +145,12 @@
     "color": "To be confirmed by client",
     "description": "Sample entry. The client will replace these details in the admin.",
     "image": "seed/moti-latkan/moti-latkan-08.jpg",
-    "best_seller": false
+    "best_seller": false,
+    "images": [
+      "seed/moti-latkan/moti-latkan-08.jpg",
+      "seed/variants/ml-008-b.jpg",
+      "seed/variants/ml-008-c.jpg"
+    ]
   },
   {
     "sku": "ML-009",
@@ -117,7 +162,12 @@
     "color": "To be confirmed by client",
     "description": "Sample entry. The client will replace these details in the admin.",
     "image": "seed/moti-latkan/moti-latkan-09.jpg",
-    "best_seller": false
+    "best_seller": false,
+    "images": [
+      "seed/moti-latkan/moti-latkan-09.jpg",
+      "seed/variants/ml-009-b.jpg",
+      "seed/variants/ml-009-c.jpg"
+    ]
   },
   {
     "sku": "ML-010",
@@ -129,7 +179,12 @@
     "color": "To be confirmed by client",
     "description": "Sample entry. The client will replace these details in the admin.",
     "image": "seed/moti-latkan/moti-latkan-10.jpg",
-    "best_seller": false
+    "best_seller": false,
+    "images": [
+      "seed/moti-latkan/moti-latkan-10.jpg",
+      "seed/variants/ml-010-b.jpg",
+      "seed/variants/ml-010-c.jpg"
+    ]
   },
   {
     "sku": "ML-011",
@@ -141,7 +196,12 @@
     "color": "To be confirmed by client",
     "description": "Sample entry. The client will replace these details in the admin.",
     "image": "seed/moti-latkan/moti-latkan-11.jpg",
-    "best_seller": false
+    "best_seller": false,
+    "images": [
+      "seed/moti-latkan/moti-latkan-11.jpg",
+      "seed/variants/ml-011-b.jpg",
+      "seed/variants/ml-011-c.jpg"
+    ]
   },
   {
     "sku": "ML-012",
@@ -153,7 +213,12 @@
     "color": "To be confirmed by client",
     "description": "Sample entry. The client will replace these details in the admin.",
     "image": "seed/moti-latkan/moti-latkan-12.jpg",
-    "best_seller": false
+    "best_seller": false,
+    "images": [
+      "seed/moti-latkan/moti-latkan-12.jpg",
+      "seed/variants/ml-012-b.jpg",
+      "seed/variants/ml-012-c.jpg"
+    ]
   },
   {
     "sku": "ML-013",
@@ -165,7 +230,12 @@
     "color": "To be confirmed by client",
     "description": "Sample entry. The client will replace these details in the admin.",
     "image": "seed/moti-latkan/moti-latkan-13.jpg",
-    "best_seller": false
+    "best_seller": false,
+    "images": [
+      "seed/moti-latkan/moti-latkan-13.jpg",
+      "seed/variants/ml-013-b.jpg",
+      "seed/variants/ml-013-c.jpg"
+    ]
   },
   {
     "sku": "ML-014",
@@ -177,7 +247,12 @@
     "color": "To be confirmed by client",
     "description": "Sample entry. The client will replace these details in the admin.",
     "image": "seed/moti-latkan/moti-latkan-14.jpg",
-    "best_seller": false
+    "best_seller": false,
+    "images": [
+      "seed/moti-latkan/moti-latkan-14.jpg",
+      "seed/variants/ml-014-b.jpg",
+      "seed/variants/ml-014-c.jpg"
+    ]
   },
   {
     "sku": "ML-015",
@@ -189,7 +264,12 @@
     "color": "To be confirmed by client",
     "description": "Sample entry. The client will replace these details in the admin.",
     "image": "seed/moti-latkan/moti-latkan-15.jpg",
-    "best_seller": false
+    "best_seller": false,
+    "images": [
+      "seed/moti-latkan/moti-latkan-15.jpg",
+      "seed/variants/ml-015-b.jpg",
+      "seed/variants/ml-015-c.jpg"
+    ]
   },
   {
     "sku": "ML-016",
@@ -201,7 +281,12 @@
     "color": "To be confirmed by client",
     "description": "Sample entry. The client will replace these details in the admin.",
     "image": "seed/moti-latkan/moti-latkan-16.jpg",
-    "best_seller": false
+    "best_seller": false,
+    "images": [
+      "seed/moti-latkan/moti-latkan-16.jpg",
+      "seed/variants/ml-016-b.jpg",
+      "seed/variants/ml-016-c.jpg"
+    ]
   },
   {
     "sku": "ML-017",
@@ -213,7 +298,12 @@
     "color": "To be confirmed by client",
     "description": "Sample entry. The client will replace these details in the admin.",
     "image": "seed/moti-latkan/moti-latkan-17.jpg",
-    "best_seller": false
+    "best_seller": false,
+    "images": [
+      "seed/moti-latkan/moti-latkan-17.jpg",
+      "seed/variants/ml-017-b.jpg",
+      "seed/variants/ml-017-c.jpg"
+    ]
   },
   {
     "sku": "ML-018",
@@ -225,7 +315,12 @@
     "color": "To be confirmed by client",
     "description": "Sample entry. The client will replace these details in the admin.",
     "image": "seed/moti-latkan/moti-latkan-18.jpg",
-    "best_seller": false
+    "best_seller": false,
+    "images": [
+      "seed/moti-latkan/moti-latkan-18.jpg",
+      "seed/variants/ml-018-b.jpg",
+      "seed/variants/ml-018-c.jpg"
+    ]
   },
   {
     "sku": "ML-019",
@@ -237,7 +332,12 @@
     "color": "To be confirmed by client",
     "description": "Sample entry. The client will replace these details in the admin.",
     "image": "seed/moti-latkan/moti-latkan-19.jpg",
-    "best_seller": false
+    "best_seller": false,
+    "images": [
+      "seed/moti-latkan/moti-latkan-19.jpg",
+      "seed/variants/ml-019-b.jpg",
+      "seed/variants/ml-019-c.jpg"
+    ]
   },
   {
     "sku": "ML-020",
@@ -249,7 +349,12 @@
     "color": "To be confirmed by client",
     "description": "Sample entry. The client will replace these details in the admin.",
     "image": "seed/moti-latkan/moti-latkan-20.jpg",
-    "best_seller": false
+    "best_seller": false,
+    "images": [
+      "seed/moti-latkan/moti-latkan-20.jpg",
+      "seed/variants/ml-020-b.jpg",
+      "seed/variants/ml-020-c.jpg"
+    ]
   },
   {
     "sku": "ML-021",
@@ -261,7 +366,12 @@
     "color": "To be confirmed by client",
     "description": "Sample entry. The client will replace these details in the admin.",
     "image": "seed/moti-latkan/moti-latkan-21.jpg",
-    "best_seller": false
+    "best_seller": false,
+    "images": [
+      "seed/moti-latkan/moti-latkan-21.jpg",
+      "seed/variants/ml-021-b.jpg",
+      "seed/variants/ml-021-c.jpg"
+    ]
   },
   {
     "sku": "ML-022",
@@ -273,7 +383,12 @@
     "color": "To be confirmed by client",
     "description": "Sample entry. The client will replace these details in the admin.",
     "image": "seed/moti-latkan/moti-latkan-22.jpg",
-    "best_seller": false
+    "best_seller": false,
+    "images": [
+      "seed/moti-latkan/moti-latkan-22.jpg",
+      "seed/variants/ml-022-b.jpg",
+      "seed/variants/ml-022-c.jpg"
+    ]
   },
   {
     "sku": "ML-023",
@@ -285,7 +400,12 @@
     "color": "To be confirmed by client",
     "description": "Sample entry. The client will replace these details in the admin.",
     "image": "seed/moti-latkan/moti-latkan-23.jpg",
-    "best_seller": false
+    "best_seller": false,
+    "images": [
+      "seed/moti-latkan/moti-latkan-23.jpg",
+      "seed/variants/ml-023-b.jpg",
+      "seed/variants/ml-023-c.jpg"
+    ]
   },
   {
     "sku": "ML-024",
@@ -297,7 +417,12 @@
     "color": "To be confirmed by client",
     "description": "Sample entry. The client will replace these details in the admin.",
     "image": "seed/moti-latkan/moti-latkan-24.jpg",
-    "best_seller": false
+    "best_seller": false,
+    "images": [
+      "seed/moti-latkan/moti-latkan-24.jpg",
+      "seed/variants/ml-024-b.jpg",
+      "seed/variants/ml-024-c.jpg"
+    ]
   },
   {
     "sku": "ML-025",
@@ -309,7 +434,12 @@
     "color": "To be confirmed by client",
     "description": "Sample entry. The client will replace these details in the admin.",
     "image": "seed/moti-latkan/moti-latkan-25.jpg",
-    "best_seller": false
+    "best_seller": false,
+    "images": [
+      "seed/moti-latkan/moti-latkan-25.jpg",
+      "seed/variants/ml-025-b.jpg",
+      "seed/variants/ml-025-c.jpg"
+    ]
   },
   {
     "sku": "ML-026",
@@ -321,7 +451,12 @@
     "color": "To be confirmed by client",
     "description": "Sample entry. The client will replace these details in the admin.",
     "image": "seed/moti-latkan/moti-latkan-26.jpg",
-    "best_seller": false
+    "best_seller": false,
+    "images": [
+      "seed/moti-latkan/moti-latkan-26.jpg",
+      "seed/variants/ml-026-b.jpg",
+      "seed/variants/ml-026-c.jpg"
+    ]
   },
   {
     "sku": "ML-027",
@@ -333,7 +468,12 @@
     "color": "To be confirmed by client",
     "description": "Sample entry. The client will replace these details in the admin.",
     "image": "seed/moti-latkan/moti-latkan-27.jpg",
-    "best_seller": false
+    "best_seller": false,
+    "images": [
+      "seed/moti-latkan/moti-latkan-27.jpg",
+      "seed/variants/ml-027-b.jpg",
+      "seed/variants/ml-027-c.jpg"
+    ]
   },
   {
     "sku": "ML-028",
@@ -345,7 +485,12 @@
     "color": "To be confirmed by client",
     "description": "Sample entry. The client will replace these details in the admin.",
     "image": "seed/moti-latkan/moti-latkan-28.jpg",
-    "best_seller": false
+    "best_seller": false,
+    "images": [
+      "seed/moti-latkan/moti-latkan-28.jpg",
+      "seed/variants/ml-028-b.jpg",
+      "seed/variants/ml-028-c.jpg"
+    ]
   },
   {
     "sku": "ML-029",
@@ -357,6 +502,11 @@
     "color": "To be confirmed by client",
     "description": "Sample entry. The client will replace these details in the admin.",
     "image": "seed/moti-latkan/moti-latkan-29.jpg",
-    "best_seller": false
+    "best_seller": false,
+    "images": [
+      "seed/moti-latkan/moti-latkan-29.jpg",
+      "seed/variants/ml-029-b.jpg",
+      "seed/variants/ml-029-c.jpg"
+    ]
   }
 ]
