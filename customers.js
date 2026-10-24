@@ -1,8 +1,10 @@
 // Shop visitor accounts: register, login, profile (used to fill the checkout form)
 const express = require('express');
+const crypto = require('crypto');
 const bcrypt = require('bcryptjs');
 const pool = require('./db');
 const { makeCustomerToken, requireCustomer, requireAdmin } = require('./auth');
+const { sendMail, configured } = require('./mailer');
 
 const router = express.Router();
 
@@ -99,6 +101,53 @@ router.put('/api/auth/me', requireCustomer, async (req, res, next) => {
     );
     const [rows] = await pool.query('SELECT * FROM customers WHERE id = ?', [req.customerId]);
     res.json({ profile: publicProfile(rows[0]) });
+  } catch (e) { next(e); }
+});
+
+// ---------- forgot / reset password (email link, valid for 1 hour) ----------
+
+const sha = t => crypto.createHash('sha256').update(t).digest('hex');
+const escHtml = t => String(t).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+router.post('/api/auth/forgot', limited, async (req, res) => {
+  // always the same answer, so nobody can use this to find out who is registered
+  const reply = () => res.json({ ok: true, message: 'If this email is registered, we have sent a link to reset the password. Please check your inbox (and spam folder).' });
+  try {
+    const email = clean((req.body || {}).email, 160).toLowerCase();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return res.status(400).json({ error: 'Please enter the email address you registered with.' });
+    const base = (process.env.SITE_URL || '').replace(/\/+$/, '');
+    if (!base || !configured()) { console.error('Password reset not sent: SITE_URL or the SMTP settings are missing'); return reply(); }
+    const [rows] = await pool.query('SELECT id, first_name FROM customers WHERE email = ?', [email]);
+    if (!rows.length) return reply();
+    const token = crypto.randomBytes(32).toString('hex');
+    await pool.query('DELETE FROM password_resets WHERE customer_id = ?', [rows[0].id]);
+    await pool.query('INSERT INTO password_resets (customer_id, token_hash, expires_at) VALUES (?, ?, ?)', [rows[0].id, sha(token), new Date(Date.now() + 60 * 60 * 1000)]);
+    const link = base + '/index.html?reset=' + token;
+    const name = escHtml(rows[0].first_name);
+    await sendMail(email, 'Reset your Dewaswala Handicrafts password',
+      `<div style="font-family:Arial,sans-serif;max-width:480px;margin:auto;color:#2a1a1d"><h2 style="color:#4a1420">Reset your password</h2><p>Hello ${name},</p><p>We received a request to reset the password for your Dewaswala Handicrafts account. Click the button below to choose a new one. The link works for 1 hour.</p><p><a href="${link}" style="display:inline-block;background:#4a1420;color:#fff;text-decoration:none;padding:12px 26px;border-radius:999px;font-weight:bold">Choose a new password</a></p><p style="font-size:13px;color:#7a6a6d">If you did not ask for this, you can ignore this email. Your password will not change.</p></div>`,
+      `Hello ${rows[0].first_name},
+
+Reset your Dewaswala Handicrafts password (link works for 1 hour):
+${link}
+
+If you did not ask for this, ignore this email.`);
+    reply();
+  } catch (e) { console.error('Forgot password failed:', e.message); reply(); }
+});
+
+router.post('/api/auth/reset', limited, async (req, res, next) => {
+  try {
+    const token = clean((req.body || {}).token, 100);
+    const password = String((req.body || {}).password || '');
+    if (password.length < 6) return res.status(400).json({ error: 'Password must be at least 6 characters.' });
+    const [rows] = await pool.query('SELECT customer_id, expires_at FROM password_resets WHERE token_hash = ?', [sha(token)]);
+    if (!token || !rows.length || new Date(rows[0].expires_at).getTime() < Date.now()) {
+      return res.status(400).json({ error: 'This reset link has expired or was already used. Please ask for a new one.' });
+    }
+    await pool.query('UPDATE customers SET password_hash = ? WHERE id = ?', [await bcrypt.hash(password, 10), rows[0].customer_id]);
+    await pool.query('DELETE FROM password_resets WHERE customer_id = ?', [rows[0].customer_id]);
+    res.json({ ok: true });
   } catch (e) { next(e); }
 });
 
