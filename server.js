@@ -333,6 +333,21 @@ async function setup() {
     console.log('Categories added from categories.json:', names.length);
   }
 
+  // One-time: with DEDUPE_PHOTOS=true, keep one photo per position for every product and delete the extra copies
+  if (process.env.DEDUPE_PHOTOS === 'true') {
+    const [imgs] = await pool.query('SELECT id, product_id, position, public_id FROM product_images ORDER BY product_id, position, id');
+    const seen = new Set();
+    let removed = 0;
+    for (const img of imgs) {
+      const key = img.product_id + ':' + img.position;
+      if (!seen.has(key)) { seen.add(key); continue; }
+      await cloud.destroy(img.public_id).catch(() => {});
+      await pool.query('DELETE FROM product_images WHERE id = ?', [img.id]);
+      removed++;
+    }
+    console.log('Duplicate photos removed:', removed);
+  }
+
   const user = process.env.ADMIN_USER;
   const pass = process.env.ADMIN_PASSWORD;
   if (user && pass) {
