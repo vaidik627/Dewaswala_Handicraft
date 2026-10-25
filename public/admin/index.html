@@ -84,6 +84,11 @@
   th{font-size:.76rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);border-top:0}
 
   .cat-layout>*,.sl-layout>*{min-width:0}
+  .catbar{justify-content:space-between;flex-wrap:wrap}
+  .catbar h2{margin:0}
+  .catbtns{flex-wrap:wrap;justify-content:flex-end}
+  .circ{width:46px;height:46px;border-radius:50%;background:#f1ece6 center/cover;border:1px solid var(--line);flex:none;display:grid;place-items:center;font-size:.6rem;color:var(--muted);text-align:center;line-height:1.1}
+  .cat .cthumb{display:inline-block;width:22px;height:22px;border-radius:50%;background:#eee center/cover;vertical-align:middle;margin-right:8px;border:1px solid rgba(0,0,0,.12)}
   header button{white-space:nowrap}
   @media(max-width:600px){
     header{padding:12px 14px}
@@ -139,7 +144,7 @@
     <div class="cat-layout">
       <aside class="card">
         <h2>Categories</h2>
-        <p class="hint">A category appears on the shop page only after you add at least one product with a photo to it. That photo is used in its circle, and the circle picks a different photo of the category each day.</p>
+        <p class="hint">Each category shows as a circle on the shop page only after you add its <b>circle photo</b>. Pick a category, then use the "Circle photo" button.</p>
         <div class="row">
           <input id="newCat" placeholder="New category name">
           <button class="btn" id="addCat">Add</button>
@@ -148,10 +153,17 @@
       </aside>
 
       <section class="card">
-        <div class="row" style="justify-content:space-between">
+        <div class="row catbar">
           <h2 id="catTitle">Choose a category</h2>
-          <button class="btn" id="newProd">+ Add product</button>
+          <div class="row catbtns">
+            <span class="circ" id="circPreview" title="Circle photo shown on the shop page"></span>
+            <button class="btn ghost" id="circBtn" type="button">Circle photo</button>
+            <button class="btn danger hide" id="circDel" type="button">Remove</button>
+            <input type="file" id="circFile" accept="image/jpeg,image/png,image/webp" hidden>
+            <button class="btn" id="newProd">+ Add product</button>
+          </div>
         </div>
+        <p class="hint" style="margin:6px 0 0"><b>Circle photo:</b> a square photo, <b>600 × 600 pixels</b> is best (minimum 400 × 400), JPG, PNG or WebP, under 8 MB. Keep the main subject in the middle, because the corners are trimmed by the circle. Only the photo is needed, since the category name is shown under it.</p>
         <div id="globalMsg"></div>
         <div id="prods"></div>
 
@@ -315,7 +327,7 @@
   function renderCats(){
     $('#cats').innerHTML = categories.map(c =>
       '<div class="cat '+(c.id===currentCat?'on':'')+'" data-id="'+c.id+'">' +
-        '<span>'+esc(c.name)+' <small>('+c.product_count+')</small></span>' +
+        '<span>'+(c.image_url?'<i class="cthumb" style="background-image:url(&quot;'+esc(c.image_url)+'&quot;)"></i>':'')+esc(c.name)+' <small>('+c.product_count+')</small></span>' +
         '<span class="acts"><button data-act="rename" data-id="'+c.id+'">rename</button><button data-act="delcat" data-id="'+c.id+'">delete</button></span>' +
       '</div>'
     ).join('') || '<p class="muted">No categories yet.</p>';
@@ -327,6 +339,7 @@
   async function loadProducts(){
     const cat = categories.find(c => c.id === currentCat);
     $('#catTitle').textContent = cat ? cat.name : '';
+    drawCircle(cat);
     const list = await api('/api/admin/products?category_id=' + currentCat);
     $('#prods').innerHTML = list.map(p => {
       const first = p.images[0] ? p.images[0].url : '';
@@ -338,6 +351,14 @@
     }).join('') || '<p class="muted">No products in this category yet.</p>';
     window._products = list;
     renderCats();
+  }
+
+  function drawCircle(cat){
+    const has = !!(cat && cat.image_url);
+    $('#circPreview').style.backgroundImage = has ? "url('" + cat.image_url + "')" : 'none';
+    $('#circPreview').textContent = has ? '' : 'No photo';
+    $('#circBtn').textContent = has ? 'Change circle photo' : 'Circle photo';
+    $('#circDel').classList.toggle('hide', !has);
   }
 
   function openForm(p){
@@ -446,6 +467,20 @@
     try { await api('/api/admin/categories', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ name }) });
       $('#newCat').value = ''; msg($('#globalMsg'), 'Category added.', true); currentCat = null; await loadCats();
     } catch(err){ msg($('#globalMsg'), err.message, false); }
+  });
+  $('#circBtn').addEventListener('click', () => { if (!currentCat) return msg($('#globalMsg'), 'Choose a category first.', false); $('#circFile').click(); });
+  $('#circFile').addEventListener('change', async () => {
+    const file = $('#circFile').files[0]; $('#circFile').value = '';
+    if (!file || !currentCat) return;
+    const fd = new FormData(); fd.append('image', file);
+    msg($('#globalMsg'), 'Uploading the circle photo…', true);
+    try { await api('/api/admin/categories/' + currentCat + '/image', { method:'PUT', body: fd }); msg($('#globalMsg'), 'Circle photo saved. It now shows on the shop page.', true); await loadCats(); }
+    catch(err){ msg($('#globalMsg'), err.message, false); }
+  });
+  $('#circDel').addEventListener('click', async () => {
+    if (!currentCat || !confirm('Remove the circle photo? The category will no longer show as a circle on the shop page.')) return;
+    try { await api('/api/admin/categories/' + currentCat + '/image', { method:'DELETE' }); msg($('#globalMsg'), 'Circle photo removed.', true); await loadCats(); }
+    catch(err){ msg($('#globalMsg'), err.message, false); }
   });
   $('#newProd').addEventListener('click', () => { if (!currentCat) return msg($('#globalMsg'), 'Choose or add a category first.', false); openForm(null); });
   $('#cancelBtn').addEventListener('click', () => { $('#form').classList.add('hide'); editing = null; });

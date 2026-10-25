@@ -8,8 +8,20 @@ const bcrypt = require('bcryptjs');
 const pool = require('./db');
 const { makeToken, requireAdmin, optionalCustomer, SECRET } = require('./auth');
 const cloud = require('./cloud');
+const sizeOf = require('image-size');
 
 const MAX_PHOTOS = 6;
+// the category circle photo on the shop page: a square, 600 x 600 pixels is best (it is shown about 180 pixels wide)
+const CIRCLE_MIN = 400;
+function checkCirclePhoto(buffer) {
+  let size;
+  try { size = sizeOf(buffer); } catch (e) { size = null; }
+  if (!size || !size.width || !size.height) return 'The photo could not be read. Please use a JPG, PNG or WebP file.';
+  const ratio = size.width / size.height;
+  if (ratio < 0.97 || ratio > 1.03) return 'The photo is ' + size.width + ' x ' + size.height + ' pixels. Please crop it to a square, for example 600 x 600 pixels, so it fits the circle without being cut off.';
+  if (size.width < CIRCLE_MIN) return 'The photo is only ' + size.width + ' pixels wide. Please use at least ' + CIRCLE_MIN + ' x ' + CIRCLE_MIN + ' pixels. 600 x 600 is best.';
+  return null;
+}
 // visitors who are not logged in see this many products in full; the rest are shown blurred
 const GUEST_LIMIT = parseInt(process.env.GUEST_LIMIT, 10) || 8;
 
@@ -71,7 +83,7 @@ app.get('/api/health/db', async (req, res, next) => {
 
 app.get('/api/categories', async (req, res, next) => {
   try {
-    const [rows] = await pool.query('SELECT slug, name FROM categories ORDER BY name');
+    const [rows] = await pool.query('SELECT slug, name, image_url FROM categories ORDER BY name');
     res.json(rows);
   } catch (e) { next(e); }
 });
@@ -140,9 +152,9 @@ app.post('/api/admin/login', async (req, res, next) => {
 app.get('/api/admin/categories', requireAdmin, async (req, res, next) => {
   try {
     const [rows] = await pool.query(
-      `SELECT c.id, c.slug, c.name, COUNT(p.id) AS product_count
+      `SELECT c.id, c.slug, c.name, c.image_url, COUNT(p.id) AS product_count
        FROM categories c LEFT JOIN products p ON p.category_id = c.id
-       GROUP BY c.id, c.slug, c.name ORDER BY c.name`
+       GROUP BY c.id, c.slug, c.name, c.image_url ORDER BY c.name`
     );
     res.json(rows);
   } catch (e) { next(e); }
@@ -173,7 +185,34 @@ app.delete('/api/admin/categories/:id', requireAdmin, async (req, res, next) => 
   try {
     const [[{ n }]] = await pool.query('SELECT COUNT(*) AS n FROM products WHERE category_id = ?', [req.params.id]);
     if (n > 0) return res.status(409).json({ error: 'This category still has products. Delete or move them first.' });
+    const [img] = await pool.query('SELECT image_public_id FROM categories WHERE id = ?', [req.params.id]);
+    if (img.length && img[0].image_public_id) await cloud.destroy(img[0].image_public_id).catch(() => {});
     await pool.query('DELETE FROM categories WHERE id = ?', [req.params.id]);
+    res.json({ ok: true });
+  } catch (e) { next(e); }
+});
+
+// the photo shown in this category's circle on the shop page (square, 600 x 600 pixels is best)
+app.put('/api/admin/categories/:id/image', requireAdmin, upload.single('image'), async (req, res, next) => {
+  try {
+    const [rows] = await pool.query('SELECT slug, image_public_id FROM categories WHERE id = ?', [req.params.id]);
+    if (!rows.length) return res.status(404).json({ error: 'Category not found' });
+    if (!req.file) return res.status(400).json({ error: 'Choose a photo (JPG, PNG or WebP, up to 8 MB).' });
+    const problem = checkCirclePhoto(req.file.buffer);
+    if (problem) return res.status(400).json({ error: problem });
+    const result = await cloud.upload(req.file.buffer, 'dewaswala/category-circles/' + rows[0].slug);
+    if (rows[0].image_public_id) await cloud.destroy(rows[0].image_public_id).catch(() => {});
+    await pool.query('UPDATE categories SET image_url = ?, image_public_id = ? WHERE id = ?', [result.secure_url, result.public_id, req.params.id]);
+    res.json({ ok: true, image_url: result.secure_url });
+  } catch (e) { next(e); }
+});
+
+app.delete('/api/admin/categories/:id/image', requireAdmin, async (req, res, next) => {
+  try {
+    const [rows] = await pool.query('SELECT image_public_id FROM categories WHERE id = ?', [req.params.id]);
+    if (!rows.length) return res.status(404).json({ error: 'Category not found' });
+    if (rows[0].image_public_id) await cloud.destroy(rows[0].image_public_id).catch(() => {});
+    await pool.query('UPDATE categories SET image_url = NULL, image_public_id = NULL WHERE id = ?', [req.params.id]);
     res.json({ ok: true });
   } catch (e) { next(e); }
 });
@@ -324,6 +363,26 @@ async function setup() {
   for (const stmt of sql.split(';').map(s => s.trim()).filter(Boolean)) {
     await pool.query(stmt);
   }
+  // the shop-page circle photo of each category (added to tables made before this feature)
+  for (const col of ['image_url VARCHAR(500) NULL', 'image_public_id VARCHAR(255) NULL']) {
+    try { await pool.query('ALTER TABLE categories ADD COLUMN ' + col); }
+    catch (e) { if (e.code !== 'ER_DUP_FIELDNAME') throw e; }
+  }
+
+  // One-time: with SEED_CATEGORY_IMAGES=true, give the categories in seed/category-images.json their circle photo (only if they have none yet)
+  if (process.env.SEED_CATEGORY_IMAGES === 'true') {
+    const items = JSON.parse(fs.readFileSync(path.join(__dirname, 'seed', 'category-images.json'), 'utf8'));
+    for (const item of items) {
+      await pool.query('INSERT IGNORE INTO categories (slug, name) VALUES (?, ?)', [slugify(item.category), item.category]);
+      const [cat] = await pool.query('SELECT id, slug, image_url FROM categories WHERE name = ?', [item.category]);
+      if (!cat.length) { console.error('Seed: category not found:', item.category); continue; }
+      if (cat[0].image_url) { console.log('Seed: circle photo already set for', item.category); continue; }
+      const result = await cloud.upload(fs.readFileSync(path.join(__dirname, item.image)), 'dewaswala/category-circles/' + cat[0].slug);
+      await pool.query('UPDATE categories SET image_url = ?, image_public_id = ? WHERE id = ?', [result.secure_url, result.public_id, cat[0].id]);
+      console.log('Seeded circle photo for', item.category);
+    }
+  }
+
   // One-time: with SEED_PRODUCTS=true, add the products in seed/products.json that don't exist yet (photo goes to Cloudinary)
   if (process.env.SEED_PRODUCTS === 'true') {
     const items = JSON.parse(fs.readFileSync(path.join(__dirname, 'seed', 'products.json'), 'utf8'));
