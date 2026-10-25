@@ -1,22 +1,5 @@
 [
   {
-    "sku": "FL-001",
-    "name": "Flower Ladi - Sample Product",
-    "category": "Flower Ladi",
-    "price": 450,
-    "unit": "per pc",
-    "size": "To be confirmed by client",
-    "color": "To be confirmed by client",
-    "description": "Sample entry. The client will replace these details in the admin.",
-    "image": "seed/flower-ladi-1.jpg",
-    "best_seller": false,
-    "images": [
-      "seed/flower-ladi-1.jpg",
-      "seed/variants/fl-001-b.jpg",
-      "seed/variants/fl-001-c.jpg"
-    ]
-  },
-  {
     "sku": "ML-001",
     "name": "Moti Latkan - Sample Product",
     "category": "Moti Latkan",
@@ -524,6 +507,652 @@
       "seed/moti-latkan-1.jpg",
       "seed/variants/ml-001-b.jpg",
       "seed/variants/ml-001-c.jpg"
+    ]
+  },
+  {
+    "sku": "71806",
+    "name": "Pink & Red Flower Ladi",
+    "category": "Flower Ladi",
+    "price": 180,
+    "unit": "per piece",
+    "size": "6 feet",
+    "color": "Pink, Red",
+    "description": "A 6 feet flower ladi in bright pink and red flower strands with white pearl buds and a flower tassel end.",
+    "best_seller": false,
+    "image": "seed/flower-ladi/71806-1.jpg",
+    "images": [
+      "seed/flower-ladi/71806-1.jpg",
+      "seed/flower-ladi/71806-2.jpg",
+      "seed/flower-ladi/71806-3.jpg"
+    ]
+  },
+  {
+    "sku": "72053",
+    "name": "Cream White & Pink Flower Ladi with Gold",
+    "category": "Flower Ladi",
+    "price": 205,
+    "unit": "per piece",
+    "size": "6 feet",
+    "color": "Cream White, Pink, Gold",
+    "description": "A 6 feet cream white flower ladi with pink pom-pom flower bands and gold rose accents.",
+    "best_seller": false,
+    "image": "seed/flower-ladi/72053-1.jpg",
+    "images": [
+      "seed/flower-ladi/72053-1.jpg",
+      "seed/flower-ladi/72053-2.jpg",
+      "seed/flower-ladi/72053-3.jpg"
+    ]
+  },
+  {
+    "sku": "71103",
+    "name": "Pink & Cream White Flower Ladi",
+    "category": "Flower Ladi",
+    "price": 110,
+    "unit": "per piece",
+    "size": "6 feet",
+    "color": "Pink, Cream White",
+    "description": "A 6 feet ladi with pink star flowers alternating with cream white flower strands.",
+    "best_seller": false,
+    "image": "seed/flower-ladi/71103-1.jpg",
+    "images": [
+      "seed/flower-ladi/71103-1.jpg",
+      "seed/flower-ladi/71103-2.jpg",
+      "seed/flower-ladi/71103-3.jpg"
+    ]
+  },
+  {
+    "sku": "71503",
+    "name": "Multicolour Pom Pom Flower Ladi",
+    "category": "Flower Ladi",
+    "price": 150,
+    "unit": "per piece",
+    "size": "6 feet",
+    "color": "Yellow, Pink, Sky Blue, Purple, Red, Peach",
+    "description": "A 6 feet ladi of colourful pom-pom flowers in yellow, pink, sky blue, purple, red and peach with a flower tassel end.",
+    "best_seller": false,
+    "image": "seed/flower-ladi/71503-1.jpg",
+    "images": [
+      "seed/flower-ladi/71503-1.jpg",
+      "seed/flower-ladi/71503-2.jpg",
+      "seed/flower-ladi/71503-3.jpg"
+    ]
+  },
+  {
+    "sku": "71502",
+    "name": "Pink & White Flower Ladi",
+    "category": "Flower Ladi",
+    "price": 150,
+    "unit": "per piece",
+    "size": "6 feet",
+    "color": "Pink, White",
+    "description": "A 6 feet ladi of pink flower sections and white flower bands with green leaf trims.",
+    "best_seller": false,
+    "image": "seed/flower-ladi/71502-1.jpg",
+    "images": [
+      "seed/flower-ladi/71502-1.jpg",
+      "seed/flower-ladi/71502-2.jpg",
+      "seed/flower-ladi/71502-3.jpg"
+    ]
+  },
+  {
+    "sku": "71501",
+    "name": "Red & Yellow Flower Ladi",
+    "category": "Flower Ladi",
+    "price": 150,
+    "unit": "per piece",
+    "size": "6 feet",
+    "color": "Red, Yellow, Gold",
+    "description": "A 6 feet ladi of red and yellow flower sections joined with gold leaf accents.",
+    "best_seller": false,
+    "image": "seed/flower-ladi/71501-1.jpg",
+    "images": [
+      "seed/flower-ladi/71501-1.jpg",
+      "seed/flower-ladi/71501-2.jpg",
+      "seed/flower-ladi/71501-3.jpg"
+    ]
+  },
+  {
+    "sku": "710206",
+    "name": "Cream White, Pink & Magenta Flower Ladi",
+    "category": "Flower Ladi",
+    "price": 1020,
+    "unit": "per packet",
+    "size": "6 feet",
+    "color": "Cream White, Pink, Magenta, Dark Green",
+    "description": "A full 6 feet ladi of cream white flower strands with pink and magenta flower clusters and dark green leaf trims.",
+    "best_seller": false,
+    "image": "seed/flower-ladi/710206-1.jpg",
+    "images": [
+      "seed/flower-ladi/710206-1.jpg",
+      "seed/flower-ladi/710206-2.jpg",
+      "seed/flower-ladi/710206-3.jpg"
+    ]
+  },
+  {
+    "sku": "71206",
+    "name": "Cream White, Purple & Pink Flower Ladi",
+    "category": "Flower Ladi",
+    "price": 120,
+    "unit": "per piece",
+    "size": "6 feet",
+    "color": "Cream White, Purple, Pink",
+    "description": "A 6 feet ladi of cream white flower strands with lavender purple and pink flower bands.",
+    "best_seller": false,
+    "image": "seed/flower-ladi/71206-1.jpg",
+    "images": [
+      "seed/flower-ladi/71206-1.jpg",
+      "seed/flower-ladi/71206-2.jpg",
+      "seed/flower-ladi/71206-3.jpg"
+    ]
+  },
+  {
+    "sku": "71206-2",
+    "name": "Cream White & Pink Flower Ladi with Bells",
+    "category": "Flower Ladi",
+    "price": 120,
+    "unit": "per piece",
+    "size": "6 feet",
+    "color": "Cream White, Pink, Gold",
+    "description": "A 6 feet ladi of cream white flower strands with pink flower rings and gold leaf details, ending in small gold bells.",
+    "best_seller": false,
+    "image": "seed/flower-ladi/71206-2-1.jpg",
+    "images": [
+      "seed/flower-ladi/71206-2-1.jpg",
+      "seed/flower-ladi/71206-2-2.jpg",
+      "seed/flower-ladi/71206-2-3.jpg"
+    ]
+  },
+  {
+    "sku": "71207",
+    "name": "White & Deep Pink Flower Ladi",
+    "category": "Flower Ladi",
+    "price": 120,
+    "unit": "per piece",
+    "size": "6 feet",
+    "color": "White, Deep Pink",
+    "description": "A 6 feet ladi of white flower strands with deep pink flower sections and green leaf trims.",
+    "best_seller": false,
+    "image": "seed/flower-ladi/71207-1.jpg",
+    "images": [
+      "seed/flower-ladi/71207-1.jpg",
+      "seed/flower-ladi/71207-2.jpg",
+      "seed/flower-ladi/71207-3.jpg"
+    ]
+  },
+  {
+    "sku": "71453",
+    "name": "Red & White Tip Flower Ladi",
+    "category": "Flower Ladi",
+    "price": 145,
+    "unit": "per piece",
+    "size": "6 feet",
+    "color": "Red, White, Green",
+    "description": "A 6 feet full ladi of red flowers with white tips and green leaves.",
+    "best_seller": false,
+    "image": "seed/flower-ladi/71453-1.jpg",
+    "images": [
+      "seed/flower-ladi/71453-1.jpg",
+      "seed/flower-ladi/71453-2.jpg",
+      "seed/flower-ladi/71453-3.jpg"
+    ]
+  },
+  {
+    "sku": "31254",
+    "name": "Multicolour Round Flower Ladi",
+    "category": "Flower Ladi",
+    "price": 125,
+    "unit": "per piece",
+    "size": "6 feet",
+    "color": "Pink, Sky Blue, Purple, Red, Yellow, Peach",
+    "description": "A 6 feet ladi of round flowers in pink, sky blue, purple, red, yellow and peach.",
+    "best_seller": false,
+    "image": "seed/flower-ladi/31254-1.jpg",
+    "images": [
+      "seed/flower-ladi/31254-1.jpg",
+      "seed/flower-ladi/31254-2.jpg",
+      "seed/flower-ladi/31254-3.jpg"
+    ]
+  },
+  {
+    "sku": "712968",
+    "name": "White Flower Ladi with Colour Bands",
+    "category": "Flower Ladi",
+    "price": 1296,
+    "unit": "per packet",
+    "size": "6 feet",
+    "color": "White, Purple, Red, Sky Blue, Pink",
+    "description": "A 6 feet three-strand ladi of white flowers with purple, red, sky blue and pink colour bands and a pink flower tassel end.",
+    "best_seller": false,
+    "image": "seed/flower-ladi/712968-1.jpg",
+    "images": [
+      "seed/flower-ladi/712968-1.jpg",
+      "seed/flower-ladi/712968-2.jpg",
+      "seed/flower-ladi/712968-3.jpg"
+    ]
+  },
+  {
+    "sku": "712967",
+    "name": "Yellow & Orange Flower Ladi with Colour Bands",
+    "category": "Flower Ladi",
+    "price": 1296,
+    "unit": "per packet",
+    "size": "6 feet",
+    "color": "Yellow, Orange, Red, Sky Blue, Pink, Purple",
+    "description": "A 6 feet three-strand ladi of yellow and orange flowers with red, sky blue, pink and purple colour bands.",
+    "best_seller": false,
+    "image": "seed/flower-ladi/712967-1.jpg",
+    "images": [
+      "seed/flower-ladi/712967-1.jpg",
+      "seed/flower-ladi/712967-2.jpg",
+      "seed/flower-ladi/712967-3.jpg"
+    ]
+  },
+  {
+    "sku": "78645",
+    "name": "Green, White & Yellow Flower Ladi",
+    "category": "Flower Ladi",
+    "price": 864,
+    "unit": "per packet",
+    "size": "6 feet",
+    "color": "Green, White, Yellow",
+    "description": "A 6 feet ladi of green leaf sections and white flower strands with yellow flower clusters.",
+    "best_seller": false,
+    "image": "seed/flower-ladi/78645-1.jpg",
+    "images": [
+      "seed/flower-ladi/78645-1.jpg",
+      "seed/flower-ladi/78645-2.jpg",
+      "seed/flower-ladi/78645-3.jpg"
+    ]
+  },
+  {
+    "sku": "78046",
+    "name": "Red, White & Green Flower Ladi",
+    "category": "Flower Ladi",
+    "price": 804,
+    "unit": "per packet",
+    "size": "6 feet",
+    "color": "Red, White, Green",
+    "description": "A 6 feet ladi of white flower strands and red flower sections with green leaves.",
+    "best_seller": false,
+    "image": "seed/flower-ladi/78046-1.jpg",
+    "images": [
+      "seed/flower-ladi/78046-1.jpg",
+      "seed/flower-ladi/78046-2.jpg",
+      "seed/flower-ladi/78046-3.jpg"
+    ]
+  },
+  {
+    "sku": "31152",
+    "name": "Pink & Cream White Round Flower Ladi",
+    "category": "Flower Ladi",
+    "price": 115,
+    "unit": "per piece",
+    "size": "6 feet",
+    "color": "Pink, Cream White",
+    "description": "A 6 feet two-strand ladi with pink flower sections and cream white flower strands.",
+    "best_seller": false,
+    "image": "seed/flower-ladi/31152-1.jpg",
+    "images": [
+      "seed/flower-ladi/31152-1.jpg",
+      "seed/flower-ladi/31152-2.jpg",
+      "seed/flower-ladi/31152-3.jpg"
+    ]
+  },
+  {
+    "sku": "31102",
+    "name": "Purple & Cream White Flower Ladi",
+    "category": "Flower Ladi",
+    "price": 110,
+    "unit": "per piece",
+    "size": "6 feet",
+    "color": "Purple, Cream White",
+    "description": "A 6 feet ladi with purple flower sections and cream white flower strands.",
+    "best_seller": false,
+    "image": "seed/flower-ladi/31102-1.jpg",
+    "images": [
+      "seed/flower-ladi/31102-1.jpg",
+      "seed/flower-ladi/31102-2.jpg",
+      "seed/flower-ladi/31102-3.jpg"
+    ]
+  },
+  {
+    "sku": "71080",
+    "name": "Green & Orange Flower Ladi",
+    "category": "Flower Ladi",
+    "price": 108,
+    "unit": "per piece",
+    "size": "6 feet",
+    "color": "Green, Orange",
+    "description": "A 6 feet ladi with green flower sections and orange flower rings, finished with gold bells.",
+    "best_seller": false,
+    "image": "seed/flower-ladi/71080-1.jpg",
+    "images": [
+      "seed/flower-ladi/71080-1.jpg",
+      "seed/flower-ladi/71080-2.jpg",
+      "seed/flower-ladi/71080-3.jpg"
+    ]
+  },
+  {
+    "sku": "39725",
+    "name": "Cream White, Yellow & Red Flower Ladi",
+    "category": "Flower Ladi",
+    "price": 972,
+    "unit": "per packet",
+    "size": "6 feet",
+    "color": "Cream White, Yellow, Red, Dark Green, Gold",
+    "description": "A 6 feet ladi of cream white flower strands with yellow, red and green flower bands and gold accents.",
+    "best_seller": false,
+    "image": "seed/flower-ladi/39725-1.jpg",
+    "images": [
+      "seed/flower-ladi/39725-1.jpg",
+      "seed/flower-ladi/39725-2.jpg",
+      "seed/flower-ladi/39725-3.jpg"
+    ]
+  },
+  {
+    "sku": "76005",
+    "name": "Green Leaf Ladi with Colourful Flowers",
+    "category": "Flower Ladi",
+    "price": 600,
+    "unit": "per packet",
+    "size": "6 feet",
+    "color": "Green, Yellow, Pink, Red",
+    "description": "A 6 feet leafy green ladi dotted with small yellow, pink and red flowers.",
+    "best_seller": false,
+    "image": "seed/flower-ladi/76005-1.jpg",
+    "images": [
+      "seed/flower-ladi/76005-1.jpg",
+      "seed/flower-ladi/76005-2.jpg",
+      "seed/flower-ladi/76005-3.jpg"
+    ]
+  },
+  {
+    "sku": "75046",
+    "name": "Orange & Yellow Flower Ladi",
+    "category": "Flower Ladi",
+    "price": 504,
+    "unit": "per packet",
+    "size": "6 feet",
+    "color": "Orange, Yellow",
+    "description": "A 6 feet full ladi of orange and yellow flowers on green stems.",
+    "best_seller": false,
+    "image": "seed/flower-ladi/75046-1.jpg",
+    "images": [
+      "seed/flower-ladi/75046-1.jpg",
+      "seed/flower-ladi/75046-2.jpg",
+      "seed/flower-ladi/75046-3.jpg"
+    ]
+  },
+  {
+    "sku": "710803",
+    "name": "White & Red Flower Ladi with Rose Buds",
+    "category": "Flower Ladi",
+    "price": 1080,
+    "unit": "per packet",
+    "size": "6 feet",
+    "color": "White, Red, Green",
+    "description": "A 6 feet ladi of white flowers with red centres and green leaf bands with red rose buds, ending in gold bells.",
+    "best_seller": false,
+    "image": "seed/flower-ladi/710803-1.jpg",
+    "images": [
+      "seed/flower-ladi/710803-1.jpg",
+      "seed/flower-ladi/710803-2.jpg",
+      "seed/flower-ladi/710803-3.jpg"
+    ]
+  },
+  {
+    "sku": "710804",
+    "name": "Magenta & Gold Flower Ladi",
+    "category": "Flower Ladi",
+    "price": 1080,
+    "unit": "per packet",
+    "size": "6 feet",
+    "color": "Magenta, Gold, White, Green",
+    "description": "A 6 feet ladi of magenta flower strands with gold and white flower bands and green leaves, ending in gold bells.",
+    "best_seller": false,
+    "image": "seed/flower-ladi/710804-1.jpg",
+    "images": [
+      "seed/flower-ladi/710804-1.jpg",
+      "seed/flower-ladi/710804-2.jpg",
+      "seed/flower-ladi/710804-3.jpg"
+    ]
+  },
+  {
+    "sku": "75046-2",
+    "name": "Yellow, Red & White Flower Ladi",
+    "category": "Flower Ladi",
+    "price": 504,
+    "unit": "per packet",
+    "size": "6 feet",
+    "color": "Yellow, Orange, Red, White",
+    "description": "A 6 feet ladi of yellow and orange flowers with white flower strands and red rose bands.",
+    "best_seller": false,
+    "image": "seed/flower-ladi/75046-2-1.jpg",
+    "images": [
+      "seed/flower-ladi/75046-2-1.jpg",
+      "seed/flower-ladi/75046-2-2.jpg",
+      "seed/flower-ladi/75046-2-3.jpg"
+    ]
+  },
+  {
+    "sku": "75146",
+    "name": "Magenta & Yellow Flower Ladi",
+    "category": "Flower Ladi",
+    "price": 514,
+    "unit": "per packet",
+    "size": "6 feet",
+    "color": "Magenta, Yellow, Green",
+    "description": "A 6 feet ladi of magenta and yellow flower strands with a green flower section in the middle.",
+    "best_seller": false,
+    "image": "seed/flower-ladi/75146-1.jpg",
+    "images": [
+      "seed/flower-ladi/75146-1.jpg",
+      "seed/flower-ladi/75146-2.jpg",
+      "seed/flower-ladi/75146-3.jpg"
+    ]
+  },
+  {
+    "sku": "74906",
+    "name": "Rainbow Colour Flower Ladi",
+    "category": "Flower Ladi",
+    "price": 490,
+    "unit": "per piece",
+    "size": "6 feet",
+    "color": "Sky Blue, Purple, Yellow, Magenta, White, Pink",
+    "description": "A 6 feet ladi with colour sections of sky blue, purple, yellow, magenta, white and pink flowers.",
+    "best_seller": false,
+    "image": "seed/flower-ladi/74906-1.jpg",
+    "images": [
+      "seed/flower-ladi/74906-1.jpg",
+      "seed/flower-ladi/74906-2.jpg",
+      "seed/flower-ladi/74906-3.jpg"
+    ]
+  },
+  {
+    "sku": "75046-3",
+    "name": "Sky Blue & Cream White Flower Ladi",
+    "category": "Flower Ladi",
+    "price": 504,
+    "unit": "per packet",
+    "size": "6 feet",
+    "color": "Sky Blue, Cream White",
+    "description": "A 6 feet ladi of sky blue and cream white hanging flower strands.",
+    "best_seller": false,
+    "image": "seed/flower-ladi/75046-3-1.jpg",
+    "images": [
+      "seed/flower-ladi/75046-3-1.jpg",
+      "seed/flower-ladi/75046-3-2.jpg",
+      "seed/flower-ladi/75046-3-3.jpg"
+    ]
+  },
+  {
+    "sku": "76605",
+    "name": "Orange, Green & Red Flower Ladi with Fruits",
+    "category": "Flower Ladi",
+    "price": 660,
+    "unit": "per packet",
+    "size": "6 feet",
+    "color": "Orange, Green, Red",
+    "description": "A 6 feet ladi of orange and red flower strands with green leaf sections and small red fruits.",
+    "best_seller": false,
+    "image": "seed/flower-ladi/76605-1.jpg",
+    "images": [
+      "seed/flower-ladi/76605-1.jpg",
+      "seed/flower-ladi/76605-2.jpg",
+      "seed/flower-ladi/76605-3.jpg"
+    ]
+  },
+  {
+    "sku": "45762",
+    "name": "Yellow, White & Magenta Flower Ladi",
+    "category": "Flower Ladi",
+    "price": 576,
+    "unit": "per packet",
+    "size": "6 feet",
+    "color": "Yellow, Orange, White, Magenta, Green",
+    "description": "A 6 feet ladi of yellow and orange flowers, white flower strands and magenta flower sections with green leaves.",
+    "best_seller": false,
+    "image": "seed/flower-ladi/45762-1.jpg",
+    "images": [
+      "seed/flower-ladi/45762-1.jpg",
+      "seed/flower-ladi/45762-2.jpg",
+      "seed/flower-ladi/45762-3.jpg"
+    ]
+  },
+  {
+    "sku": "76307",
+    "name": "Yellow & Magenta Flower Ladi",
+    "category": "Flower Ladi",
+    "price": 630,
+    "unit": "per packet",
+    "size": "6 feet",
+    "color": "Yellow, Magenta",
+    "description": "A 6 feet ladi of yellow flower strands with magenta rose buds.",
+    "best_seller": false,
+    "image": "seed/flower-ladi/76307-1.jpg",
+    "images": [
+      "seed/flower-ladi/76307-1.jpg",
+      "seed/flower-ladi/76307-2.jpg",
+      "seed/flower-ladi/76307-3.jpg"
+    ]
+  },
+  {
+    "sku": "74563",
+    "name": "Green Leaf Ladi with Red & Orange Fruits",
+    "category": "Flower Ladi",
+    "price": 456,
+    "unit": "per piece",
+    "size": "6 feet",
+    "color": "Green, Red, Orange",
+    "description": "A 6 feet green leaf ladi with red and orange fruits.",
+    "best_seller": false,
+    "image": "seed/flower-ladi/74563-1.jpg",
+    "images": [
+      "seed/flower-ladi/74563-1.jpg",
+      "seed/flower-ladi/74563-2.jpg",
+      "seed/flower-ladi/74563-3.jpg"
+    ]
+  },
+  {
+    "sku": "74906-2",
+    "name": "Magenta, Red, Green & Yellow Flower Ladi",
+    "category": "Flower Ladi",
+    "price": 490,
+    "unit": "per piece",
+    "size": "6 feet",
+    "color": "Magenta, Red, Green, Yellow",
+    "description": "A 6 feet ladi of magenta and red flower strands, green leaf sections with white buds and a yellow flower section.",
+    "best_seller": false,
+    "image": "seed/flower-ladi/74906-2-1.jpg",
+    "images": [
+      "seed/flower-ladi/74906-2-1.jpg",
+      "seed/flower-ladi/74906-2-2.jpg",
+      "seed/flower-ladi/74906-2-3.jpg"
+    ]
+  },
+  {
+    "sku": "74563-2",
+    "name": "Orange & Blue Flower Ladi",
+    "category": "Flower Ladi",
+    "price": 456,
+    "unit": "per piece",
+    "size": "6 feet",
+    "color": "Orange, Blue",
+    "description": "A 6 feet ladi of orange and blue flower sections with gold bead strands in the middle.",
+    "best_seller": false,
+    "image": "seed/flower-ladi/74563-2-1.jpg",
+    "images": [
+      "seed/flower-ladi/74563-2-1.jpg",
+      "seed/flower-ladi/74563-2-2.jpg",
+      "seed/flower-ladi/74563-2-3.jpg"
+    ]
+  },
+  {
+    "sku": "74206",
+    "name": "White & Orange Red Flower Ladi",
+    "category": "Flower Ladi",
+    "price": 420,
+    "unit": "per piece",
+    "size": "6 feet",
+    "color": "White, Orange Red",
+    "description": "A 6 feet ladi of white and orange-red flower strands.",
+    "best_seller": false,
+    "image": "seed/flower-ladi/74206-1.jpg",
+    "images": [
+      "seed/flower-ladi/74206-1.jpg",
+      "seed/flower-ladi/74206-2.jpg",
+      "seed/flower-ladi/74206-3.jpg"
+    ]
+  },
+  {
+    "sku": "32164",
+    "name": "Green Leaf Ladi",
+    "category": "Flower Ladi",
+    "price": 216,
+    "unit": "per piece",
+    "size": "6 feet",
+    "color": "Green",
+    "description": "A 6 feet ladi made of fresh looking green leaves.",
+    "best_seller": false,
+    "image": "seed/flower-ladi/32164-1.jpg",
+    "images": [
+      "seed/flower-ladi/32164-1.jpg",
+      "seed/flower-ladi/32164-2.jpg",
+      "seed/flower-ladi/32164-3.jpg"
+    ]
+  },
+  {
+    "sku": "73965",
+    "name": "Red & Cream Yellow Flower Ladi",
+    "category": "Flower Ladi",
+    "price": 396,
+    "unit": "per piece",
+    "size": "6 feet",
+    "color": "Red, Cream Yellow",
+    "description": "A 6 feet ladi of red flower strands with a cream yellow strand in the middle.",
+    "best_seller": false,
+    "image": "seed/flower-ladi/73965-1.jpg",
+    "images": [
+      "seed/flower-ladi/73965-1.jpg",
+      "seed/flower-ladi/73965-2.jpg",
+      "seed/flower-ladi/73965-3.jpg"
+    ]
+  },
+  {
+    "sku": "73968",
+    "name": "Orange & Magenta Flower Ladi",
+    "category": "Flower Ladi",
+    "price": 396,
+    "unit": "per piece",
+    "size": "6 feet",
+    "color": "Orange, Magenta, Dark Green, Yellow",
+    "description": "A 6 feet ladi of orange flower strands with a magenta and green flower section in the middle.",
+    "best_seller": false,
+    "image": "seed/flower-ladi/73968-1.jpg",
+    "images": [
+      "seed/flower-ladi/73968-1.jpg",
+      "seed/flower-ladi/73968-2.jpg",
+      "seed/flower-ladi/73968-3.jpg"
     ]
   }
 ]
