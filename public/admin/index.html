@@ -83,7 +83,31 @@
   th,td{text-align:left;padding:9px 10px;border-top:1px solid var(--line);vertical-align:top}
   th{font-size:.76rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);border-top:0}
 
+  .cat-layout>*,.sl-layout>*{min-width:0}
+  header button{white-space:nowrap}
+  @media(max-width:600px){
+    header{padding:12px 14px}
+    header h1{font-size:.95rem}
+    nav.tabs{padding:0 6px}
+    nav.tabs button{padding:12px 10px;font-size:.88rem}
+    .top{flex-direction:column;align-items:stretch}
+    .top .row{width:100%}.top input{flex:1;min-width:0;width:100%}
+    table.stack,table.stack tbody{display:block}
+    table.stack thead{display:none}
+    table.stack tr{display:block;border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin-bottom:10px;background:#fff}
+    table.stack td{display:flex;gap:10px;border:0;padding:5px 0}
+    table.stack td::before{content:attr(data-label);flex:0 0 78px;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);padding-top:2px}
+    table.stack td>div,table.stack td>span.v{flex:1;min-width:0;word-break:break-word}
+  }
+  .row input{min-width:0}
   @media(max-width:860px){.cat-layout,.sl-layout{grid-template-columns:1fr}.grid2{grid-template-columns:1fr}.panel{padding:12px}}
+  @media(pointer:coarse){
+    header button{min-height:42px;padding-inline:16px}
+    .cat .acts button{padding:10px 8px;font-size:.88rem}
+    .slide .sacts button{min-height:42px}
+    .check input{width:22px;height:22px}
+    .slide{grid-template-columns:110px 1fr}.shot{width:110px;height:55px}
+  }
 </style>
 </head>
 <body>
@@ -203,7 +227,7 @@
     <div class="card tablecard">
       <div class="top"><strong id="oCount"></strong><span class="row"><input id="oQ" type="search" placeholder="Search order no, name, mobile"><button class="btn ghost" id="oRefresh">Refresh</button></span></div>
       <div id="oMsg"></div>
-      <table><thead><tr><th>Order</th><th>Customer</th><th>Items</th><th>Total</th><th>WhatsApp</th></tr></thead><tbody id="oRows"></tbody></table>
+      <table class="stack"><thead><tr><th>Order</th><th>Customer</th><th>Items</th><th>Total</th><th>WhatsApp</th></tr></thead><tbody id="oRows"></tbody></table>
     </div>
   </div>
 
@@ -212,7 +236,7 @@
     <div class="card tablecard">
       <div class="top"><strong id="cCount"></strong><span class="row"><input id="cQ" type="search" placeholder="Search name, mobile, email, city"><button class="btn ghost" id="cRefresh">Refresh</button></span></div>
       <div id="cMsg"></div>
-      <table><thead><tr><th>Name</th><th>Mobile</th><th>Email</th><th>Shop</th><th>City, State</th><th>Registered</th></tr></thead><tbody id="cRows"></tbody></table>
+      <table class="stack"><thead><tr><th>Name</th><th>Mobile</th><th>Email</th><th>Shop</th><th>City, State</th><th>Registered</th></tr></thead><tbody id="cRows"></tbody></table>
     </div>
   </div>
 </div>
@@ -557,7 +581,7 @@
     const q = $('#oQ').value.trim().toLowerCase();
     const list = orders.filter(o => !q || [o.orderNo, o.name, o.phone].join(' ').toLowerCase().includes(q));
     $('#oCount').textContent = list.length + ' of ' + orders.length + ' orders';
-    $('#oRows').innerHTML = list.map(o => '<tr><td><b>' + esc(o.orderNo) + '</b><br><small>' + new Date(o.createdAt).toLocaleString('en-IN') + '</small></td><td>' + esc(o.name) + '<br>' + esc(o.phone) + (o.company ? '<br><small>' + esc(o.company) + '</small>' : '') + '<br><small>' + esc(o.address) + '</small></td><td>' + o.items.map(i => esc(i.name) + ' (' + esc(i.sku) + ') × ' + i.qty).join('<br>') + (o.note ? '<br><small><i>Note: ' + esc(o.note) + '</i></small>' : '') + '</td><td>' + money(o.total) + '</td><td>' + (o.waSent ? 'Sent' : 'Customer tap') + '</td></tr>').join('')
+    $('#oRows').innerHTML = list.map(o => '<tr><td data-label="Order"><div><b>' + esc(o.orderNo) + '</b><br><small>' + new Date(o.createdAt).toLocaleString('en-IN') + '</small></div></td><td data-label="Customer"><div>' + esc(o.name) + '<br>' + esc(o.phone) + (o.company ? '<br><small>' + esc(o.company) + '</small>' : '') + '<br><small>' + esc(o.address) + '</small></div></td><td data-label="Items"><div>' + o.items.map(i => esc(i.name) + ' (' + esc(i.sku) + ') × ' + i.qty).join('<br>') + (o.note ? '<br><small><i>Note: ' + esc(o.note) + '</i></small>' : '') + '</div></td><td data-label="Total"><div>' + money(o.total) + '</div></td><td data-label="WhatsApp"><div>' + (o.waSent ? 'Sent' : 'Customer tap') + '</div></td></tr>').join('')
       || '<tr><td colspan="5" class="muted">No orders yet.</td></tr>';
   }
   async function oLoad(){
@@ -574,7 +598,7 @@
     const q = $('#cQ').value.trim().toLowerCase();
     const list = customers.filter(c => !q || [c.first_name, c.last_name, c.phone, c.email, c.city, c.company].join(' ').toLowerCase().includes(q));
     $('#cCount').textContent = list.length + ' of ' + customers.length + ' customers';
-    $('#cRows').innerHTML = list.map(c => '<tr><td>' + esc(c.first_name + ' ' + c.last_name) + '</td><td>' + esc(c.phone) + '</td><td>' + esc(c.email) + '</td><td>' + esc(c.company || '') + (c.gst ? '<br><small>GST ' + esc(c.gst) + '</small>' : '') + '</td><td>' + esc([c.city, c.state].filter(Boolean).join(', ')) + (c.pin ? ' - ' + esc(c.pin) : '') + '</td><td>' + new Date(c.created_at).toLocaleDateString('en-IN') + '</td></tr>').join('')
+    $('#cRows').innerHTML = list.map(c => '<tr><td data-label="Name"><div>' + esc(c.first_name + ' ' + c.last_name) + '</div></td><td data-label="Mobile"><div>' + esc(c.phone) + '</div></td><td data-label="Email"><div>' + esc(c.email) + '</div></td><td data-label="Shop"><div>' + esc(c.company || '') + (c.gst ? '<br><small>GST ' + esc(c.gst) + '</small>' : '') + '</div></td><td data-label="City"><div>' + esc([c.city, c.state].filter(Boolean).join(', ')) + (c.pin ? ' - ' + esc(c.pin) : '') + '</div></td><td data-label="Joined"><div>' + new Date(c.created_at).toLocaleDateString('en-IN') + '</div></td></tr>').join('')
       || '<tr><td colspan="6" class="muted">No customers yet.</td></tr>';
   }
   async function cLoad(){
