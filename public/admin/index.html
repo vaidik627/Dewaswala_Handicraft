@@ -3,15 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Catalog Admin — Dewaswala Handicrafts</title>
+<title>Admin — Dewaswala Handicrafts</title>
 <style>
   :root{--maroon:#6b1f2e;--maroon-ink:#4a1420;--gold:#b8862b;--bg:#fbf6ee;--surface:#fff;--ink:#2a1a1d;--muted:#7a6a6d;--line:#e6dcd2;--danger:#a4262c}
   *{box-sizing:border-box}
   body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink);font-size:15px}
-  header{background:var(--maroon-ink);color:#fff;padding:14px 22px;display:flex;align-items:center;justify-content:space-between}
+  header{background:var(--maroon-ink);color:#fff;padding:14px 22px;display:flex;align-items:center;justify-content:space-between;gap:12px}
   header h1{font-size:1.05rem;margin:0;font-weight:700;letter-spacing:.02em}
   header button{background:none;border:1px solid rgba(255,255,255,.4);color:#fff;padding:6px 12px;border-radius:8px;cursor:pointer}
-  main{display:grid;grid-template-columns:280px 1fr;gap:18px;padding:18px;max-width:1280px;margin:0 auto}
+  nav.tabs{background:#fff;border-bottom:1px solid var(--line);display:flex;gap:4px;padding:0 18px;overflow-x:auto;position:sticky;top:0;z-index:5}
+  nav.tabs button{background:none;border:0;border-bottom:3px solid transparent;padding:13px 16px;font:inherit;font-weight:600;color:var(--muted);cursor:pointer;white-space:nowrap}
+  nav.tabs button:hover{color:var(--maroon-ink)}
+  nav.tabs button.on{color:var(--maroon-ink);border-bottom-color:var(--maroon)}
+  .panel{max-width:1280px;margin:0 auto;padding:18px}
   .card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px}
   h2{font-size:1rem;margin:0 0 12px;color:var(--maroon-ink)}
   input,textarea,select{width:100%;padding:9px 11px;border:1px solid var(--line);border-radius:8px;font:inherit;background:#fff}
@@ -21,8 +25,18 @@
   button.btn:hover{background:var(--maroon-ink)}
   button.ghost{background:#fff;color:var(--maroon-ink);border:1px solid var(--line)}
   button.danger{background:#fff;color:var(--danger);border:1px solid #e9c7c9}
-  button:disabled{opacity:.5;cursor:not-allowed}
+  button:disabled{opacity:.45;cursor:not-allowed}
   .row{display:flex;gap:8px;align-items:center}
+  .msg{padding:10px 12px;border-radius:8px;margin:10px 0;font-size:.88rem}
+  .msg.ok{background:#e8f4ea;color:#1d5a2a}
+  .msg.err{background:#fbe9ea;color:var(--danger)}
+  .muted{color:var(--muted);font-size:.9rem}
+  .hide{display:none!important}
+  .hint{font-size:.85rem;color:var(--muted);margin:0 0 12px}
+  #login{max-width:360px;margin:60px auto}
+
+  /* catalog */
+  .cat-layout{display:grid;grid-template-columns:280px 1fr;gap:18px}
   .cat{display:flex;justify-content:space-between;align-items:center;padding:9px 10px;border-radius:8px;cursor:pointer;border:1px solid transparent}
   .cat:hover{background:#f6efe6}
   .cat.on{background:var(--maroon);color:#fff}
@@ -38,21 +52,44 @@
   .photos{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
   .photo{position:relative;width:86px;height:86px;border-radius:8px;background:#eee center/cover;border:1px solid var(--line)}
   .photo button{position:absolute;top:3px;right:3px;background:#fff;border:0;border-radius:6px;padding:2px 6px;cursor:pointer;color:var(--danger);font-weight:700}
-  .msg{padding:10px 12px;border-radius:8px;margin:10px 0;font-size:.88rem}
-  .msg.ok{background:#e8f4ea;color:#1d5a2a}
-  .msg.err{background:#fbe9ea;color:var(--danger)}
-  .muted{color:var(--muted);font-size:.9rem}
-  .hide{display:none!important}
-  #login{max-width:360px;margin:60px auto}
-  @media(max-width:860px){main{grid-template-columns:1fr}.grid2{grid-template-columns:1fr}}
   .photo .mainTag{position:absolute;left:4px;bottom:4px;background:var(--maroon);color:#fff;font-size:.68rem;font-weight:700;padding:2px 7px;border-radius:999px}
   .photo .mk{position:absolute;left:4px;bottom:4px;top:auto;right:auto;background:#fff;color:var(--maroon-ink);font-size:.68rem;font-weight:700;padding:2px 7px;border-radius:999px}
+
+  /* slider */
+  .sl-layout{display:grid;grid-template-columns:1fr 360px;gap:18px;align-items:start}
+  .slide{display:grid;grid-template-columns:150px 1fr;gap:14px;padding:12px 0;border-top:1px solid var(--line);align-items:center}
+  .slide:first-child{border-top:0}
+  .shot{width:150px;height:75px;border-radius:8px;background:#eee center/cover;border:1px solid var(--line)}
+  .slide .title{font-weight:700}
+  .slide .meta{font-size:.82rem;color:var(--muted);margin-top:2px}
+  .tag{display:inline-block;font-size:.72rem;font-weight:700;padding:2px 8px;border-radius:999px;margin-left:6px}
+  .tag.t-on{background:#e8f4ea;color:#1d5a2a}.tag.t-off{background:#f1ece6;color:var(--muted)}
+  .slide .sacts{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+  .slide .sacts button{font-size:.82rem;padding:6px 10px}
+  .check{display:flex;align-items:center;gap:8px;margin-top:10px;font-weight:600;color:var(--ink)}
+  .check input{width:auto}
+  .preview{margin-top:12px;border-radius:10px;overflow:hidden;position:relative;height:150px;background:#2a1a1d center/cover;color:#fff;padding:16px 18px;display:flex;flex-direction:column;justify-content:center}
+  .preview::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(40,20,22,.75),rgba(40,20,22,.1))}
+  .preview > *{position:relative}
+  .preview .ey{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:#f0c466;font-weight:700}
+  .preview .hl{font-size:1.2rem;font-weight:700;margin:4px 0}
+  .preview .tx{font-size:.8rem;opacity:.9}
+
+  /* tables */
+  .tablecard{overflow-x:auto}
+  .top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px}
+  .top input{width:auto;min-width:240px}
+  table{border-collapse:collapse;width:100%;font-size:.88rem}
+  th,td{text-align:left;padding:9px 10px;border-top:1px solid var(--line);vertical-align:top}
+  th{font-size:.76rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);border-top:0}
+
+  @media(max-width:860px){.cat-layout,.sl-layout{grid-template-columns:1fr}.grid2{grid-template-columns:1fr}.panel{padding:12px}}
 </style>
 </head>
 <body>
 <header>
-  <h1>Dewaswala Handicrafts · Catalog Admin</h1>
-  <a href="/admin/slider.html" style="color:#fff;margin-right:10px;font-size:.9rem">Homepage slider</a><a href="/admin/customers.html" style="color:#fff;margin-right:10px;font-size:.9rem">Customers</a><a href="/admin/orders.html" style="color:#fff;margin-right:10px;font-size:.9rem">Orders</a><button id="logout" class="hide">Log out</button>
+  <h1>Dewaswala Handicrafts · Admin</h1>
+  <button id="logout" class="hide">Log out</button>
 </header>
 
 <section id="login" class="card">
@@ -65,70 +102,132 @@
   <p><button class="btn" id="loginBtn" style="width:100%">Log in</button></p>
 </section>
 
-<main id="app" class="hide">
-  <aside class="card">
-    <h2>Categories</h2>
-    <div class="row">
-      <input id="newCat" placeholder="New category name">
-      <button class="btn" id="addCat">Add</button>
-    </div>
-    <div id="cats" style="margin-top:12px"></div>
-  </aside>
+<div id="app" class="hide">
+  <nav class="tabs" id="tabs">
+    <button data-tab="catalog" class="on">Catalog</button>
+    <button data-tab="slider">Homepage slider</button>
+    <button data-tab="orders">Orders</button>
+    <button data-tab="customers">Customers</button>
+  </nav>
 
-  <section class="card">
-    <div class="row" style="justify-content:space-between">
-      <h2 id="catTitle">Choose a category</h2>
-      <button class="btn" id="newProd">+ Add product</button>
-    </div>
-    <div id="globalMsg"></div>
-    <div id="prods"></div>
-
-    <form id="form" class="hide" style="margin-top:16px;border-top:1px solid var(--line);padding-top:14px">
-      <h2 id="formTitle">New product</h2>
-      <div class="grid2">
-        <div><label>Product code (SKU)</label><input name="sku" required></div>
-        <div><label>Name</label><input name="name" required></div>
-        <div><label>Category</label><select name="category_id" id="formCat"></select></div>
-        <div><label>Price (₹)</label><input name="price" type="number" min="1" step="1" required></div>
-        <div><label>Unit</label><input name="unit" value="per pc"></div>
-        <div><label>Size</label><input name="size"></div>
-        <div><label>Colour</label><input name="color"></div>
-        <div><label>Best seller</label><select name="best_seller"><option value="0">No</option><option value="1">Yes</option></select></div>
-        <div><label>In stock</label><select name="in_stock"><option value="1">Yes</option><option value="0">No</option></select></div>
-        <div class="full"><label>Description</label><textarea name="description"></textarea></div>
-        <div class="full">
-          <label>Photos (up to 6 per product, JPG / PNG / WebP, 8 MB each). 1200 × 1200 pixels is best. The first photo is the main one.</label>
-          <input type="file" id="files" name="images" accept="image/jpeg,image/png,image/webp" multiple>
-          <div id="currentPhotos" class="photos"></div>
+  <!-- ================= CATALOG ================= -->
+  <div class="panel" id="tab-catalog">
+    <div class="cat-layout">
+      <aside class="card">
+        <h2>Categories</h2>
+        <div class="row">
+          <input id="newCat" placeholder="New category name">
+          <button class="btn" id="addCat">Add</button>
         </div>
-      </div>
-      <div id="formMsg"></div>
-      <div class="row" style="margin-top:12px">
-        <button class="btn" type="submit" id="saveBtn">Save product</button>
-        <button class="btn ghost" type="button" id="cancelBtn">Cancel</button>
-      </div>
-    </form>
-  </section>
-</main>
+        <div id="cats" style="margin-top:12px"></div>
+      </aside>
+
+      <section class="card">
+        <div class="row" style="justify-content:space-between">
+          <h2 id="catTitle">Choose a category</h2>
+          <button class="btn" id="newProd">+ Add product</button>
+        </div>
+        <div id="globalMsg"></div>
+        <div id="prods"></div>
+
+        <form id="form" class="hide" style="margin-top:16px;border-top:1px solid var(--line);padding-top:14px">
+          <h2 id="formTitle">New product</h2>
+          <div class="grid2">
+            <div><label>Product code (SKU)</label><input name="sku" required></div>
+            <div><label>Name</label><input name="name" required></div>
+            <div><label>Category</label><select name="category_id" id="formCat"></select></div>
+            <div><label>Price (₹)</label><input name="price" type="number" min="1" step="1" required></div>
+            <div><label>Unit</label><input name="unit" value="per pc"></div>
+            <div><label>Size</label><input name="size"></div>
+            <div><label>Colour</label><input name="color"></div>
+            <div><label>Best seller</label><select name="best_seller"><option value="0">No</option><option value="1">Yes</option></select></div>
+            <div><label>In stock</label><select name="in_stock"><option value="1">Yes</option><option value="0">No</option></select></div>
+            <div class="full"><label>Description</label><textarea name="description"></textarea></div>
+            <div class="full">
+              <label>Photos (up to 6 per product, JPG / PNG / WebP, 8 MB each). 1200 × 1200 pixels is best. The first photo is the main one.</label>
+              <input type="file" id="files" name="images" accept="image/jpeg,image/png,image/webp" multiple>
+              <div id="currentPhotos" class="photos"></div>
+            </div>
+          </div>
+          <div id="formMsg"></div>
+          <div class="row" style="margin-top:12px">
+            <button class="btn" type="submit" id="saveBtn">Save product</button>
+            <button class="btn ghost" type="button" id="cancelBtn">Cancel</button>
+          </div>
+        </form>
+      </section>
+    </div>
+  </div>
+
+  <!-- ================= HOMEPAGE SLIDER ================= -->
+  <div class="panel hide" id="tab-slider">
+    <div class="sl-layout">
+      <section class="card">
+        <h2>Slides on the homepage</h2>
+        <p class="hint">Use the arrows to change the order. The first slide shows first. Hidden slides are kept but not shown.</p>
+        <div id="sMsg"></div>
+        <div id="sList"></div>
+      </section>
+
+      <aside class="card">
+        <h2 id="sFormTitle">Add a new slide</h2>
+        <p class="hint"><b>Required photo size:</b> 2:1 shape, at least 1600 pixels wide. <b>2000 × 1000 pixels is best.</b> JPG, PNG or WebP, under 8 MB. Keep the main subject to the right, since the text sits on the left. Photos of the wrong size are not saved.</p>
+        <form id="sForm">
+          <label>Photo <span id="sPhotoReq">*</span></label>
+          <input type="file" name="image" id="sImage" accept="image/jpeg,image/png,image/webp">
+          <label>Small label above the headline (e.g. Gift Hampers)</label>
+          <input name="eyebrow" maxlength="120">
+          <label>Headline *</label>
+          <input name="headline" maxlength="200" required>
+          <label>Short description</label>
+          <textarea name="text" maxlength="400" style="min-height:64px"></textarea>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+            <div><label>Button text</label><input name="button_label" maxlength="60"></div>
+            <div><label>Button link</label><input name="button_link" maxlength="300" placeholder="shop.html"></div>
+          </div>
+          <label class="check"><input type="checkbox" name="active" checked> Show this slide on the homepage</label>
+          <div class="preview" id="sPreview"></div>
+          <div id="sFormMsg"></div>
+          <div class="row" style="margin-top:12px">
+            <button class="btn" type="submit" id="sSaveBtn">Add slide</button>
+            <button class="btn ghost" type="button" id="sCancelBtn">Clear</button>
+          </div>
+        </form>
+      </aside>
+    </div>
+  </div>
+
+  <!-- ================= ORDERS ================= -->
+  <div class="panel hide" id="tab-orders">
+    <div class="card tablecard">
+      <div class="top"><strong id="oCount"></strong><span class="row"><input id="oQ" type="search" placeholder="Search order no, name, mobile"><button class="btn ghost" id="oRefresh">Refresh</button></span></div>
+      <div id="oMsg"></div>
+      <table><thead><tr><th>Order</th><th>Customer</th><th>Items</th><th>Total</th><th>WhatsApp</th></tr></thead><tbody id="oRows"></tbody></table>
+    </div>
+  </div>
+
+  <!-- ================= CUSTOMERS ================= -->
+  <div class="panel hide" id="tab-customers">
+    <div class="card tablecard">
+      <div class="top"><strong id="cCount"></strong><span class="row"><input id="cQ" type="search" placeholder="Search name, mobile, email, city"><button class="btn ghost" id="cRefresh">Refresh</button></span></div>
+      <div id="cMsg"></div>
+      <table><thead><tr><th>Name</th><th>Mobile</th><th>Email</th><th>Shop</th><th>City, State</th><th>Registered</th></tr></thead><tbody id="cRows"></tbody></table>
+    </div>
+  </div>
+</div>
 
 <script>
 (function(){
-  const API = '';
   let token = sessionStorage.getItem('dwToken') || '';
-  let categories = [];
-  let currentCat = null;
-  let editing = null;
-
   const $ = s => document.querySelector(s);
   const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const money = n => '₹' + Number(n).toLocaleString('en-IN');
-
   function msg(el, text, ok){ el.innerHTML = text ? '<div class="msg '+(ok?'ok':'err')+'">'+esc(text)+'</div>' : ''; }
 
   async function api(path, opts = {}){
     const headers = Object.assign({}, opts.headers || {});
     if (token) headers.Authorization = 'Bearer ' + token;
-    const res = await fetch(API + path, Object.assign({}, opts, { headers }));
+    const res = await fetch(path, Object.assign({}, opts, { headers }));
     let data = {};
     try { data = await res.json(); } catch(e){}
     if (res.status === 401) { logout(); throw new Error(data.error || 'Please log in again'); }
@@ -136,25 +235,48 @@
     return data;
   }
 
+  /* ---------- login + tabs ---------- */
+  const TABS = ['catalog', 'slider', 'orders', 'customers'];
+  const loaded = {};
+  const loaders = { catalog: () => loadCats(), slider: () => sLoad(), orders: () => oLoad(), customers: () => cLoad() };
+
   function showApp(on){
     $('#login').classList.toggle('hide', on);
     $('#app').classList.toggle('hide', !on);
     $('#logout').classList.toggle('hide', !on);
   }
-
   function logout(){
-    token = ''; sessionStorage.removeItem('dwToken'); showApp(false);
+    token = ''; sessionStorage.removeItem('dwToken');
+    TABS.forEach(t => loaded[t] = false);
+    showApp(false);
   }
-
   async function login(){
     msg($('#loginMsg'), '');
     try {
       const data = await api('/api/admin/login', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ username: $('#u').value, password: $('#p').value }) });
       token = data.token; sessionStorage.setItem('dwToken', token);
       $('#p').value = '';
-      showApp(true); await loadCats();
+      showApp(true); openTab(currentTab());
     } catch(e){ msg($('#loginMsg'), e.message, false); }
   }
+
+  function currentTab(){ const h = location.hash.replace('#', ''); return TABS.includes(h) ? h : 'catalog'; }
+  async function openTab(name){
+    TABS.forEach(t => $('#tab-' + t).classList.toggle('hide', t !== name));
+    document.querySelectorAll('#tabs button').forEach(b => b.classList.toggle('on', b.dataset.tab === name));
+    if (location.hash !== '#' + name) history.replaceState(null, '', '#' + name);
+    if (!loaded[name]) {
+      loaded[name] = true;
+      try { await loaders[name](); } catch(e){ loaded[name] = false; }
+    }
+  }
+  $('#tabs').addEventListener('click', e => { const b = e.target.closest('button[data-tab]'); if (b) openTab(b.dataset.tab); });
+  window.addEventListener('hashchange', () => { if (token) openTab(currentTab()); });
+
+  /* ---------- CATALOG ---------- */
+  let categories = [];
+  let currentCat = null;
+  let editing = null;
 
   async function loadCats(){
     categories = await api('/api/admin/categories');
@@ -252,7 +374,7 @@
     finally { btn.disabled = false; }
   }
 
-  document.addEventListener('click', async e => {
+  $('#tab-catalog').addEventListener('click', async e => {
     const el = e.target.closest('[data-act], .cat');
     if (!el) return;
     const act = el.dataset.act; const id = Number(el.dataset.id);
@@ -294,9 +416,6 @@
     } catch(err){ msg($('#globalMsg'), err.message, false); }
   });
 
-  $('#loginBtn').addEventListener('click', login);
-  $('#p').addEventListener('keydown', e => { if (e.key === 'Enter') login(); });
-  $('#logout').addEventListener('click', logout);
   $('#addCat').addEventListener('click', async () => {
     const name = $('#newCat').value.trim(); if (!name) return;
     try { await api('/api/admin/categories', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ name }) });
@@ -307,10 +426,169 @@
   $('#cancelBtn').addEventListener('click', () => { $('#form').classList.add('hide'); editing = null; });
   $('#form').addEventListener('submit', saveProduct);
 
-  (async function start(){
-    if (!token) return showApp(false);
-    try { showApp(true); await loadCats(); } catch(e){ logout(); }
-  })();
+  /* ---------- HOMEPAGE SLIDER ---------- */
+  let slides = [];
+  let sEditing = null;
+
+  function sRender(){
+    $('#sList').innerHTML = slides.map((s, i) =>
+      '<div class="slide">' +
+        '<div class="shot" style="background-image:url(\''+esc(s.image_url)+'\')"></div>' +
+        '<div>' +
+          '<div class="title">'+esc(s.headline)+'<span class="tag '+(s.active?'t-on':'t-off')+'">'+(s.active?'Shown':'Hidden')+'</span></div>' +
+          '<div class="meta">'+esc(s.eyebrow || '')+(s.button_label ? ' · Button: '+esc(s.button_label) : '')+'</div>' +
+          '<div class="sacts">' +
+            '<button class="btn ghost" data-sact="up" data-id="'+s.id+'" '+(i===0?'disabled':'')+'>↑ Up</button>' +
+            '<button class="btn ghost" data-sact="down" data-id="'+s.id+'" '+(i===slides.length-1?'disabled':'')+'>↓ Down</button>' +
+            '<button class="btn ghost" data-sact="edit" data-id="'+s.id+'">Edit</button>' +
+            '<button class="btn ghost" data-sact="toggle" data-id="'+s.id+'">'+(s.active?'Hide':'Show')+'</button>' +
+            '<button class="btn danger" data-sact="delete" data-id="'+s.id+'">Delete</button>' +
+          '</div>' +
+        '</div>' +
+      '</div>'
+    ).join('') || '<p class="hint">No slides yet. Add the first one on the right.</p>';
+  }
+
+  async function sLoad(){
+    slides = await api('/api/admin/hero-slides');
+    sRender();
+    sFill(sEditing && slides.find(x => x.id === sEditing.id) ? sEditing : null);
+  }
+
+  function sFill(s){
+    const f = $('#sForm');
+    f.reset();
+    if (!s){
+      sEditing = null;
+      $('#sFormTitle').textContent = 'Add a new slide';
+      $('#sSaveBtn').textContent = 'Add slide';
+      $('#sPhotoReq').textContent = '*';
+      $('#sImage').required = true;
+    } else {
+      sEditing = s;
+      $('#sFormTitle').textContent = 'Edit slide';
+      $('#sSaveBtn').textContent = 'Save changes';
+      $('#sPhotoReq').textContent = '(optional, to replace the photo)';
+      $('#sImage').required = false;
+      ['eyebrow','headline','text','button_label','button_link'].forEach(k => f.elements[k].value = s[k] || '');
+      f.elements.active.checked = !!s.active;
+    }
+    sPreview();
+    msg($('#sFormMsg'), '');
+  }
+
+  function sPreview(){
+    const f = $('#sForm');
+    const file = $('#sImage').files[0];
+    let bg = sEditing ? sEditing.image_url : '';
+    if (file) bg = URL.createObjectURL(file);
+    $('#sPreview').style.backgroundImage = bg ? "url('"+bg+"')" : 'none';
+    $('#sPreview').innerHTML =
+      (f.elements.eyebrow.value ? '<div class="ey">'+esc(f.elements.eyebrow.value)+'</div>' : '') +
+      '<div class="hl">'+esc(f.elements.headline.value || 'Your headline')+'</div>' +
+      (f.elements.text.value ? '<div class="tx">'+esc(f.elements.text.value)+'</div>' : '');
+  }
+
+  async function sSave(e){
+    e.preventDefault();
+    const f = $('#sForm');
+    const fd = new FormData(f);
+    fd.set('active', f.elements.active.checked ? '1' : '0');
+    if (!$('#sImage').files[0]) fd.delete('image');
+    const btn = $('#sSaveBtn'); btn.disabled = true;
+    msg($('#sFormMsg'), 'Saving… photos may take a moment.', true);
+    try {
+      if (sEditing){
+        await api('/api/admin/hero-slides/' + sEditing.id, { method:'PUT', body: fd });
+        msg($('#sMsg'), 'Slide updated.', true);
+      } else {
+        await api('/api/admin/hero-slides', { method:'POST', body: fd });
+        msg($('#sMsg'), 'Slide added.', true);
+      }
+      sEditing = null; await sLoad();
+    } catch(err){ msg($('#sFormMsg'), err.message, false); }
+    finally { btn.disabled = false; }
+  }
+
+  async function sReorder(id, dir){
+    const i = slides.findIndex(s => s.id === id);
+    const j = dir === 'up' ? i - 1 : i + 1;
+    if (j < 0 || j >= slides.length) return;
+    const a = slides[i], b = slides[j];
+    const fd1 = new FormData(); fd1.set('position', String(j + 1));
+    const fd2 = new FormData(); fd2.set('position', String(i + 1));
+    await api('/api/admin/hero-slides/' + a.id, { method:'PUT', body: fd1 });
+    await api('/api/admin/hero-slides/' + b.id, { method:'PUT', body: fd2 });
+    await sLoad();
+  }
+
+  $('#sList').addEventListener('click', async e => {
+    const el = e.target.closest('[data-sact]');
+    if (!el) return;
+    const id = Number(el.dataset.id); const act = el.dataset.sact;
+    try {
+      if (act === 'up' || act === 'down') return await sReorder(id, act);
+      const s = slides.find(x => x.id === id);
+      if (act === 'edit'){ sFill(s); $('#sForm').scrollIntoView({behavior:'smooth'}); return; }
+      if (act === 'toggle'){
+        const fd = new FormData(); fd.set('active', s.active ? '0' : '1');
+        fd.set('headline', s.headline); fd.set('eyebrow', s.eyebrow || ''); fd.set('text', s.text || '');
+        fd.set('button_label', s.button_label || ''); fd.set('button_link', s.button_link || '');
+        await api('/api/admin/hero-slides/' + id, { method:'PUT', body: fd });
+        await sLoad(); return;
+      }
+      if (act === 'delete'){
+        if (!confirm('Delete this slide and its photo? This cannot be undone.')) return;
+        await api('/api/admin/hero-slides/' + id, { method:'DELETE' });
+        if (sEditing && sEditing.id === id) sEditing = null;
+        await sLoad();
+      }
+    } catch(err){ msg($('#sMsg'), err.message, false); }
+  });
+  $('#sForm').addEventListener('submit', sSave);
+  $('#sForm').addEventListener('input', sPreview);
+  $('#sImage').addEventListener('change', sPreview);
+  $('#sCancelBtn').addEventListener('click', () => sFill(null));
+
+  /* ---------- ORDERS ---------- */
+  let orders = [];
+  function oDraw(){
+    const q = $('#oQ').value.trim().toLowerCase();
+    const list = orders.filter(o => !q || [o.orderNo, o.name, o.phone].join(' ').toLowerCase().includes(q));
+    $('#oCount').textContent = list.length + ' of ' + orders.length + ' orders';
+    $('#oRows').innerHTML = list.map(o => '<tr><td><b>' + esc(o.orderNo) + '</b><br><small>' + new Date(o.createdAt).toLocaleString('en-IN') + '</small></td><td>' + esc(o.name) + '<br>' + esc(o.phone) + (o.company ? '<br><small>' + esc(o.company) + '</small>' : '') + '<br><small>' + esc(o.address) + '</small></td><td>' + o.items.map(i => esc(i.name) + ' (' + esc(i.sku) + ') × ' + i.qty).join('<br>') + (o.note ? '<br><small><i>Note: ' + esc(o.note) + '</i></small>' : '') + '</td><td>' + money(o.total) + '</td><td>' + (o.waSent ? 'Sent' : 'Customer tap') + '</td></tr>').join('')
+      || '<tr><td colspan="5" class="muted">No orders yet.</td></tr>';
+  }
+  async function oLoad(){
+    msg($('#oMsg'), '');
+    try { orders = await api('/api/admin/orders'); oDraw(); }
+    catch(err){ msg($('#oMsg'), err.message, false); throw err; }
+  }
+  $('#oQ').addEventListener('input', oDraw);
+  $('#oRefresh').addEventListener('click', () => oLoad().catch(() => {}));
+
+  /* ---------- CUSTOMERS ---------- */
+  let customers = [];
+  function cDraw(){
+    const q = $('#cQ').value.trim().toLowerCase();
+    const list = customers.filter(c => !q || [c.first_name, c.last_name, c.phone, c.email, c.city, c.company].join(' ').toLowerCase().includes(q));
+    $('#cCount').textContent = list.length + ' of ' + customers.length + ' customers';
+    $('#cRows').innerHTML = list.map(c => '<tr><td>' + esc(c.first_name + ' ' + c.last_name) + '</td><td>' + esc(c.phone) + '</td><td>' + esc(c.email) + '</td><td>' + esc(c.company || '') + (c.gst ? '<br><small>GST ' + esc(c.gst) + '</small>' : '') + '</td><td>' + esc([c.city, c.state].filter(Boolean).join(', ')) + (c.pin ? ' - ' + esc(c.pin) : '') + '</td><td>' + new Date(c.created_at).toLocaleDateString('en-IN') + '</td></tr>').join('')
+      || '<tr><td colspan="6" class="muted">No customers yet.</td></tr>';
+  }
+  async function cLoad(){
+    msg($('#cMsg'), '');
+    try { customers = await api('/api/admin/customers'); cDraw(); }
+    catch(err){ msg($('#cMsg'), err.message, false); throw err; }
+  }
+  $('#cQ').addEventListener('input', cDraw);
+  $('#cRefresh').addEventListener('click', () => cLoad().catch(() => {}));
+
+  /* ---------- start ---------- */
+  $('#loginBtn').addEventListener('click', login);
+  $('#p').addEventListener('keydown', e => { if (e.key === 'Enter') login(); });
+  $('#logout').addEventListener('click', logout);
+  if (token) { showApp(true); openTab(currentTab()); } else showApp(false);
 })();
 </script>
 </body>
