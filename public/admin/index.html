@@ -34,6 +34,14 @@
   .hide{display:none!important}
   .hint{font-size:.85rem;color:var(--muted);margin:0 0 12px}
   #login{max-width:360px;margin:60px auto}
+  .pw{position:relative}
+  .pw input{padding-right:46px}
+  .eye{position:absolute;right:4px;top:50%;transform:translateY(-50%);width:40px;height:40px;border:0;background:none;color:var(--muted);cursor:pointer;display:grid;place-items:center;border-radius:8px}
+  .eye:hover{color:var(--maroon-ink)}
+  .eye svg{width:20px;height:20px}
+  .eye .e-off{display:none}
+  .eye[aria-pressed="true"] .e-on{display:none}
+  .eye[aria-pressed="true"] .e-off{display:block}
 
   /* catalog */
   .cat-layout{display:grid;grid-template-columns:280px 1fr;gap:18px}
@@ -126,7 +134,13 @@
   <label for="u">Username</label>
   <input id="u" autocomplete="username">
   <label for="p">Password</label>
-  <input id="p" type="password" autocomplete="current-password">
+  <div class="pw">
+    <input id="p" type="password" autocomplete="current-password">
+    <button type="button" id="pwEye" class="eye" aria-label="Show password" aria-pressed="false">
+      <svg class="e-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1.5 12S5.5 5 12 5s10.5 7 10.5 7-4 7-10.5 7S1.5 12 1.5 12Z"/><circle cx="12" cy="12" r="3"/></svg>
+      <svg class="e-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17.9 17.9A10.5 10.5 0 0 1 12 19C5.5 19 1.5 12 1.5 12a18 18 0 0 1 4.6-5.3M9.9 5.2A9.7 9.7 0 0 1 12 5c6.5 0 10.5 7 10.5 7a18 18 0 0 1-2.2 3M3 3l18 18"/><path d="M9.9 9.9a3 3 0 0 0 4.2 4.2"/></svg>
+    </button>
+  </div>
   <div id="loginMsg"></div>
   <p><button class="btn" id="loginBtn" style="width:100%">Log in</button></p>
 </section>
@@ -648,6 +662,13 @@
   $('#loginBtn').addEventListener('click', login);
   $('#p').addEventListener('keydown', e => { if (e.key === 'Enter') login(); });
   $('#logout').addEventListener('click', logout);
+  $('#pwEye').addEventListener('click', () => {
+    const show = $('#p').type === 'password';
+    $('#p').type = show ? 'text' : 'password';
+    $('#pwEye').setAttribute('aria-pressed', String(show));
+    $('#pwEye').setAttribute('aria-label', show ? 'Hide password' : 'Show password');
+    $('#p').focus();
+  });
   if (token) { showApp(true); openTab(currentTab()); } else showApp(false);
 })();
 </script>
