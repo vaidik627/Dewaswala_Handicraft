@@ -1,498 +1,5 @@
 [
   {
-    "sku": "ML-001",
-    "name": "Moti Latkan - Sample Product",
-    "category": "Moti Latkan",
-    "price": 350,
-    "unit": "per pc",
-    "size": "To be confirmed by client",
-    "color": "To be confirmed by client",
-    "description": "Sample entry. The client will replace these details in the admin.",
-    "image": "seed/moti-latkan-1.jpg",
-    "best_seller": false,
-    "images": [
-      "seed/moti-latkan-1.jpg",
-      "seed/variants/ml-001-b.jpg",
-      "seed/variants/ml-001-c.jpg"
-    ]
-  },
-  {
-    "sku": "ML-002",
-    "name": "Moti Latkan - Design 2",
-    "category": "Moti Latkan",
-    "price": 490,
-    "unit": "per pc",
-    "size": "To be confirmed by client",
-    "color": "To be confirmed by client",
-    "description": "Sample entry. The client will replace these details in the admin.",
-    "image": "seed/moti-latkan/moti-latkan-02.jpg",
-    "best_seller": false,
-    "images": [
-      "seed/moti-latkan/moti-latkan-02.jpg",
-      "seed/variants/ml-002-b.jpg",
-      "seed/variants/ml-002-c.jpg"
-    ]
-  },
-  {
-    "sku": "ML-003",
-    "name": "Moti Latkan - Design 3",
-    "category": "Moti Latkan",
-    "price": 370,
-    "unit": "per pc",
-    "size": "To be confirmed by client",
-    "color": "To be confirmed by client",
-    "description": "Sample entry. The client will replace these details in the admin.",
-    "image": "seed/moti-latkan/moti-latkan-03.jpg",
-    "best_seller": false,
-    "images": [
-      "seed/moti-latkan/moti-latkan-03.jpg",
-      "seed/variants/ml-003-b.jpg",
-      "seed/variants/ml-003-c.jpg"
-    ]
-  },
-  {
-    "sku": "ML-004",
-    "name": "Moti Latkan - Design 4",
-    "category": "Moti Latkan",
-    "price": 470,
-    "unit": "per pc",
-    "size": "To be confirmed by client",
-    "color": "To be confirmed by client",
-    "description": "Sample entry. The client will replace these details in the admin.",
-    "image": "seed/moti-latkan/moti-latkan-04.jpg",
-    "best_seller": false,
-    "images": [
-      "seed/moti-latkan/moti-latkan-04.jpg",
-      "seed/variants/ml-004-b.jpg",
-      "seed/variants/ml-004-c.jpg"
-    ]
-  },
-  {
-    "sku": "ML-005",
-    "name": "Moti Latkan - Design 5",
-    "category": "Moti Latkan",
-    "price": 640,
-    "unit": "per pc",
-    "size": "To be confirmed by client",
-    "color": "To be confirmed by client",
-    "description": "Sample entry. The client will replace these details in the admin.",
-    "image": "seed/moti-latkan/moti-latkan-05.jpg",
-    "best_seller": false,
-    "images": [
-      "seed/moti-latkan/moti-latkan-05.jpg",
-      "seed/variants/ml-005-b.jpg",
-      "seed/variants/ml-005-c.jpg"
-    ]
-  },
-  {
-    "sku": "ML-006",
-    "name": "Moti Latkan - Design 6",
-    "category": "Moti Latkan",
-    "price": 520,
-    "unit": "per pc",
-    "size": "To be confirmed by client",
-    "color": "To be confirmed by client",
-    "description": "Sample entry. The client will replace these details in the admin.",
-    "image": "seed/moti-latkan/moti-latkan-06.jpg",
-    "best_seller": false,
-    "images": [
-      "seed/moti-latkan/moti-latkan-06.jpg",
-      "seed/variants/ml-006-b.jpg",
-      "seed/variants/ml-006-c.jpg"
-    ]
-  },
-  {
-    "sku": "ML-007",
-    "name": "Moti Latkan - Design 7",
-    "category": "Moti Latkan",
-    "price": 460,
-    "unit": "per pc",
-    "size": "To be confirmed by client",
-    "color": "To be confirmed by client",
-    "description": "Sample entry. The client will replace these details in the admin.",
-    "image": "seed/moti-latkan/moti-latkan-07.jpg",
-    "best_seller": false,
-    "images": [
-      "seed/moti-latkan/moti-latkan-07.jpg",
-      "seed/variants/ml-007-b.jpg",
-      "seed/variants/ml-007-c.jpg"
-    ]
-  },
-  {
-    "sku": "ML-008",
-    "name": "Moti Latkan - Design 8",
-    "category": "Moti Latkan",
-    "price": 600,
-    "unit": "per pc",
-    "size": "To be confirmed by client",
-    "color": "To be confirmed by client",
-    "description": "Sample entry. The client will replace these details in the admin.",
-    "image": "seed/moti-latkan/moti-latkan-08.jpg",
-    "best_seller": false,
-    "images": [
-      "seed/moti-latkan/moti-latkan-08.jpg",
-      "seed/variants/ml-008-b.jpg",
-      "seed/variants/ml-008-c.jpg"
-    ]
-  },
-  {
-    "sku": "ML-009",
-    "name": "Moti Latkan - Design 9",
-    "category": "Moti Latkan",
-    "price": 620,
-    "unit": "per pc",
-    "size": "To be confirmed by client",
-    "color": "To be confirmed by client",
-    "description": "Sample entry. The client will replace these details in the admin.",
-    "image": "seed/moti-latkan/moti-latkan-09.jpg",
-    "best_seller": false,
-    "images": [
-      "seed/moti-latkan/moti-latkan-09.jpg",
-      "seed/variants/ml-009-b.jpg",
-      "seed/variants/ml-009-c.jpg"
-    ]
-  },
-  {
-    "sku": "ML-010",
-    "name": "Moti Latkan - Design 10",
-    "category": "Moti Latkan",
-    "price": 280,
-    "unit": "per pc",
-    "size": "To be confirmed by client",
-    "color": "To be confirmed by client",
-    "description": "Sample entry. The client will replace these details in the admin.",
-    "image": "seed/moti-latkan/moti-latkan-10.jpg",
-    "best_seller": false,
-    "images": [
-      "seed/moti-latkan/moti-latkan-10.jpg",
-      "seed/variants/ml-010-b.jpg",
-      "seed/variants/ml-010-c.jpg"
-    ]
-  },
-  {
-    "sku": "ML-011",
-    "name": "Moti Latkan - Design 11",
-    "category": "Moti Latkan",
-    "price": 650,
-    "unit": "per pc",
-    "size": "To be confirmed by client",
-    "color": "To be confirmed by client",
-    "description": "Sample entry. The client will replace these details in the admin.",
-    "image": "seed/moti-latkan/moti-latkan-11.jpg",
-    "best_seller": false,
-    "images": [
-      "seed/moti-latkan/moti-latkan-11.jpg",
-      "seed/variants/ml-011-b.jpg",
-      "seed/variants/ml-011-c.jpg"
-    ]
-  },
-  {
-    "sku": "ML-012",
-    "name": "Moti Latkan - Design 12",
-    "category": "Moti Latkan",
-    "price": 330,
-    "unit": "per pc",
-    "size": "To be confirmed by client",
-    "color": "To be confirmed by client",
-    "description": "Sample entry. The client will replace these details in the admin.",
-    "image": "seed/moti-latkan/moti-latkan-12.jpg",
-    "best_seller": false,
-    "images": [
-      "seed/moti-latkan/moti-latkan-12.jpg",
-      "seed/variants/ml-012-b.jpg",
-      "seed/variants/ml-012-c.jpg"
-    ]
-  },
-  {
-    "sku": "ML-013",
-    "name": "Moti Latkan - Design 13",
-    "category": "Moti Latkan",
-    "price": 330,
-    "unit": "per pc",
-    "size": "To be confirmed by client",
-    "color": "To be confirmed by client",
-    "description": "Sample entry. The client will replace these details in the admin.",
-    "image": "seed/moti-latkan/moti-latkan-13.jpg",
-    "best_seller": false,
-    "images": [
-      "seed/moti-latkan/moti-latkan-13.jpg",
-      "seed/variants/ml-013-b.jpg",
-      "seed/variants/ml-013-c.jpg"
-    ]
-  },
-  {
-    "sku": "ML-014",
-    "name": "Moti Latkan - Design 14",
-    "category": "Moti Latkan",
-    "price": 650,
-    "unit": "per pc",
-    "size": "To be confirmed by client",
-    "color": "To be confirmed by client",
-    "description": "Sample entry. The client will replace these details in the admin.",
-    "image": "seed/moti-latkan/moti-latkan-14.jpg",
-    "best_seller": false,
-    "images": [
-      "seed/moti-latkan/moti-latkan-14.jpg",
-      "seed/variants/ml-014-b.jpg",
-      "seed/variants/ml-014-c.jpg"
-    ]
-  },
-  {
-    "sku": "ML-015",
-    "name": "Moti Latkan - Design 15",
-    "category": "Moti Latkan",
-    "price": 270,
-    "unit": "per pc",
-    "size": "To be confirmed by client",
-    "color": "To be confirmed by client",
-    "description": "Sample entry. The client will replace these details in the admin.",
-    "image": "seed/moti-latkan/moti-latkan-15.jpg",
-    "best_seller": false,
-    "images": [
-      "seed/moti-latkan/moti-latkan-15.jpg",
-      "seed/variants/ml-015-b.jpg",
-      "seed/variants/ml-015-c.jpg"
-    ]
-  },
-  {
-    "sku": "ML-016",
-    "name": "Moti Latkan - Design 16",
-    "category": "Moti Latkan",
-    "price": 400,
-    "unit": "per pc",
-    "size": "To be confirmed by client",
-    "color": "To be confirmed by client",
-    "description": "Sample entry. The client will replace these details in the admin.",
-    "image": "seed/moti-latkan/moti-latkan-16.jpg",
-    "best_seller": false,
-    "images": [
-      "seed/moti-latkan/moti-latkan-16.jpg",
-      "seed/variants/ml-016-b.jpg",
-      "seed/variants/ml-016-c.jpg"
-    ]
-  },
-  {
-    "sku": "ML-017",
-    "name": "Moti Latkan - Design 17",
-    "category": "Moti Latkan",
-    "price": 260,
-    "unit": "per pc",
-    "size": "To be confirmed by client",
-    "color": "To be confirmed by client",
-    "description": "Sample entry. The client will replace these details in the admin.",
-    "image": "seed/moti-latkan/moti-latkan-17.jpg",
-    "best_seller": false,
-    "images": [
-      "seed/moti-latkan/moti-latkan-17.jpg",
-      "seed/variants/ml-017-b.jpg",
-      "seed/variants/ml-017-c.jpg"
-    ]
-  },
-  {
-    "sku": "ML-018",
-    "name": "Moti Latkan - Design 18",
-    "category": "Moti Latkan",
-    "price": 280,
-    "unit": "per pc",
-    "size": "To be confirmed by client",
-    "color": "To be confirmed by client",
-    "description": "Sample entry. The client will replace these details in the admin.",
-    "image": "seed/moti-latkan/moti-latkan-18.jpg",
-    "best_seller": false,
-    "images": [
-      "seed/moti-latkan/moti-latkan-18.jpg",
-      "seed/variants/ml-018-b.jpg",
-      "seed/variants/ml-018-c.jpg"
-    ]
-  },
-  {
-    "sku": "ML-019",
-    "name": "Moti Latkan - Design 19",
-    "category": "Moti Latkan",
-    "price": 520,
-    "unit": "per pc",
-    "size": "To be confirmed by client",
-    "color": "To be confirmed by client",
-    "description": "Sample entry. The client will replace these details in the admin.",
-    "image": "seed/moti-latkan/moti-latkan-19.jpg",
-    "best_seller": false,
-    "images": [
-      "seed/moti-latkan/moti-latkan-19.jpg",
-      "seed/variants/ml-019-b.jpg",
-      "seed/variants/ml-019-c.jpg"
-    ]
-  },
-  {
-    "sku": "ML-020",
-    "name": "Moti Latkan - Design 20",
-    "category": "Moti Latkan",
-    "price": 620,
-    "unit": "per pc",
-    "size": "To be confirmed by client",
-    "color": "To be confirmed by client",
-    "description": "Sample entry. The client will replace these details in the admin.",
-    "image": "seed/moti-latkan/moti-latkan-20.jpg",
-    "best_seller": false,
-    "images": [
-      "seed/moti-latkan/moti-latkan-20.jpg",
-      "seed/variants/ml-020-b.jpg",
-      "seed/variants/ml-020-c.jpg"
-    ]
-  },
-  {
-    "sku": "ML-021",
-    "name": "Moti Latkan - Design 21",
-    "category": "Moti Latkan",
-    "price": 570,
-    "unit": "per pc",
-    "size": "To be confirmed by client",
-    "color": "To be confirmed by client",
-    "description": "Sample entry. The client will replace these details in the admin.",
-    "image": "seed/moti-latkan/moti-latkan-21.jpg",
-    "best_seller": false,
-    "images": [
-      "seed/moti-latkan/moti-latkan-21.jpg",
-      "seed/variants/ml-021-b.jpg",
-      "seed/variants/ml-021-c.jpg"
-    ]
-  },
-  {
-    "sku": "ML-022",
-    "name": "Moti Latkan - Design 22",
-    "category": "Moti Latkan",
-    "price": 550,
-    "unit": "per pc",
-    "size": "To be confirmed by client",
-    "color": "To be confirmed by client",
-    "description": "Sample entry. The client will replace these details in the admin.",
-    "image": "seed/moti-latkan/moti-latkan-22.jpg",
-    "best_seller": false,
-    "images": [
-      "seed/moti-latkan/moti-latkan-22.jpg",
-      "seed/variants/ml-022-b.jpg",
-      "seed/variants/ml-022-c.jpg"
-    ]
-  },
-  {
-    "sku": "ML-023",
-    "name": "Moti Latkan - Design 23",
-    "category": "Moti Latkan",
-    "price": 280,
-    "unit": "per pc",
-    "size": "To be confirmed by client",
-    "color": "To be confirmed by client",
-    "description": "Sample entry. The client will replace these details in the admin.",
-    "image": "seed/moti-latkan/moti-latkan-23.jpg",
-    "best_seller": false,
-    "images": [
-      "seed/moti-latkan/moti-latkan-23.jpg",
-      "seed/variants/ml-023-b.jpg",
-      "seed/variants/ml-023-c.jpg"
-    ]
-  },
-  {
-    "sku": "ML-024",
-    "name": "Moti Latkan - Design 24",
-    "category": "Moti Latkan",
-    "price": 500,
-    "unit": "per pc",
-    "size": "To be confirmed by client",
-    "color": "To be confirmed by client",
-    "description": "Sample entry. The client will replace these details in the admin.",
-    "image": "seed/moti-latkan/moti-latkan-24.jpg",
-    "best_seller": false,
-    "images": [
-      "seed/moti-latkan/moti-latkan-24.jpg",
-      "seed/variants/ml-024-b.jpg",
-      "seed/variants/ml-024-c.jpg"
-    ]
-  },
-  {
-    "sku": "ML-025",
-    "name": "Moti Latkan - Design 25",
-    "category": "Moti Latkan",
-    "price": 450,
-    "unit": "per pc",
-    "size": "To be confirmed by client",
-    "color": "To be confirmed by client",
-    "description": "Sample entry. The client will replace these details in the admin.",
-    "image": "seed/moti-latkan/moti-latkan-25.jpg",
-    "best_seller": false,
-    "images": [
-      "seed/moti-latkan/moti-latkan-25.jpg",
-      "seed/variants/ml-025-b.jpg",
-      "seed/variants/ml-025-c.jpg"
-    ]
-  },
-  {
-    "sku": "ML-026",
-    "name": "Moti Latkan - Design 26",
-    "category": "Moti Latkan",
-    "price": 330,
-    "unit": "per pc",
-    "size": "To be confirmed by client",
-    "color": "To be confirmed by client",
-    "description": "Sample entry. The client will replace these details in the admin.",
-    "image": "seed/moti-latkan/moti-latkan-26.jpg",
-    "best_seller": false,
-    "images": [
-      "seed/moti-latkan/moti-latkan-26.jpg",
-      "seed/variants/ml-026-b.jpg",
-      "seed/variants/ml-026-c.jpg"
-    ]
-  },
-  {
-    "sku": "ML-027",
-    "name": "Moti Latkan - Design 27",
-    "category": "Moti Latkan",
-    "price": 610,
-    "unit": "per pc",
-    "size": "To be confirmed by client",
-    "color": "To be confirmed by client",
-    "description": "Sample entry. The client will replace these details in the admin.",
-    "image": "seed/moti-latkan/moti-latkan-27.jpg",
-    "best_seller": false,
-    "images": [
-      "seed/moti-latkan/moti-latkan-27.jpg",
-      "seed/variants/ml-027-b.jpg",
-      "seed/variants/ml-027-c.jpg"
-    ]
-  },
-  {
-    "sku": "ML-028",
-    "name": "Moti Latkan - Design 28",
-    "category": "Moti Latkan",
-    "price": 280,
-    "unit": "per pc",
-    "size": "To be confirmed by client",
-    "color": "To be confirmed by client",
-    "description": "Sample entry. The client will replace these details in the admin.",
-    "image": "seed/moti-latkan/moti-latkan-28.jpg",
-    "best_seller": false,
-    "images": [
-      "seed/moti-latkan/moti-latkan-28.jpg",
-      "seed/variants/ml-028-b.jpg",
-      "seed/variants/ml-028-c.jpg"
-    ]
-  },
-  {
-    "sku": "ML-029",
-    "name": "Moti Latkan - Design 29",
-    "category": "Moti Latkan",
-    "price": 570,
-    "unit": "per pc",
-    "size": "To be confirmed by client",
-    "color": "To be confirmed by client",
-    "description": "Sample entry. The client will replace these details in the admin.",
-    "image": "seed/moti-latkan/moti-latkan-29.jpg",
-    "best_seller": false,
-    "images": [
-      "seed/moti-latkan/moti-latkan-29.jpg",
-      "seed/variants/ml-029-b.jpg",
-      "seed/variants/ml-029-c.jpg"
-    ]
-  },
-  {
     "sku": "#675435",
     "name": "MOTI MALA",
     "category": "Moti Latkan",
@@ -1153,6 +660,907 @@
       "seed/flower-ladi/73968-1.jpg",
       "seed/flower-ladi/73968-2.jpg",
       "seed/flower-ladi/73968-3.jpg"
+    ]
+  },
+  {
+    "sku": "76005-2",
+    "name": "Green & Pink Parrot Moti Latkan",
+    "category": "Moti Latkan",
+    "price": 600,
+    "unit": "per packet",
+    "size": null,
+    "color": "Green, Pink, White",
+    "description": "Green leaf and pink flower moti latkan with parrots and long white pearl strings.",
+    "best_seller": false,
+    "image": "seed/moti-latkan/76005-2-1.jpg",
+    "images": [
+      "seed/moti-latkan/76005-2-1.jpg",
+      "seed/moti-latkan/76005-2-2.jpg",
+      "seed/moti-latkan/76005-2-3.jpg"
+    ]
+  },
+  {
+    "sku": "76008",
+    "name": "Pink Moti Latkan with Gold Butterflies",
+    "category": "Moti Latkan",
+    "price": 600,
+    "unit": "per packet",
+    "size": null,
+    "color": "Pink, Gold, White",
+    "description": "Pink flower moti latkan with gold butterflies, pearl strings and gold bells.",
+    "best_seller": false,
+    "image": "seed/moti-latkan/76008-1.jpg",
+    "images": [
+      "seed/moti-latkan/76008-1.jpg",
+      "seed/moti-latkan/76008-2.jpg",
+      "seed/moti-latkan/76008-3.jpg"
+    ]
+  },
+  {
+    "sku": "74206-2",
+    "name": "Pink & White Lotus Moti Latkan",
+    "category": "Moti Latkan",
+    "price": 420,
+    "unit": "per packet",
+    "size": null,
+    "color": "Pink, White, Gold",
+    "description": "Lotus top moti latkan with pink and white flower strands, gold balls and gold jali bells, in two colours.",
+    "best_seller": false,
+    "image": "seed/moti-latkan/74206-2-1.jpg",
+    "images": [
+      "seed/moti-latkan/74206-2-1.jpg",
+      "seed/moti-latkan/74206-2-2.jpg",
+      "seed/moti-latkan/74206-2-3.jpg"
+    ]
+  },
+  {
+    "sku": "74506",
+    "name": "Pearl Moti Latkan with Magenta Lotus",
+    "category": "Moti Latkan",
+    "price": 450,
+    "unit": "per packet",
+    "size": null,
+    "color": "White, Magenta, Pink, Gold",
+    "description": "Long pearl strings with magenta lotus, white flowers, gold jhumkas and pink rose ends.",
+    "best_seller": false,
+    "image": "seed/moti-latkan/74506-1.jpg",
+    "images": [
+      "seed/moti-latkan/74506-1.jpg",
+      "seed/moti-latkan/74506-2.jpg",
+      "seed/moti-latkan/74506-3.jpg"
+    ]
+  },
+  {
+    "sku": "73856",
+    "name": "Pearl Moti Latkan with Flower Bands",
+    "category": "Moti Latkan",
+    "price": 385,
+    "unit": "per packet",
+    "size": null,
+    "color": "White, Pink, Green, Gold",
+    "description": "Cone of white pearl strings with pink and green flower bands, crystal discs and gold bells.",
+    "best_seller": false,
+    "image": "seed/moti-latkan/73856-1.jpg",
+    "images": [
+      "seed/moti-latkan/73856-1.jpg",
+      "seed/moti-latkan/73856-2.jpg",
+      "seed/moti-latkan/73856-3.jpg"
+    ]
+  },
+  {
+    "sku": "411508",
+    "name": "Orange Parrot Moti Latkan with Gold Jhumkas",
+    "category": "Moti Latkan",
+    "price": 1150,
+    "unit": "per packet",
+    "size": null,
+    "color": "Orange, White, Green, Gold",
+    "description": "Orange flower moti latkan with pearl strings, green parrots and many gold jhumkas.",
+    "best_seller": false,
+    "image": "seed/moti-latkan/411508-1.jpg",
+    "images": [
+      "seed/moti-latkan/411508-1.jpg",
+      "seed/moti-latkan/411508-2.jpg",
+      "seed/moti-latkan/411508-3.jpg"
+    ]
+  },
+  {
+    "sku": "79506",
+    "name": "Pearl Moti Latkan with Round Motifs",
+    "category": "Moti Latkan",
+    "price": 950,
+    "unit": "per packet",
+    "size": null,
+    "color": "White, Gold, Pink, Green",
+    "description": "Long pearl strings with white flowers, gold jhumkas, round pink and green motifs and pink flower ends.",
+    "best_seller": false,
+    "image": "seed/moti-latkan/79506-1.jpg",
+    "images": [
+      "seed/moti-latkan/79506-1.jpg",
+      "seed/moti-latkan/79506-2.jpg",
+      "seed/moti-latkan/79506-3.jpg"
+    ]
+  },
+  {
+    "sku": "47506",
+    "name": "Pearl Moti Latkan with Red Elephant Medallions",
+    "category": "Moti Latkan",
+    "price": 750,
+    "unit": "per packet",
+    "size": null,
+    "color": "White, Gold, Red",
+    "description": "Pearl strings with white flowers, gold jhumkas and red elephant medallions.",
+    "best_seller": false,
+    "image": "seed/moti-latkan/47506-1.jpg",
+    "images": [
+      "seed/moti-latkan/47506-1.jpg",
+      "seed/moti-latkan/47506-2.jpg",
+      "seed/moti-latkan/47506-3.jpg"
+    ]
+  },
+  {
+    "sku": "76307-2",
+    "name": "Green Parrot Moti Latkan with White Flowers",
+    "category": "Moti Latkan",
+    "price": 630,
+    "unit": "per packet",
+    "size": null,
+    "color": "Green, White, Gold, Yellow, Pink",
+    "description": "Two green parrots on pearl strings with white flowers, gold balls and yellow-pink flower ends.",
+    "best_seller": false,
+    "image": "seed/moti-latkan/76307-2-1.jpg",
+    "images": [
+      "seed/moti-latkan/76307-2-1.jpg",
+      "seed/moti-latkan/76307-2-2.jpg",
+      "seed/moti-latkan/76307-2-3.jpg"
+    ]
+  },
+  {
+    "sku": "79605",
+    "name": "Parrot & Mirror Wheel Moti Latkan",
+    "category": "Moti Latkan",
+    "price": 960,
+    "unit": "per packet",
+    "size": null,
+    "color": "Green, White, Gold, Yellow",
+    "description": "Green parrots with silver mirror wheel discs, white flowers, gold balls and yellow flower ends.",
+    "best_seller": false,
+    "image": "seed/moti-latkan/79605-1.jpg",
+    "images": [
+      "seed/moti-latkan/79605-1.jpg",
+      "seed/moti-latkan/79605-2.jpg",
+      "seed/moti-latkan/79605-3.jpg"
+    ]
+  },
+  {
+    "sku": "711006",
+    "name": "Ganesh & Lakshmi Moti Latkan",
+    "category": "Moti Latkan",
+    "price": 1100,
+    "unit": "per packet",
+    "size": null,
+    "color": "Yellow, Red, White, Gold",
+    "description": "Yellow or red flower moti latkan with Ganesh and Lakshmi medallions, silver balls and gold bells, in two colours.",
+    "best_seller": false,
+    "image": "seed/moti-latkan/711006-1.jpg",
+    "images": [
+      "seed/moti-latkan/711006-1.jpg",
+      "seed/moti-latkan/711006-2.jpg",
+      "seed/moti-latkan/711006-3.jpg"
+    ]
+  },
+  {
+    "sku": "78256",
+    "name": "Red Flower Moti Latkan with Gold Jhumkas",
+    "category": "Moti Latkan",
+    "price": 825,
+    "unit": "per packet",
+    "size": null,
+    "color": "Red, Gold, White",
+    "description": "Red flower rings on pearl and gold bead strings with gold jhumkas.",
+    "best_seller": false,
+    "image": "seed/moti-latkan/78256-1.jpg",
+    "images": [
+      "seed/moti-latkan/78256-1.jpg",
+      "seed/moti-latkan/78256-2.jpg",
+      "seed/moti-latkan/78256-3.jpg"
+    ]
+  },
+  {
+    "sku": "712005",
+    "name": "Red & White Moti Latkan with Silver Balls",
+    "category": "Moti Latkan",
+    "price": 1200,
+    "unit": "per packet",
+    "size": null,
+    "color": "Red, White, Gold, Silver",
+    "description": "Red flowers with silver balls, white drop ornaments and gold bells on pearl strings.",
+    "best_seller": false,
+    "image": "seed/moti-latkan/712005-1.jpg",
+    "images": [
+      "seed/moti-latkan/712005-1.jpg",
+      "seed/moti-latkan/712005-2.jpg",
+      "seed/moti-latkan/712005-3.jpg"
+    ]
+  },
+  {
+    "sku": "79506-2",
+    "name": "Peacock Medallion Moti Latkan",
+    "category": "Moti Latkan",
+    "price": 950,
+    "unit": "per packet",
+    "size": null,
+    "color": "White, Gold, Blue",
+    "description": "Long pearl strings with peacock medallions, white flowers and gold jhumkas.",
+    "best_seller": false,
+    "image": "seed/moti-latkan/79506-2-1.jpg",
+    "images": [
+      "seed/moti-latkan/79506-2-1.jpg",
+      "seed/moti-latkan/79506-2-2.jpg",
+      "seed/moti-latkan/79506-2-3.jpg"
+    ]
+  },
+  {
+    "sku": "79008",
+    "name": "Pichwai Cow Moti Latkan",
+    "category": "Moti Latkan",
+    "price": 900,
+    "unit": "per packet",
+    "size": null,
+    "color": "White, Gold, Pink",
+    "description": "Pearl strings with a pichwai cow print panel, white flowers and gold jhumkas.",
+    "best_seller": false,
+    "image": "seed/moti-latkan/79008-1.jpg",
+    "images": [
+      "seed/moti-latkan/79008-1.jpg",
+      "seed/moti-latkan/79008-2.jpg",
+      "seed/moti-latkan/79008-3.jpg"
+    ]
+  },
+  {
+    "sku": "36805",
+    "name": "White & Red Flower Moti Latkan",
+    "category": "Moti Latkan",
+    "price": 680,
+    "unit": "per packet",
+    "size": null,
+    "color": "White, Red, Green, Gold",
+    "description": "Long white jasmine strands with red roses, green leaves and gold bells.",
+    "best_seller": false,
+    "image": "seed/moti-latkan/36805-1.jpg",
+    "images": [
+      "seed/moti-latkan/36805-1.jpg",
+      "seed/moti-latkan/36805-2.jpg",
+      "seed/moti-latkan/36805-3.jpg"
+    ]
+  },
+  {
+    "sku": "79008-2",
+    "name": "Pearl & Gold Moti Latkan with Pink Flowers",
+    "category": "Moti Latkan",
+    "price": 900,
+    "unit": "per packet",
+    "size": null,
+    "color": "White, Gold, Pink, Green",
+    "description": "Pearl and gold bead strings with white flowers, a pink and green flower ring and pearl drops.",
+    "best_seller": false,
+    "image": "seed/moti-latkan/79008-2-1.jpg",
+    "images": [
+      "seed/moti-latkan/79008-2-1.jpg",
+      "seed/moti-latkan/79008-2-2.jpg",
+      "seed/moti-latkan/79008-2-3.jpg"
+    ]
+  },
+  {
+    "sku": "79008-3",
+    "name": "White Pearl & Gold Moti Latkan",
+    "category": "Moti Latkan",
+    "price": 900,
+    "unit": "per packet",
+    "size": null,
+    "color": "White, Gold",
+    "description": "Pearl and crystal bead strings with white diamond ornaments, gold beads and white jali bells.",
+    "best_seller": false,
+    "image": "seed/moti-latkan/79008-3-1.jpg",
+    "images": [
+      "seed/moti-latkan/79008-3-1.jpg",
+      "seed/moti-latkan/79008-3-2.jpg",
+      "seed/moti-latkan/79008-3-3.jpg"
+    ]
+  },
+  {
+    "sku": "39706",
+    "name": "White Rose Pearl Moti Latkan",
+    "category": "Moti Latkan",
+    "price": 970,
+    "unit": "per packet",
+    "size": null,
+    "color": "White, Gold",
+    "description": "Pearl and crystal strings with white roses at the top, white diamond ornaments, gold beads and white bells.",
+    "best_seller": false,
+    "image": "seed/moti-latkan/39706-1.jpg",
+    "images": [
+      "seed/moti-latkan/39706-1.jpg",
+      "seed/moti-latkan/39706-2.jpg",
+      "seed/moti-latkan/39706-3.jpg"
+    ]
+  },
+  {
+    "sku": "48256",
+    "name": "Orange & Pink Flower Moti Latkan with Gold Bells",
+    "category": "Moti Latkan",
+    "price": 825,
+    "unit": "per packet",
+    "size": null,
+    "color": "Orange, Pink, Gold, White",
+    "description": "Flower rings on pearl strings with gold jhumkas and flower ends, in orange and in pink.",
+    "best_seller": false,
+    "image": "seed/moti-latkan/48256-1.jpg",
+    "images": [
+      "seed/moti-latkan/48256-1.jpg",
+      "seed/moti-latkan/48256-2.jpg",
+      "seed/moti-latkan/48256-3.jpg"
+    ]
+  },
+  {
+    "sku": "75856",
+    "name": "Yellow Flower Moti Latkan with Gold Butterflies",
+    "category": "Moti Latkan",
+    "price": 585,
+    "unit": "per packet",
+    "size": null,
+    "color": "Yellow, Gold, White",
+    "description": "Yellow flower rings with gold butterflies, white drops and pearl strings.",
+    "best_seller": false,
+    "image": "seed/moti-latkan/75856-1.jpg",
+    "images": [
+      "seed/moti-latkan/75856-1.jpg",
+      "seed/moti-latkan/75856-2.jpg",
+      "seed/moti-latkan/75856-3.jpg"
+    ]
+  },
+  {
+    "sku": "75256",
+    "name": "Yellow Flower Moti Latkan with Gold Bells",
+    "category": "Moti Latkan",
+    "price": 525,
+    "unit": "per packet",
+    "size": null,
+    "color": "Yellow, White, Gold",
+    "description": "Dense yellow flowers with white pearl clusters, white drops and gold bells.",
+    "best_seller": false,
+    "image": "seed/moti-latkan/75256-1.jpg",
+    "images": [
+      "seed/moti-latkan/75256-1.jpg",
+      "seed/moti-latkan/75256-2.jpg",
+      "seed/moti-latkan/75256-3.jpg"
+    ]
+  },
+  {
+    "sku": "74508",
+    "name": "Red & White Flower Moti Latkan with Gold Butterflies",
+    "category": "Moti Latkan",
+    "price": 450,
+    "unit": "per packet",
+    "size": null,
+    "color": "Red, White, Gold",
+    "description": "Red and white flower rings with gold butterflies, pearl strings and gold bells.",
+    "best_seller": false,
+    "image": "seed/moti-latkan/74508-1.jpg",
+    "images": [
+      "seed/moti-latkan/74508-1.jpg",
+      "seed/moti-latkan/74508-2.jpg",
+      "seed/moti-latkan/74508-3.jpg"
+    ]
+  },
+  {
+    "sku": "75856-2",
+    "name": "Cream Rose Moti Latkan with Gold Butterflies",
+    "category": "Moti Latkan",
+    "price": 585,
+    "unit": "per packet",
+    "size": null,
+    "color": "Cream White, Pink, Gold, Green",
+    "description": "Cream rose rings with gold butterflies, pearl strings and gold bells.",
+    "best_seller": false,
+    "image": "seed/moti-latkan/75856-2-1.jpg",
+    "images": [
+      "seed/moti-latkan/75856-2-1.jpg",
+      "seed/moti-latkan/75856-2-2.jpg",
+      "seed/moti-latkan/75856-2-3.jpg"
+    ]
+  },
+  {
+    "sku": "73758",
+    "name": "Multicolour Pom Pom Moti Latkan with Gold Kalash",
+    "category": "Moti Latkan",
+    "price": 375,
+    "unit": "per packet",
+    "size": null,
+    "color": "Red, Pink, Green, Orange, Gold",
+    "description": "Colourful pom-pom strings with golden kalash and gold bells.",
+    "best_seller": false,
+    "image": "seed/moti-latkan/73758-1.jpg",
+    "images": [
+      "seed/moti-latkan/73758-1.jpg",
+      "seed/moti-latkan/73758-2.jpg",
+      "seed/moti-latkan/73758-3.jpg"
+    ]
+  },
+  {
+    "sku": "73908",
+    "name": "Gold Bead & Pearl Moti Latkan",
+    "category": "Moti Latkan",
+    "price": 390,
+    "unit": "per packet",
+    "size": null,
+    "color": "Gold, White, Red",
+    "description": "Pearl strings with gold balls, gold lotus ornaments with red stones and gold bells.",
+    "best_seller": false,
+    "image": "seed/moti-latkan/73908-1.jpg",
+    "images": [
+      "seed/moti-latkan/73908-1.jpg",
+      "seed/moti-latkan/73908-2.jpg",
+      "seed/moti-latkan/73908-3.jpg"
+    ]
+  },
+  {
+    "sku": "75706",
+    "name": "White & Pink Flower Moti Latkan with Mirrors",
+    "category": "Moti Latkan",
+    "price": 570,
+    "unit": "per packet",
+    "size": null,
+    "color": "White, Pink, Gold",
+    "description": "Flower rings with mirror work, gold balls and gold bells, in white and in pink.",
+    "best_seller": false,
+    "image": "seed/moti-latkan/75706-1.jpg",
+    "images": [
+      "seed/moti-latkan/75706-1.jpg",
+      "seed/moti-latkan/75706-2.jpg",
+      "seed/moti-latkan/75706-3.jpg"
+    ]
+  },
+  {
+    "sku": "411508-2",
+    "name": "White Flower Parrot Moti Latkan",
+    "category": "Moti Latkan",
+    "price": 1150,
+    "unit": "per packet",
+    "size": null,
+    "color": "White, Gold, Green",
+    "description": "White flower rings on pearl strings with green parrots and many gold jhumkas.",
+    "best_seller": false,
+    "image": "seed/moti-latkan/411508-2-1.jpg",
+    "images": [
+      "seed/moti-latkan/411508-2-1.jpg",
+      "seed/moti-latkan/411508-2-2.jpg",
+      "seed/moti-latkan/411508-2-3.jpg"
+    ]
+  },
+  {
+    "sku": "39706-2",
+    "name": "Red Bead & White Elephant Moti Latkan",
+    "category": "Moti Latkan",
+    "price": 970,
+    "unit": "per packet",
+    "size": null,
+    "color": "White, Red, Gold",
+    "description": "Crystal strings with red bead bands, white elephant drops and white jali bells.",
+    "best_seller": false,
+    "image": "seed/moti-latkan/39706-2-1.jpg",
+    "images": [
+      "seed/moti-latkan/39706-2-1.jpg",
+      "seed/moti-latkan/39706-2-2.jpg",
+      "seed/moti-latkan/39706-2-3.jpg"
+    ]
+  },
+  {
+    "sku": "75104",
+    "name": "Magenta Tassel Moti Latkan",
+    "category": "Moti Latkan",
+    "price": 510,
+    "unit": "per packet",
+    "size": null,
+    "color": "Magenta, White, Gold",
+    "description": "Magenta tassels on pearl strings ending in white jali bells.",
+    "best_seller": false,
+    "image": "seed/moti-latkan/75104-1.jpg",
+    "images": [
+      "seed/moti-latkan/75104-1.jpg",
+      "seed/moti-latkan/75104-2.jpg",
+      "seed/moti-latkan/75104-3.jpg"
+    ]
+  },
+  {
+    "sku": "75708",
+    "name": "Yellow & White Pom Pom Moti Latkan with Mirrors",
+    "category": "Moti Latkan",
+    "price": 570,
+    "unit": "per packet",
+    "size": null,
+    "color": "Yellow, White, Gold, Black",
+    "description": "Yellow and white pom-pom strings with mirror discs and gold bells.",
+    "best_seller": false,
+    "image": "seed/moti-latkan/75708-1.jpg",
+    "images": [
+      "seed/moti-latkan/75708-1.jpg",
+      "seed/moti-latkan/75708-2.jpg",
+      "seed/moti-latkan/75708-3.jpg"
+    ]
+  },
+  {
+    "sku": "75256-2",
+    "name": "Red Flower Moti Latkan with White Drops",
+    "category": "Moti Latkan",
+    "price": 525,
+    "unit": "per packet",
+    "size": null,
+    "color": "Red, White, Gold",
+    "description": "Red flowers with white drop ornaments, pearls and gold bells.",
+    "best_seller": false,
+    "image": "seed/moti-latkan/75256-2-1.jpg",
+    "images": [
+      "seed/moti-latkan/75256-2-1.jpg",
+      "seed/moti-latkan/75256-2-2.jpg",
+      "seed/moti-latkan/75256-2-3.jpg"
+    ]
+  },
+  {
+    "sku": "76158",
+    "name": "Yellow Flower Moti Latkan with Lotus",
+    "category": "Moti Latkan",
+    "price": 615,
+    "unit": "per packet",
+    "size": null,
+    "color": "Yellow, White, Gold",
+    "description": "Yellow and white flowers with a gold lotus and gold bells on pearl strings.",
+    "best_seller": false,
+    "image": "seed/moti-latkan/76158-1.jpg",
+    "images": [
+      "seed/moti-latkan/76158-1.jpg",
+      "seed/moti-latkan/76158-2.jpg",
+      "seed/moti-latkan/76158-3.jpg"
+    ]
+  },
+  {
+    "sku": "79605-2",
+    "name": "Red Flower Moti Latkan with Lotus",
+    "category": "Moti Latkan",
+    "price": 960,
+    "unit": "per packet",
+    "size": null,
+    "color": "Red, White, Gold",
+    "description": "Red flowers with white drop ornaments, a lotus centre piece and white bells.",
+    "best_seller": false,
+    "image": "seed/moti-latkan/79605-2-1.jpg",
+    "images": [
+      "seed/moti-latkan/79605-2-1.jpg",
+      "seed/moti-latkan/79605-2-2.jpg",
+      "seed/moti-latkan/79605-2-3.jpg"
+    ]
+  },
+  {
+    "sku": "76008-2",
+    "name": "Red Flower Moti Latkan with Mirrors",
+    "category": "Moti Latkan",
+    "price": 600,
+    "unit": "per packet",
+    "size": null,
+    "color": "Red, Gold, Pink",
+    "description": "Red flower cones with mirror work, gold balls and gold bells with pink flower ends.",
+    "best_seller": false,
+    "image": "seed/moti-latkan/76008-2-1.jpg",
+    "images": [
+      "seed/moti-latkan/76008-2-1.jpg",
+      "seed/moti-latkan/76008-2-2.jpg",
+      "seed/moti-latkan/76008-2-3.jpg"
+    ]
+  },
+  {
+    "sku": "47308",
+    "name": "Pink & Red Flower Moti Latkan with Mirrors",
+    "category": "Moti Latkan",
+    "price": 730,
+    "unit": "per packet",
+    "size": null,
+    "color": "Pink, Red, Gold",
+    "description": "Pink-red flower rings with mirror work, gold jhumkas and gold bells.",
+    "best_seller": false,
+    "image": "seed/moti-latkan/47308-1.jpg",
+    "images": [
+      "seed/moti-latkan/47308-1.jpg",
+      "seed/moti-latkan/47308-2.jpg",
+      "seed/moti-latkan/47308-3.jpg"
+    ]
+  },
+  {
+    "sku": "45704",
+    "name": "Pink Flower Moti Latkan with Mirrors",
+    "category": "Moti Latkan",
+    "price": 570,
+    "unit": "per packet",
+    "size": null,
+    "color": "Pink, Gold",
+    "description": "Large pink flower rings with mirror work, gold balls and gold bells.",
+    "best_seller": false,
+    "image": "seed/moti-latkan/45704-1.jpg",
+    "images": [
+      "seed/moti-latkan/45704-1.jpg",
+      "seed/moti-latkan/45704-2.jpg",
+      "seed/moti-latkan/45704-3.jpg"
+    ]
+  },
+  {
+    "sku": "76157",
+    "name": "White & Green Flower Moti Latkan",
+    "category": "Moti Latkan",
+    "price": 615,
+    "unit": "per packet",
+    "size": null,
+    "color": "White, Green, Gold",
+    "description": "White flower strands with green leaf trims, white balls and gold bells.",
+    "best_seller": false,
+    "image": "seed/moti-latkan/76157-1.jpg",
+    "images": [
+      "seed/moti-latkan/76157-1.jpg",
+      "seed/moti-latkan/76157-2.jpg",
+      "seed/moti-latkan/76157-3.jpg"
+    ]
+  },
+  {
+    "sku": "75856-3",
+    "name": "Multicolour Pom Pom Moti Latkan with Gold Bells",
+    "category": "Moti Latkan",
+    "price": 585,
+    "unit": "per packet",
+    "size": null,
+    "color": "Orange, Green, Red, Gold",
+    "description": "Orange, green and red pom-pom bands with gold diamond ornaments and gold bells.",
+    "best_seller": false,
+    "image": "seed/moti-latkan/75856-3-1.jpg",
+    "images": [
+      "seed/moti-latkan/75856-3-1.jpg",
+      "seed/moti-latkan/75856-3-2.jpg",
+      "seed/moti-latkan/75856-3-3.jpg"
+    ]
+  },
+  {
+    "sku": "74805",
+    "name": "Yellow & Orange Flower Moti Latkan",
+    "category": "Moti Latkan",
+    "price": 480,
+    "unit": "per packet",
+    "size": null,
+    "color": "Yellow, Orange, White",
+    "description": "Yellow and orange flowers with white jali bells and orange pom-pom ends.",
+    "best_seller": false,
+    "image": "seed/moti-latkan/74805-1.jpg",
+    "images": [
+      "seed/moti-latkan/74805-1.jpg",
+      "seed/moti-latkan/74805-2.jpg",
+      "seed/moti-latkan/74805-3.jpg"
+    ]
+  },
+  {
+    "sku": "76508",
+    "name": "Red & White Moti Latkan with Pearl Rings",
+    "category": "Moti Latkan",
+    "price": 650,
+    "unit": "per packet",
+    "size": null,
+    "color": "Red, White, Gold, Silver",
+    "description": "Red flower bands with silver balls, white pearl rings and gold bells.",
+    "best_seller": false,
+    "image": "seed/moti-latkan/76508-1.jpg",
+    "images": [
+      "seed/moti-latkan/76508-1.jpg",
+      "seed/moti-latkan/76508-2.jpg",
+      "seed/moti-latkan/76508-3.jpg"
+    ]
+  },
+  {
+    "sku": "76805",
+    "name": "Red, Yellow & White Rose Moti Latkan",
+    "category": "Moti Latkan",
+    "price": 680,
+    "unit": "per packet",
+    "size": null,
+    "color": "White, Yellow, Red, Gold",
+    "description": "White jasmine strands with yellow roses, red flowers and gold bells with pearl ends.",
+    "best_seller": false,
+    "image": "seed/moti-latkan/76805-1.jpg",
+    "images": [
+      "seed/moti-latkan/76805-1.jpg",
+      "seed/moti-latkan/76805-2.jpg",
+      "seed/moti-latkan/76805-3.jpg"
+    ]
+  },
+  {
+    "sku": "36805-2",
+    "name": "Orange Rose & White Moti Latkan",
+    "category": "Moti Latkan",
+    "price": 680,
+    "unit": "per packet",
+    "size": null,
+    "color": "White, Orange, Yellow, Red, Gold",
+    "description": "White jasmine strands with orange and yellow roses, red flowers and gold bells.",
+    "best_seller": false,
+    "image": "seed/moti-latkan/36805-2-1.jpg",
+    "images": [
+      "seed/moti-latkan/36805-2-1.jpg",
+      "seed/moti-latkan/36805-2-2.jpg",
+      "seed/moti-latkan/36805-2-3.jpg"
+    ]
+  },
+  {
+    "sku": "78105",
+    "name": "Yellow Flower Moti Latkan with Mirrors",
+    "category": "Moti Latkan",
+    "price": 810,
+    "unit": "per packet",
+    "size": null,
+    "color": "Yellow, White, Gold, Silver",
+    "description": "Yellow flowers with tassels, mirror discs and white OM bells.",
+    "best_seller": false,
+    "image": "seed/moti-latkan/78105-1.jpg",
+    "images": [
+      "seed/moti-latkan/78105-1.jpg",
+      "seed/moti-latkan/78105-2.jpg",
+      "seed/moti-latkan/78105-3.jpg"
+    ]
+  },
+  {
+    "sku": "78005",
+    "name": "Orange Flower Moti Latkan with Crystal Drops",
+    "category": "Moti Latkan",
+    "price": 800,
+    "unit": "per packet",
+    "size": null,
+    "color": "Orange, Dark Green, White, Clear",
+    "description": "Orange flowers with dark green leaves on pearl strings and clear crystal drops.",
+    "best_seller": false,
+    "image": "seed/moti-latkan/78005-1.jpg",
+    "images": [
+      "seed/moti-latkan/78005-1.jpg",
+      "seed/moti-latkan/78005-2.jpg",
+      "seed/moti-latkan/78005-3.jpg"
+    ]
+  },
+  {
+    "sku": "74908",
+    "name": "Red, Yellow & Green Flower Moti Latkan",
+    "category": "Moti Latkan",
+    "price": 490,
+    "unit": "per packet",
+    "size": null,
+    "color": "Red, Yellow, Green, White, Gold",
+    "description": "Red, yellow and green flower bands on pearl strings with gold bells.",
+    "best_seller": false,
+    "image": "seed/moti-latkan/74908-1.jpg",
+    "images": [
+      "seed/moti-latkan/74908-1.jpg",
+      "seed/moti-latkan/74908-2.jpg",
+      "seed/moti-latkan/74908-3.jpg"
+    ]
+  },
+  {
+    "sku": "38705",
+    "name": "White & Green Flower Moti Latkan with Crystal Drops",
+    "category": "Moti Latkan",
+    "price": 870,
+    "unit": "per packet",
+    "size": null,
+    "color": "White, Green, Clear",
+    "description": "White flowers with green leaves, white balls and clear crystal drops.",
+    "best_seller": false,
+    "image": "seed/moti-latkan/38705-1.jpg",
+    "images": [
+      "seed/moti-latkan/38705-1.jpg",
+      "seed/moti-latkan/38705-2.jpg",
+      "seed/moti-latkan/38705-3.jpg"
+    ]
+  },
+  {
+    "sku": "78105-2",
+    "name": "Red Flower Moti Latkan with White Bells",
+    "category": "Moti Latkan",
+    "price": 810,
+    "unit": "per packet",
+    "size": null,
+    "color": "Red, Pink, White, Silver",
+    "description": "Red flowers with tassels, mirror discs and white swastika bells.",
+    "best_seller": false,
+    "image": "seed/moti-latkan/78105-2-1.jpg",
+    "images": [
+      "seed/moti-latkan/78105-2-1.jpg",
+      "seed/moti-latkan/78105-2-2.jpg",
+      "seed/moti-latkan/78105-2-3.jpg"
+    ]
+  },
+  {
+    "sku": "75856-4",
+    "name": "Green Rose Moti Latkan with Gold Butterflies",
+    "category": "Moti Latkan",
+    "price": 585,
+    "unit": "per packet",
+    "size": null,
+    "color": "Light Green, Gold, White",
+    "description": "Light green rose rings with gold butterflies, pearl strings and gold bells.",
+    "best_seller": false,
+    "image": "seed/moti-latkan/75856-4-1.jpg",
+    "images": [
+      "seed/moti-latkan/75856-4-1.jpg",
+      "seed/moti-latkan/75856-4-2.jpg",
+      "seed/moti-latkan/75856-4-3.jpg"
+    ]
+  },
+  {
+    "sku": "84003",
+    "name": "Multicolour Pom Pom Moti Latkan with Mirrors",
+    "category": "Moti Latkan",
+    "price": 400,
+    "unit": "per packet",
+    "size": null,
+    "color": "Red, Yellow, Green, Blue, Silver, Gold",
+    "description": "Red, yellow, green and blue pom-poms with silver mirror discs on gold bead strings.",
+    "best_seller": false,
+    "image": "seed/moti-latkan/84003-1.jpg",
+    "images": [
+      "seed/moti-latkan/84003-1.jpg",
+      "seed/moti-latkan/84003-2.jpg",
+      "seed/moti-latkan/84003-3.jpg"
+    ]
+  },
+  {
+    "sku": "48705",
+    "name": "Gold Bead & Pink Flower Moti Latkan",
+    "category": "Moti Latkan",
+    "price": 870,
+    "unit": "per packet",
+    "size": null,
+    "color": "Gold, Pink, Red",
+    "description": "Gold bead strings with pink flowers and gold jali bells.",
+    "best_seller": false,
+    "image": "seed/moti-latkan/48705-1.jpg",
+    "images": [
+      "seed/moti-latkan/48705-1.jpg",
+      "seed/moti-latkan/48705-2.jpg",
+      "seed/moti-latkan/48705-3.jpg"
+    ]
+  },
+  {
+    "sku": "76508-2",
+    "name": "Blue Flower Moti Latkan with Crystal Drops",
+    "category": "Moti Latkan",
+    "price": 650,
+    "unit": "per packet",
+    "size": null,
+    "color": "Blue, Gold, Clear",
+    "description": "Shiny blue flowers on bead strings ending in clear crystal drops.",
+    "best_seller": false,
+    "image": "seed/moti-latkan/76508-2-1.jpg",
+    "images": [
+      "seed/moti-latkan/76508-2-1.jpg",
+      "seed/moti-latkan/76508-2-2.jpg",
+      "seed/moti-latkan/76508-2-3.jpg"
+    ]
+  },
+  {
+    "sku": "46758",
+    "name": "Pearl & Gold Bead Moti Latkan",
+    "category": "Moti Latkan",
+    "price": 675,
+    "unit": "per packet",
+    "size": null,
+    "color": "White, Gold",
+    "description": "Long pearl strings with gold beads and gold jali bells.",
+    "best_seller": false,
+    "image": "seed/moti-latkan/46758-1.jpg",
+    "images": [
+      "seed/moti-latkan/46758-1.jpg",
+      "seed/moti-latkan/46758-2.jpg",
+      "seed/moti-latkan/46758-3.jpg"
     ]
   }
 ]

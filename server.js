@@ -383,6 +383,17 @@ async function setup() {
     }
   }
 
+  // One-time: with REMOVE_SAMPLE_PRODUCTS=true, delete the old sample products (codes ML-001 ... ML-999 and FL-001) with their photos
+  if (process.env.REMOVE_SAMPLE_PRODUCTS === 'true') {
+    const [old] = await pool.query("SELECT id, sku FROM products WHERE sku REGEXP '^ML-[0-9]{3}$' OR sku = 'FL-001'");
+    for (const prod of old) {
+      const [imgs] = await pool.query('SELECT public_id FROM product_images WHERE product_id = ?', [prod.id]);
+      for (const i of imgs) { await cloud.destroy(i.public_id).catch(() => {}); }
+      await pool.query('DELETE FROM products WHERE id = ?', [prod.id]);
+    }
+    console.log('Old sample products removed:', old.length);
+  }
+
   // One-time: with SEED_PRODUCTS=true, add the products in seed/products.json that don't exist yet (photo goes to Cloudinary)
   if (process.env.SEED_PRODUCTS === 'true') {
     const items = JSON.parse(fs.readFileSync(path.join(__dirname, 'seed', 'products.json'), 'utf8'));
